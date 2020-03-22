@@ -21,7 +21,7 @@
   }
 
   h1 {
-    font-size: 42px;
+    font-size: 62px;
     line-height: 1.2em;
   }
 
@@ -55,30 +55,31 @@
 
   .stack {
     list-style: none;
-    padding: 0;
+    padding: 0 150px 0 0;
     margin: 0;
     display: flex;
     flex-direction: column-reverse;
     justify-content: center;
-    align-items: center;
-    transform: translateY(-60px);
+    align-items: end;
+    transform: translateY(-40px);
 
     li {
-      width: 180px;
-      height: 180px;
+      width: 230px;
+      height: 230px;
       border-radius: 30px;
       position: absolute;
       mix-blend-mode: screen;
-      transform: rotateX(7deg) rotateY(-12deg) rotateZ(-46deg) skewX(16deg) skewY(25deg);
+      transform: rotateX(23deg) rotateY(-16deg) rotateZ(-55deg) skewX(-6deg) skewY(17deg);
+      box-shadow: -10px 10px 16px 0px rgba(0, 0, 0, 0.65);
 
       &:nth-of-type(1) {
         background: #cbcbcb;
-        margin-top: 140px;
+        margin-top: 110px;
       }
 
       &:nth-of-type(2) {
         background: $blue;
-        margin-top: 70px;
+        margin-top: 60px;
       }
       &:nth-of-type(3) {
         background: $red;
@@ -94,4 +95,14 @@
 
 .contentWrapperInner {
   padding: 0 25px;
+}
+
+.diagonalStripe {
+  position: absolute;
+  height: 1px;
+  width: 200vw;
+  background: rgba($white, 0.3);
+  z-index: 10;
+  left: 0;
+  transform: rotate(-40deg) translateY(-80px);
 }

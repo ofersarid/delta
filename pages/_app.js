@@ -37,6 +37,7 @@ class MyApp extends App {
     return (
       <Provider store={store} >
         <Helmet />
+        <div className={styles.diagonalStripe}/>
         <div className={styles.contentWrapper} id="top" >
           <NavBar />
           <div className={styles.contentWrapperInner} >
