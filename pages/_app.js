@@ -12,6 +12,7 @@ import { device } from '../services';
 import { Helmet } from '../shared';
 import reactorConfig from '../reactor.config';
 import { NavBar } from '../containers';
+import styles from './styles.scss';
 
 const makeStore = (initialState, options) => {
   const store = createStore(combined, initialState, composeWithDevTools(applyMiddleware(thunkMiddleware)));
@@ -36,8 +37,12 @@ class MyApp extends App {
     return (
       <Provider store={store} >
         <Helmet />
-        <NavBar />
-        <Component {...pageProps} isServer={isServer} />
+        <div className={styles.contentWrapper} id="top" >
+          <NavBar />
+          <div className={styles.contentWrapperInner} >
+            <Component {...pageProps} isServer={isServer} />
+          </div >
+        </div >
       </Provider >
     );
   }
