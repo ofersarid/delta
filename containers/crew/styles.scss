@@ -37,13 +37,33 @@
     flex-wrap: nowrap;
 
     li {
-      $diameter: 40vw;
+      $diameter: 36vw;
       width: $diameter;
       height: $diameter;
-      background: red;
       border-radius: $diameter / 2;
       flex-shrink: 0;
       margin: 0 5px;
+      overflow: hidden;
+      background: $red;
+      opacity: 0.75;
+
+      &.focused {
+        background: transparent;
+        opacity: 1;
+
+        img {
+          filter: none;
+        }
+      }
+
+      img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        object-position: center;
+        mix-blend-mode: multiply;
+        filter: grayscale(1);
+      }
     }
   }
 }

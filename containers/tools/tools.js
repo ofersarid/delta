@@ -26,7 +26,7 @@ class Tools extends PureComponent {
 }
 
 Tools.propTypes = {
-  device: PropTypes.string.isRequired
+  deviceOrientation: PropTypes.string.isRequired
 };
 
 const mapStateToProps = state => ({
