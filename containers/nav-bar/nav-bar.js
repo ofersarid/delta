@@ -1,17 +1,25 @@
-import React, { PureComponent } from 'react';
+import React, { Fragment, PureComponent } from 'react';
 import cx from 'classnames';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 // import Link from 'next/link';
 import styles from './styles.scss';
+
 /*
  * read about links in next.js:
  * https://nextjs.org/docs/routing/introduction
  * */
 
 class NavBar extends PureComponent {
-  scrollToTop() {
-    document.getElementsByTagName('body').item(0).scrollIntoView({
+  // scrollToTop() {
+  //   document.getElementsByTagName('body').item(0).scrollIntoView({
+  //     behavior: 'smooth',
+  //     block: 'start'
+  //   });
+  // }
+
+  scrollToContact() {
+    document.getElementById('contactSection').item(0).scrollIntoView({
       behavior: 'smooth',
       block: 'start'
     });
@@ -19,11 +27,13 @@ class NavBar extends PureComponent {
 
   render() {
     return (
-      <div className={cx(styles.navBar)} >
-        <div className={styles.logo} onClick={this.scrollToTop} >
-          _Delta
+      <Fragment >
+        <div className={cx(styles.navBar)} >
+          <div className={styles.logo} >_DELTA</div >
+          <div className={styles.contact} onClick={this.scrollToContact} >Contact</div >
         </div >
-      </div >
+        <img className={styles.divider180} src="/images/180-divider.svg" />
+      </Fragment >
     );
   }
 }

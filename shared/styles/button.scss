@@ -1,4 +1,13 @@
+@import './media-query-mixins';
+
 %button {
   cursor: pointer;
-  padding: 10px;
+  padding: 7px 20px 10px;
+  line-height: 18px;
+
+  @include media('>tablet') {
+    @include orientation('landscape') {
+      line-height: 20px;
+    }
+  }
 }

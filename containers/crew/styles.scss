@@ -1,0 +1,49 @@
+@import '../../shared/styles/index';
+
+
+.crew {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: $mobile-vertical-spacer-2;
+
+  @include media('>tablet') {
+    @include orientation('landscape') {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  h1 {
+    margin: 0 0 $mobile-vertical-spacer-1;
+    padding: 0 $mobile-gutter;
+
+    @include media('>tablet') {
+      @include orientation('landscape') {
+
+      }
+    }
+  }
+
+  .blue {
+    color: $blue;
+  }
+
+  ul {
+    padding: 0 0 0 $mobile-gutter;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: nowrap;
+
+    li {
+      $diameter: 40vw;
+      width: $diameter;
+      height: $diameter;
+      background: red;
+      border-radius: $diameter / 2;
+      flex-shrink: 0;
+      margin: 0 5px;
+    }
+  }
+}

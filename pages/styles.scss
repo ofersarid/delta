@@ -3,13 +3,23 @@
 
 :global {
   body {
-    font-family: 'simple-pro', serif;
+    font-family: 'Open Sans', sans-serif;
     margin: 0 !important;
     background: $black;
-    color: $gray;
+    color: $white;
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow-x: hidden;
+    font-size: 18px;
+    line-height: 37px;
+
+    @include media('>tablet') {
+      @include orientation('landscape') {
+        font-size: 20px;
+        line-height: 38px;
+      }
+    }
   }
 
   ::-webkit-scrollbar {
@@ -21,88 +31,39 @@
   }
 
   h1 {
-    font-size: 62px;
-    line-height: 1.2em;
-  }
+    font-family: 'Exo 2', sans-serif;
+    font-size: 33px;
+    line-height: 40px;
+    margin: 0 0 $mobile-vertical-spacer-2;
+    font-weight: 500;
 
-  p {
-    line-height: 1.5em;
-    font-family: monospace;
-    font-size: 20px;
-  }
-}
-
-
-.hero {
-  display: flex;
-  justify-content: space-between;
-
-  h1 {
-    color: $blue;
-  }
-
-  .left {
-    width: 60%;
-  }
-
-  .right {
-    width: 40%;
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .stack {
-    list-style: none;
-    padding: 0 150px 0 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column-reverse;
-    justify-content: center;
-    align-items: end;
-    transform: translateY(-40px);
-
-    li {
-      width: 230px;
-      height: 230px;
-      border-radius: 30px;
-      position: absolute;
-      mix-blend-mode: screen;
-      transform: rotateX(23deg) rotateY(-16deg) rotateZ(-55deg) skewX(-6deg) skewY(17deg);
-      box-shadow: -10px 10px 16px 0px rgba(0, 0, 0, 0.65);
-
-      &:nth-of-type(1) {
-        background: #cbcbcb;
-        margin-top: 110px;
-      }
-
-      &:nth-of-type(2) {
-        background: $blue;
-        margin-top: 60px;
-      }
-      &:nth-of-type(3) {
-        background: $red;
+    @include media('>tablet') {
+      @include orientation('landscape') {
+        font-size: 43px;
+        line-height: 52px;
       }
     }
   }
 }
 
-.contentWrapper {
-  width: $content-wrapper-width;
-  padding: #{1.5 * $nav-bar-height} 0;
+.app {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
 }
 
 .contentWrapperInner {
   padding: 0 25px;
 }
 
-.diagonalStripe {
-  position: absolute;
-  height: 1px;
-  width: 200vw;
-  background: rgba($white, 0.3);
-  z-index: 10;
-  left: 0;
-  transform: rotate(-40deg) translateY(-80px);
-}
+//.diagonalStripe {
+//  position: absolute;
+//  height: 1px;
+//  width: 300vw;
+//  background: rgba($white, 0.3);
+//  z-index: 10;
+//  left: 0;
+//  transform: rotate(-40deg) translateY(-640px) translateX(-570px);
+//}

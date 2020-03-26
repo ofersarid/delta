@@ -1,0 +1,50 @@
+@import '../../shared/styles/index';
+
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  padding: 0 $mobile-gutter;
+
+  @include media('>tablet') {
+    @include orientation('landscape') {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  h1 {
+    font-weight: normal;
+    color: $blue;
+    margin-bottom: $mobile-vertical-spacer-1;
+
+    @include media('>tablet') {
+      @include orientation('landscape') {
+
+      }
+    }
+  }
+
+  .left {
+    width: 100%;
+
+    @include media('>tablet') {
+      @include orientation('landscape') {
+        width: 60%;
+      }
+    }
+  }
+
+  .right {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    @include media('>tablet') {
+      @include orientation('landscape') {
+        width: 40%;
+      }
+    }
+  }
+}

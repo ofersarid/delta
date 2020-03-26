@@ -1,42 +1,31 @@
 @import '../../shared/styles/index';
 
 .navBar {
-  width: $content-wrapper-width;
-  height: $nav-bar-height;
+  width: 100vw;
   box-sizing: border-box;
-  padding-top: 10px;
-  backdrop-filter: blur(8px);
+  margin-top: $mobile-vertical-spacer-1;
+  padding: 0 $mobile-gutter;
   display: flex;
   align-items: center;
-  position: fixed;
-  top: 0;
-  border-bottom: 1px solid rgba($white, 0.2);
-  background: rgba($black, 0.8);
+  justify-content: space-between;
+}
 
-  ul {
-    list-style: none;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    padding: 0;
-    margin: 0;
-
-    li {
-      padding: 10px 20px;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-      font-size: 20px;
-    }
-  }
+.divider180 {
+  margin: $mobile-vertical-spacer-1 0;
+  transform: translateX(-60px);
 }
 
 .logo {
   color: $red;
-  font-size: 34px;
-  font-weight: bold;
-  text-decoration: none;
+  font-size: 31px;
+  font-family: 'Exo 2', sans-serif;
+  font-weight: 500;
+}
+
+.contact {
   @extend %button;
+  border: 1px solid $white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
