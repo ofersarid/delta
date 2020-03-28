@@ -25,13 +25,31 @@
     }
   }
 
+  p {
+    margin: 0 0 20px 0;
+    padding: 0 $mobile-gutter;
+
+    @include media('>tablet') {
+      @include orientation('landscape') {
+
+      }
+    }
+
+    &:first-of-type {
+      line-height: 1.6em;
+      font-family: 'Exo 2';
+      font-size: 1.1em;
+      letter-spacing: 0.02em;
+    }
+  }
+
   .blue {
     color: $blue;
   }
 
   ul {
-    padding: 0 0 0 $mobile-gutter;
-    margin: 0;
+    padding: 0 0 0 calc(#{$mobile-gutter} - 5px);
+    margin: 0 0 25px;
     list-style: none;
     display: flex;
     flex-wrap: nowrap;
@@ -46,6 +64,7 @@
       overflow: hidden;
       background: $red;
       opacity: 0.75;
+      transition: 1s $ease;
 
       &.focused {
         background: transparent;

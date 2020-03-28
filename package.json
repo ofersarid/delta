@@ -26,6 +26,7 @@
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-redux": "^7.1.3",
+    "react-swipeable": "^5.5.1",
     "reactor-connect": "^1.1.4",
     "redux": "^4.0.4",
     "redux-devtools-extension": "^2.13.8",

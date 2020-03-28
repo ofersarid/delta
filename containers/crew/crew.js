@@ -3,6 +3,7 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import cx from 'classnames';
 import PropTypes from 'prop-types';
+import { Swipeable } from 'react-swipeable';
 import styles from './styles.scss';
 import { device } from '../../services';
 import data from './crew-data';
@@ -13,27 +14,51 @@ class Crew extends PureComponent {
     super(props);
     autoBind(this);
     this.state = {
-      focused: data[0]
+      index: 0
     };
+  }
+
+  onSwipedLeft() {
+    const { index } = this.state;
+    const next = Math.min(index + 1, data.length - 1);
+    this.setState({
+      index: next
+    });
+  }
+
+  onSwipedRight() {
+    const { index } = this.state;
+    const prev = Math.max(index - 1, 0);
+    this.setState({
+      index: prev
+    });
   }
 
   render() {
     // const { deviceOrientation } = this.props;
     // const isPortrait = deviceOrientation === 'portrait';
-    const { focused } = this.state;
+    const { index } = this.state;
     return (
-      <section className={styles.crew} >
+      <Swipeable
+        className={styles.crew}
+        onSwipedLeft={this.onSwipedLeft}
+        onSwipedRight={this.onSwipedRight}
+      >
         <h1 >MEET THE CREW</h1 >
         <ul >
-          {data.map(itm => (
+          {data.map((itm, i) => (
             <li
               key={itm.id}
-              className={cx({ [styles.focused]: focused.id === itm.id })}
+              className={cx({ [styles.focused]: index === i })}
+              style={{
+                transform: `translateX(calc(${index * -100}% - ${index * 10}px))`
+              }}
             ><img src={itm.image} /></li >
           ))}
         </ul >
-        <p ></p >
-      </section >
+        <p className={styles.blue} >{data[index].name}<br />{data[index].title}</p >
+        <p >{data[index].description}</p >
+      </Swipeable >
     );
   }
 }
