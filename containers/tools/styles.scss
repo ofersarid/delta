@@ -1,25 +1,14 @@
 @import '../../shared/styles/index';
 
 
-.agile {
+.tools {
   display: flex;
   flex-direction: column;
+  width: 100%;
   margin-top: $mobile-vertical-spacer-2;
 
-  @include media('>tablet') {
-    @include orientation('landscape') {
-      flex-direction: row;
-      justify-content: space-between;
-    }
-  }
-
-  img {
-    transform: translateX(-46px);
-    height: 247px;
-  }
-
   h1 {
-    margin: $mobile-vertical-spacer-1 0;
+    margin: 0 0 $mobile-vertical-spacer-1;
     padding: 0 $mobile-gutter;
 
     @include media('>tablet') {
@@ -29,23 +18,35 @@
     }
   }
 
+  p {
+    margin: 0 0 20px 0;
+    padding: 0 $mobile-gutter;
+
+    @include media('>tablet') {
+      @include orientation('landscape') {
+
+      }
+    }
+
+    &:first-of-type {
+      line-height: 1.6em;
+      font-family: 'Exo 2';
+      font-size: 1.1em;
+      letter-spacing: 0.02em;
+    }
+  }
+
   .blue {
     color: $blue;
   }
 
   ul {
-    $hashDeviation: 25px;
-    padding: 0 $mobile-gutter 0 calc(#{$mobile-gutter} + #{$hashDeviation});
-    margin: 0;
+    padding: 0 0 0 calc(#{$mobile-gutter} - 5px);
+    margin: 0 0 25px;
     list-style: none;
+    display: flex;
+    flex-wrap: nowrap;
 
-    li {
-      &:before {
-        content: '#';
-        position: absolute;
-        transform: translate(-$hashDeviation, -1px);
-        font-size: 24px;
-      }
-    }
+
   }
 }

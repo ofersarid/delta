@@ -1,37 +1,17 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
+import cx from 'classnames';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import styles from './styles.scss';
-import { device } from '../../services';
 
-class Tools extends PureComponent {
-  render() {
-    const { deviceOrientation } = this.props;
-    const isPortrait = deviceOrientation === 'portrait';
-    return (
-      <section className={styles.agile} >
-        {isPortrait && <img src="/images/agile.svg" />}
-        <h1 >Our M.O</h1 >
-        <ul >
-          <li >We <span className={styles.blue} >integrate</span > seamlessly with your specific workflow whatever it
-               may be.
-          </li >
-          <li >We are <span className={styles.blue} >&quot;agile&quot;</span> lovers and we work in 1-2-week sprints.</li >
-          <li >We combine working remotely with actual face-time <span className={styles.blue} >on prem</span>.</li >
-        </ul >
-      </section >
-    );
-  }
-}
+const Tools = () => (
+  <div className={cx(styles.tools)} >Tools</div >
+);
 
-Tools.propTypes = {
-  deviceOrientation: PropTypes.string.isRequired
-};
+Tools.propTypes = {};
 
-const mapStateToProps = state => ({
-  deviceOrientation: device.selectors.orientation(state)
-});
+const mapStateToProps = state => ({}); // eslint-disable-line
 
 const mapDispatchToProps = dispatch => ({}); // eslint-disable-line
 
