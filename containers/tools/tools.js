@@ -6,7 +6,9 @@ import { connect } from 'react-redux';
 import styles from './styles.scss';
 
 const Tools = () => (
-  <div className={cx(styles.tools)} >Tools</div >
+  <div className={cx(styles.tools)} >
+    <h1 >OUR TOOLS</h1 >
+  </div >
 );
 
 Tools.propTypes = {};

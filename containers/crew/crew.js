@@ -34,6 +34,12 @@ class Crew extends PureComponent {
     });
   }
 
+  selectMe(i) {
+    this.setState({
+      index: i
+    });
+  }
+
   render() {
     // const { deviceOrientation } = this.props;
     // const isPortrait = deviceOrientation === 'portrait';
@@ -50,6 +56,7 @@ class Crew extends PureComponent {
             <li
               key={itm.id}
               className={cx({ [styles.focused]: index === i })}
+              onClick={() => this.selectMe(i)}
               style={{
                 transform: `translateX(calc(${index * -100}% - ${index * 10}px))`
               }}
