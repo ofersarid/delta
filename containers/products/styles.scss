@@ -1,0 +1,78 @@
+@import '../../shared/styles/index';
+
+.products {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+
+  .swipeArea {
+    width: 100%;
+  }
+
+  h1 {
+    margin: 0 0 $mobile-vertical-spacer-1;
+    padding: 0 $mobile-gutter;
+
+    @include media('>tablet') {
+      @include orientation('landscape') {
+
+      }
+    }
+  }
+
+  ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+
+    li {
+      width: 100vw;
+      height: 100vw;
+      box-sizing: border-box;
+      flex-shrink: 0;
+      background: $red;
+      opacity: 0.75;
+      transition: 1s $ease;
+
+      img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        object-position: center;
+        mix-blend-mode: multiply;
+        filter: grayscale(1);
+      }
+
+      &.focused {
+        background: transparent;
+        opacity: 1;
+
+        img {
+          filter: none;
+        }
+      }
+    }
+  }
+
+  .btns {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100vw;
+    padding: 0 $mobile-gutter;
+    box-sizing: border-box;
+    margin: $mobile-vertical-spacer-1 0;
+    color: $red;
+
+    svg {
+      height: 50px;
+      transition: 1s $ease;
+    }
+
+    .disable {
+      pointer-events: none;
+      opacity: 0.3;
+    }
+  }
+}

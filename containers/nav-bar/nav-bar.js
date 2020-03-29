@@ -32,7 +32,6 @@ class NavBar extends PureComponent {
           <div className={styles.logo} >_DELTA</div >
           <div className={styles.contact} onClick={this.scrollToContact} >Contact</div >
         </div >
-        <img className={styles.divider180} src="/images/180-divider.svg" />
       </Fragment >
     );
   }

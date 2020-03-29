@@ -31,7 +31,9 @@
     "redux": "^4.0.4",
     "redux-devtools-extension": "^2.13.8",
     "redux-immutable": "^4.0.0",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "styled-components": "^5.0.1",
+    "styled-icons": "^10.2.1"
   },
   "devDependencies": {
     "eslint": "^6.7.2",

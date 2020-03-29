@@ -58,6 +58,15 @@
   padding: 0 25px;
 }
 
+.divider180 {
+  margin: $mobile-vertical-spacer-2 0;
+  transform: translateX(-60px);
+
+  &:first-of-type {
+    margin: $mobile-vertical-spacer-1 0;
+  }
+}
+
 //.diagonalStripe {
 //  position: absolute;
 //  height: 1px;

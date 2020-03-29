@@ -5,13 +5,16 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin-top: $mobile-vertical-spacer-2;
 
   @include media('>tablet') {
     @include orientation('landscape') {
       flex-direction: row;
       justify-content: space-between;
     }
+  }
+
+  .swipeArea {
+    width: 100%;
   }
 
   h1 {

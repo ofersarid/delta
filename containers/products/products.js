@@ -1,15 +1,17 @@
 import React, { PureComponent } from 'react';
+import cx from 'classnames';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import cx from 'classnames';
-import PropTypes from 'prop-types';
-import { Swipeable } from 'react-swipeable';
-import styles from './styles.scss';
-import { device } from '../../services';
-import data from './crew-data';
 import autoBind from 'auto-bind';
+import { Swipeable } from 'react-swipeable';
+import PropTypes from 'prop-types';
+import { CheveronOutlineLeft } from '@styled-icons/zondicons/CheveronOutlineLeft';
+import { CheveronOutlineRight } from '@styled-icons/zondicons/CheveronOutlineRight';
+import styles from './styles.scss';
+import data from './products-data';
+import { device } from '../../services';
 
-class Crew extends PureComponent {
+class Products extends PureComponent {
   constructor(props) {
     super(props);
     autoBind(this);
@@ -41,12 +43,11 @@ class Crew extends PureComponent {
   }
 
   render() {
-    // const { deviceOrientation } = this.props;
-    // const isPortrait = deviceOrientation === 'portrait';
+    const { isMobile } = this.props;
     const { index } = this.state;
     return (
-      <div className={styles.crew} >
-        <h1 >MEET THE CREW</h1 >
+      <div className={cx(styles.products)} >
+        <h1 >Previous Products</h1 >
         <Swipeable
           className={styles.swipeArea}
           onSwipedLeft={this.onSwipedLeft}
@@ -55,33 +56,39 @@ class Crew extends PureComponent {
           <ul >
             {data.map((itm, i) => (
               <li
-                key={itm.id}
+                key={itm.title}
                 className={cx({ [styles.focused]: index === i })}
                 onClick={() => this.selectMe(i)}
                 style={{
-                  transform: `translateX(calc(${index * -100}% - ${index * 10}px))`
+                  transform: `translateX(${index * -100}%)`
                 }}
-              ><img src={itm.image} /></li >
+              ><img src={isMobile ? itm.imgMobile : itm.imgDesktop} /></li >
             ))}
           </ul >
-          <p className={styles.blue} >{data[index].name}<br />{data[index].title}</p >
-          <p >{data[index].description}</p >
         </Swipeable >
+        <section className={styles.btns} >
+          <CheveronOutlineLeft
+            onClick={this.onSwipedRight}
+            className={cx({ [styles.disable]: index === 0 })} />
+          <CheveronOutlineRight
+            onClick={this.onSwipedLeft}
+            className={cx({ [styles.disable]: index === data.length - 1 })} />
+        </section >
       </div >
     );
   }
 }
 
-Crew.propTypes = {
-  deviceOrientation: PropTypes.string.isRequired
+Products.propTypes = {
+  isMobile: PropTypes.bool.isRequired
 };
 
 const mapStateToProps = state => ({
-  deviceOrientation: device.selectors.orientation(state),
+  isMobile: device.selectors.type(state) === 'mobile'
 });
 
 const mapDispatchToProps = dispatch => ({}); // eslint-disable-line
 
 export default compose(
   connect(mapStateToProps, mapDispatchToProps)
-)(Crew);
+)(Products);

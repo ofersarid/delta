@@ -4,10 +4,66 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 // import PropTypes from 'prop-types';
 import styles from './styles.scss';
+import data from './tools-data';
 
 const Tools = () => (
   <div className={cx(styles.tools)} >
     <h1 >OUR TOOLS</h1 >
+    <section>
+      <h2 className={styles.blue}>Tech</h2>
+      <ul>
+        {data.tech.map(itm => (
+          <li key={itm.title}>
+            <img src={itm.thumb} />
+            <div className={styles.title}>{itm.title}</div>
+          </li>
+        ))}
+      </ul>
+    </section>
+    <section>
+      <h2 className={styles.blue}>UX/UI</h2>
+      <ul>
+        {data.uxUi.map(itm => (
+          <li key={itm.title}>
+            <img src={itm.thumb} />
+            <div className={styles.title}>{itm.title}</div>
+          </li>
+        ))}
+      </ul>
+    </section>
+    <section>
+      <h2 className={styles.blue}>Visual</h2>
+      <ul>
+        {data.visual.map(itm => (
+          <li key={itm.title}>
+            <img src={itm.thumb} />
+            <div className={styles.title}>{itm.title}</div>
+          </li>
+        ))}
+      </ul>
+    </section>
+    <section>
+      <h2 className={styles.blue}>Code</h2>
+      <ul>
+        {data.code.map(itm => (
+          <li key={itm.title}>
+            <img src={itm.thumb} />
+            <div className={styles.title}>{itm.title}</div>
+          </li>
+        ))}
+      </ul>
+    </section>
+    <section>
+      <h2 className={styles.blue}>Workflow</h2>
+      <ul className={styles.last}>
+        {data.workflow.map(itm => (
+          <li key={itm.title}>
+            <img src={itm.thumb} />
+            <div className={styles.title}>{itm.title}</div>
+          </li>
+        ))}
+      </ul>
+    </section>
   </div >
 );
 
