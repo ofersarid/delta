@@ -1,0 +1,22 @@
+@import '../../shared/styles/index';
+
+.footer {
+  @extend %chapterWrapper;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 $mobile-gutter;
+  box-sizing: border-box;
+  margin-bottom: $mobile-vertical-spacer-2;
+
+  p {
+    padding-right: $mobile-gutter;
+  }
+
+  .logo {
+    color: $red;
+    font-size: 31px;
+    font-family: 'Exo 2', sans-serif;
+    font-weight: 500;
+  }
+}
