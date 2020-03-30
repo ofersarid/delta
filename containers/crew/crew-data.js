@@ -4,7 +4,7 @@ export default [
     name: 'Ofer Sarid',
     image: '/images/crew/ofer.png',
     title: 'Senior FED',
-    description: 'For more than 10 years in SaaS applications I crafted my engineering skills to a point of which I am comfortable and confident in my ability to deliver high quality code and UI. I am highly sensitive to graphic precision and good user experience and i love clean and readable code.',
+    description: 'with More than 10 years in SaaS applications, 4 Years with React and tech leadership, Ofer has gained unique sensitivity for aesthetics both on the UI level and under the hood when it comes to code quality. We have a saying in _Delta that goes: "If we can design it Ofer can build it"',
     persona: [
       'Be Fast',
       'Build beautiful and thoughtful UI',
@@ -16,8 +16,8 @@ export default [
     id: 2,
     name: 'Sagi Rechter',
     image: '/images/crew/sagi.png',
-    title: 'Senior FED',
-    description: 'An architect by education, I was always interested in the nature of human experience in its purest sense.\nThe fascination led me to specialize as a designer in the increasingly complicated landscape of scientific & technological innovation.\nToday I use my expertise to make sophisticated technologies, engaging and accessible.',
+    title: 'Senior Product Manager',
+    description: 'An architect by education and an artist by nature, Sagi has gained the skills required for designing both highly-functional and amazing UI. With his rich set of tools and his meaningful experience, we at _Delta can always expect for new challenges',
     persona: [
       'Be Fast',
       'Build beautiful and thoughtful UI',
@@ -29,8 +29,8 @@ export default [
     id: 3,
     name: 'Gregory Gotlif',
     image: '/images/crew/greg.png',
-    title: 'Senior FED',
-    description: 'provides a unique combination of project management, technical and administrative coordination',
+    title: 'Senior Project Manager',
+    description: 'Our beloved captain! Greg likes to run a "tight ship" and thanks to him we get from backlog to dev fast and strong. He provides a unique combination of project management, technical and administrative coordination that enables us to focus on being great in what we do',
     persona: [
       'Be Fast',
       'Build beautiful and thoughtful UI',

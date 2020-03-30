@@ -69,7 +69,7 @@ class Crew extends PureComponent {
             {data[index].name}<br />
             {data[index].title}
           </p >
-          <p >{data[index].description}</p >
+          <p className={styles.description}>{data[index].description}</p >
         </Swipeable >
       </div >
     );
