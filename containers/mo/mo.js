@@ -7,19 +7,22 @@ import { device } from '../../services';
 
 class Mo extends PureComponent {
   render() {
-    const { deviceOrientation } = this.props;
-    const isPortrait = deviceOrientation === 'portrait';
     return (
       <section className={styles.agile} >
-        {isPortrait && <img src="/images/agile.svg" />}
-        <h1 >Our M.O</h1 >
-        <ul >
-          <li >We <span className={styles.blue} >integrate</span > seamlessly with your specific workflow whatever it
-               may be.
-          </li >
-          <li >We are <span className={styles.blue} >&quot;agile&quot;</span> lovers and we work in 1-2-week sprints.</li >
-          <li >We combine working remotely with actual face-time <span className={styles.blue} >on prem</span>.</li >
-        </ul >
+        <div className={styles.left} >
+          <img src="/images/agile.svg" />
+        </div >
+        <div className={styles.right} >
+          <h1 >Our M.O</h1 >
+          <ul >
+            <li >We <span className={styles.blue} >integrate</span > seamlessly with your specific workflow whatever it
+                 may be.
+            </li >
+            <li >We are <span className={styles.blue} >&quot;agile&quot;</span > lovers and we work in 1-2-week sprints.
+            </li >
+            <li >We combine working remotely with actual face-time <span className={styles.blue} >on prem</span >.</li >
+          </ul >
+        </div >
       </section >
     );
   }

@@ -19,7 +19,7 @@
     @include media('>tablet') {
       @include orientation('landscape') {
         font-size: 20px;
-        line-height: 38px;
+        line-height: 2em;
       }
     }
   }
@@ -41,14 +41,18 @@
 
     @include media('>tablet') {
       @include orientation('landscape') {
-        font-size: 43px;
-        line-height: 52px;
+        font-size: 50px;
+        line-height: 1.3em;
       }
     }
   }
 
   a {
     color: $blue;
+  }
+
+  p {
+    margin: 0;
   }
 }
 
@@ -68,8 +72,29 @@
   margin: $mobile-vertical-spacer-2 0 0;
   transform: translateX(-60px);
 
+  @include media('>phone') {
+    @include orientation('landscape') {
+      margin: $desktop-vertical-spacer-1 0;
+    }
+  }
+
   &:first-of-type {
-    margin: $mobile-vertical-spacer-1 0;
+    margin: 0 0 $mobile-vertical-spacer-1;
+
+    @include media('>tablet') {
+      @include orientation('landscape') {
+        margin: 0 0 $desktop-vertical-spacer-1;
+      }
+    }
+  }
+
+  &:last-of-type {
+
+    @include media('>tablet') {
+      @include orientation('landscape') {
+        margin: #{2 * $desktop-vertical-spacer-1} 0 $desktop-vertical-spacer-1;
+      }
+    }
   }
 }
 

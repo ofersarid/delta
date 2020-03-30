@@ -3,11 +3,54 @@
 .contact {
   @extend %chapterWrapper;
 
-  h1 {
-    @extend %sectionHeader;
+  @include media('>tablet') {
+    @include orientation('landscape') {
+      margin-top: $desktop-vertical-spacer-2;
+      padding: 0 $desktop-gutter;
+      flex-direction: row;
+    }
   }
 
-  input, textarea {
+  .left {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    flex-shrink: 0;
+    flex-grow: 0;
+
+    @include media('>tablet') {
+      @include orientation('landscape') {
+        width: 35vw;
+        margin-right: 7vw;
+      }
+    }
+  }
+
+  .right {
+    width: 100vw;
+
+    @include media('>tablet') {
+      @include orientation('landscape') {
+        padding:  136px 0 0 0;
+        margin: 0;
+        width: 34vw;
+        flex-shrink: 0;
+        flex-grow: 0;
+      }
+    }
+  }
+
+  h1 {
+    @extend %sectionHeader;
+
+    @include media('>tablet') {
+      @include orientation('landscape') {
+        padding: 0;
+      }
+    }
+  }
+
+  input {
     background: transparent;
     border: none;
     border-bottom: 1px solid $white;
@@ -16,6 +59,18 @@
     margin: 0 $mobile-gutter $mobile-gutter;
     font-size: 20px;
     line-height: 1.5em;
+
+    @include media('>tablet') {
+      @include orientation('landscape') {
+        padding: 0;
+        margin: 0 0 #{$desktop-gutter / 5};
+        flex-wrap: nowrap;
+      }
+    }
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
 
     &:focus {
       outline: none;
@@ -27,11 +82,6 @@
     }
   }
 
-  textarea {
-    resize: none;
-    margin-bottom: 0;
-  }
-
   .btns {
     display: flex;
     justify-content: space-between;
@@ -40,9 +90,23 @@
     box-sizing: border-box;
     margin-top: #{1.5 * $mobile-gutter};
 
+    @include media('>tablet') {
+      @include orientation('landscape') {
+        padding: 0;
+        margin-top: #{$desktop-gutter / 3};
+        width: 100%;
+      }
+    }
+
     svg {
       height: 50px;
       cursor: pointer;
+
+      @include media('>tablet') {
+        @include orientation('landscape') {
+          transform: translateX(calc(7vw + 100%));
+        }
+      }
     }
   }
 
@@ -58,6 +122,10 @@
       color: $red;
       border-color: $red;
       pointer-events: none;
+    }
+
+    &.gotIt {
+      border-color: rgba($blue, 0.3);
     }
 
     ul {

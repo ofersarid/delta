@@ -26,10 +26,12 @@
   margin: 0 0 $mobile-vertical-spacer-1;
   padding: 0 $mobile-gutter;
   box-sizing: border-box;
+  text-transform: uppercase;
 
   @include media('>tablet') {
     @include orientation('landscape') {
-
+      margin: 0 0 $desktop-vertical-spacer-1;
+      padding: 0 $desktop-gutter;
     }
   }
 
@@ -44,4 +46,11 @@
   flex-direction: column;
   width: 100vw;
   margin-top: $mobile-vertical-spacer-2;
+  box-sizing: border-box;
+
+  @include media('>tablet') {
+    @include orientation('landscape') {
+      //margin-top: $desktop-vertical-spacer-2;
+    }
+  }
 }

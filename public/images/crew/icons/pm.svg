@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" viewBox="0 0 70 70">
+  <g id="Group_99" data-name="Group 99" transform="translate(-422.5 -298.5)">
+    <g id="Group_96" data-name="Group 96" transform="translate(425 301)">
+      <path id="Path_66" data-name="Path 66" d="M441,301H425v65h16" transform="translate(-425 -301)" fill="none" stroke="#ff0048" stroke-miterlimit="10" stroke-width="5"/>
+      <path id="Path_67" data-name="Path 67" d="M482,366h16V301H482" transform="translate(-433 -301)" fill="none" stroke="#ff0048" stroke-miterlimit="10" stroke-width="5"/>
+    </g>
+    <g id="Group_98" data-name="Group 98" transform="translate(436.5 313.242)">
+      <rect id="Rectangle_570" data-name="Rectangle 570" width="4.426" height="16.525" transform="translate(24.074 11.975)" fill="#ff0048"/>
+      <rect id="Rectangle_571" data-name="Rectangle 571" width="4.426" height="13.082" transform="translate(18.287 15.418)" fill="#ff0048"/>
+      <rect id="Rectangle_572" data-name="Rectangle 572" width="4.426" height="11.016" transform="translate(12.5 17.484)" fill="#ff0048"/>
+      <g id="Group_97" data-name="Group 97">
+        <circle id="Ellipse_32" data-name="Ellipse 32" cx="19" cy="19" r="19" transform="translate(2 2)" fill="none" stroke="#ff0048" stroke-miterlimit="10" stroke-width="5"/>
+        <circle id="Ellipse_33" data-name="Ellipse 33" cx="21" cy="21" r="21" fill="none" stroke="#ff0048" stroke-miterlimit="10" stroke-width="5" stroke-dasharray="5 5"/>
+      </g>
+    </g>
+  </g>
+</svg>

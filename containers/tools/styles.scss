@@ -7,6 +7,26 @@
   width: 100%;
   margin-top: $mobile-vertical-spacer-2;
 
+  @include media('>tablet') {
+    @include orientation('landscape') {
+      margin-top: $desktop-vertical-spacer-2;
+    }
+  }
+
+  .lists {
+    @include media('>tablet') {
+      @include orientation('landscape') {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 0 $desktop-gutter;
+      }
+    }
+
+    section {
+      margin-right: $desktop-vertical-spacer-1;
+    }
+  }
+
   h1 {
     @extend %sectionHeader;
   }
@@ -17,6 +37,12 @@
     line-height: 20px;
     font-weight: normal;
     margin: 0 0 15px 0;
+
+    @include media('>tablet') {
+      @include orientation('landscape') {
+        padding: 0;
+      }
+    }
   }
 
   .blue {
@@ -25,34 +51,62 @@
 
   ul {
     padding: 0 0 0 calc(#{$mobile-gutter} - 5px);
-    margin: 0 0 25px;
+    margin: 0 0 $mobile-vertical-spacer-1;
     list-style: none;
     display: flex;
     flex-wrap: wrap;
+
+    @include media('>tablet') {
+      @include orientation('landscape') {
+        padding: 0;
+        margin: 0 0 $desktop-vertical-spacer-1;
+        flex-wrap: nowrap;
+      }
+    }
 
     &.last {
       margin-bottom: 0;
     }
 
     li {
-      margin: 0 5px 5px 0;
+      margin: 0 2vw 2vw 0;
+      width: 20vw;
+      height: 20vw;
       box-sizing: border-box;
-      padding: 20px;
       background: rgba(white, 0.15);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       border-radius: 3px;
+      position: relative;
+
+      @include media('>tablet') {
+        @include orientation('landscape') {
+          margin: 0 12px 12px 0;
+          width: 130px;
+          height: 130px;
+        }
+      }
 
       img {
-        height: 13vw;
+        height: 90%;
+        width: 90%;
       }
 
       .title {
-        font-size: 13px;
-        line-height: 15px;
-        margin-top: 15px;
+        font-size: 11px;
+        line-height: 11px;
+        position: absolute;
+        bottom: 5px;
+
+        @include media('>tablet') {
+          @include orientation('landscape') {
+            font-size: 13px;
+            line-height: 13px;
+            bottom: 10px;
+          }
+        }
       }
     }
 

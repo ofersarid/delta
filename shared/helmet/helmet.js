@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 const Helmet = ({ title, description }) => (
   <Head >
     <meta charSet="utf-8" />
-    <link rel="icon" href={`/images/favicon.ico?v=${new Date().getTime()}`} />
+    <link rel="icon" href={`/images/favicon.svg?v=${new Date().getTime()}`} />
     <title >{title}</title >
     <meta name="description" content={description} />
     <meta

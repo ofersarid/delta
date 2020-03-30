@@ -47,7 +47,7 @@ class Products extends PureComponent {
     const { index } = this.state;
     return (
       <div className={cx(styles.products)} >
-        <h1 >Previous Products</h1 >
+        <h1 >Work Sneak Peek</h1 >
         <Swipeable
           className={styles.swipeArea}
           onSwipedLeft={this.onSwipedLeft}

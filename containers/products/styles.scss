@@ -17,14 +17,29 @@
     list-style: none;
     display: flex;
 
+    @include media('>tablet') {
+      @include orientation('landscape') {
+        padding-left: $desktop-gutter;
+      }
+    }
+
     li {
       width: 100vw;
       height: 100vw;
       box-sizing: border-box;
       flex-shrink: 0;
       background: $blue;
-      opacity: 0.75;
+      opacity: 0.3;
       transition: 1s $ease;
+      cursor: pointer;
+
+      @include media('>tablet') {
+        @include orientation('landscape') {
+          width: 70vw;
+          height: auto;
+          margin: 0 3vw 0 0;
+        }
+      }
 
       img {
         height: 100%;
@@ -55,6 +70,12 @@
     box-sizing: border-box;
     margin: $mobile-vertical-spacer-1 0 0;
     color: $red;
+
+    @include media('>tablet') {
+      @include orientation('landscape') {
+        display: none;
+      }
+    }
 
     svg {
       height: 50px;

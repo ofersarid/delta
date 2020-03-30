@@ -7,19 +7,19 @@ export default {
     thumb: '/images/tools/redux.png',
   }, {
     title: 'Next.js',
-    thumb: '/images/tools/redux.png',
+    thumb: '/images/tools/next.png',
   }, {
     title: 'Saas.js',
-    thumb: '/images/tools/redux.png',
+    thumb: '/images/tools/sass.png',
   }, {
-    title: 'CSS Modules',
-    thumb: '/images/tools/redux.png',
+    title: 'CSS',
+    thumb: '/images/tools/css-modules.png',
   }, {
     title: 'Webpack',
-    thumb: '/images/tools/redux.png',
+    thumb: '/images/tools/webpack.png',
   }, {
     title: 'Parcel',
-    thumb: '/images/tools/redux.png',
+    thumb: '/images/tools/parcel.png',
   }],
   uxUi: [{
     title: 'Adobe XD',
@@ -34,19 +34,25 @@ export default {
   }, {
     title: '3DS Max',
     thumb: '/images/tools/3ds.png',
+  }, {
+    title: 'Keyshot',
+    thumb: '/images/tools/keyshot.png',
   }],
   code: [{
     title: 'Github',
-    thumb: '/images/tools/photoshop.png',
+    thumb: '/images/tools/github.png',
   }, {
     title: 'Bit Bucket',
-    thumb: '/images/tools/3ds.png',
+    thumb: '/images/tools/bit-bucket.png',
   }],
   workflow: [{
     title: 'Trello',
-    thumb: '/images/tools/photoshop.png',
+    thumb: '/images/tools/trello.png',
   }, {
     title: 'Jira',
-    thumb: '/images/tools/3ds.png',
+    thumb: '/images/tools/jira.png',
+  }, {
+    title: 'Slack',
+    thumb: '/images/tools/slack.png',
   }],
 };

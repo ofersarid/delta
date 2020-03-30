@@ -64,7 +64,11 @@ class Crew extends PureComponent {
               ><img src={itm.image} /></li >
             ))}
           </ul >
-          <p className={styles.blue} >{data[index].name}<br />{data[index].title}</p >
+          <p className={cx(styles.title, styles.blue)} >
+            <img src={data[index].icon} />
+            {data[index].name}<br />
+            {data[index].title}
+          </p >
           <p >{data[index].description}</p >
         </Swipeable >
       </div >
@@ -77,7 +81,7 @@ Crew.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  deviceOrientation: device.selectors.orientation(state),
+  deviceOrientation: device.selectors.orientation(state)
 });
 
 const mapDispatchToProps = dispatch => ({}); // eslint-disable-line

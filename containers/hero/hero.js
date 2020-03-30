@@ -12,7 +12,7 @@ class Hero extends PureComponent {
     return (
       <section className={styles.hero} >
         <div className={styles.left} >
-          <h1 >How about hiring the entire front team from the start?</h1 >
+          <h1 >Hire an elite front-end team at once?</h1 >
           {isPortrait && <img src="/images/hero-art.svg" />}
           <p >
             Hiring Senior FEDs/PMs/Designers is not an easy task, let alone forging them into an effective &#34;delta

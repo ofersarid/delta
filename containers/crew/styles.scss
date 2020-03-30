@@ -3,13 +3,6 @@
 .crew {
   @extend %chapterWrapper;
 
-  @include media('>tablet') {
-    @include orientation('landscape') {
-      flex-direction: row;
-      justify-content: space-between;
-    }
-  }
-
   .swipeArea {
     width: 100%;
   }
@@ -24,7 +17,9 @@
 
     @include media('>tablet') {
       @include orientation('landscape') {
-
+        width: 60vw;
+        padding: 0 0 0 $desktop-gutter;
+        box-sizing: border-box;
       }
     }
 
@@ -47,6 +42,12 @@
     display: flex;
     flex-wrap: nowrap;
 
+    @include media('>tablet') {
+      @include orientation('landscape') {
+        padding: 0 0 0 calc(#{$desktop-gutter} - 5px);
+      }
+    }
+
     li {
       $diameter: 36vw;
       width: $diameter;
@@ -58,6 +59,16 @@
       background: $red;
       opacity: 0.75;
       transition: 1s $ease;
+      cursor: pointer;
+
+      @include media('>tablet') {
+        @include orientation('landscape') {
+          $diameter: 26vw;
+          width: $diameter;
+          height: $diameter;
+          border-radius: $diameter / 2;
+        }
+      }
 
       &.focused {
         background: transparent;
@@ -75,6 +86,25 @@
         object-position: center;
         mix-blend-mode: multiply;
         filter: grayscale(1);
+      }
+    }
+  }
+
+  .title {
+    img {
+      display: none;
+    }
+
+    @include media('>tablet') {
+      @include orientation('landscape') {
+
+        img {
+          float: left;
+          width: 65px;
+          height: 65px;
+          display: block;
+          margin-right: 30px;
+        }
       }
     }
   }

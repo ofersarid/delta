@@ -3,11 +3,18 @@
 .navBar {
   width: 100vw;
   box-sizing: border-box;
-  margin-top: $mobile-vertical-spacer-1;
+  margin: $mobile-vertical-spacer-1 0;
   padding: 0 $mobile-gutter;
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  @include media('>tablet') {
+    @include orientation('landscape') {
+      margin: $desktop-vertical-spacer-1 0;
+      padding: 0 $desktop-gutter;
+    }
+  }
 }
 
 .logo {
