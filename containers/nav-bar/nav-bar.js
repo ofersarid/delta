@@ -19,7 +19,7 @@ class NavBar extends PureComponent {
   // }
 
   scrollToContact() {
-    document.getElementById('contactSection').item(0).scrollIntoView({
+    document.getElementById('contactSection').scrollIntoView({
       behavior: 'smooth',
       block: 'start'
     });
