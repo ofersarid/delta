@@ -46,7 +46,7 @@ class Crew extends PureComponent {
     const { index } = this.state;
     return (
       <div className={styles.crew} >
-        <h1 >MEET THE CREW</h1 >
+        <h1 >THE CREW</h1 >
         <Swipeable
           className={styles.swipeArea}
           onSwipedLeft={this.onSwipedLeft}

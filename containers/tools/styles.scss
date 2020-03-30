@@ -8,14 +8,7 @@
   margin-top: $mobile-vertical-spacer-2;
 
   h1 {
-    margin: 0 0 $mobile-vertical-spacer-1;
-    padding: 0 $mobile-gutter;
-
-    @include media('>tablet') {
-      @include orientation('landscape') {
-
-      }
-    }
+    @extend %sectionHeader;
   }
 
   h2 {

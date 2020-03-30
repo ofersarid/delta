@@ -13,7 +13,7 @@ class Hero extends PureComponent {
       <section className={styles.hero} >
         <div className={styles.left} >
           <h1 >How about hiring the entire front team from the start?</h1 >
-          {isPortrait && <img src="/images/logo.svg" />}
+          {isPortrait && <img src="/images/hero-art.svg" />}
           <p >
             Hiring Senior FEDs/PMs/Designers is not an easy task, let alone forging them into an effective &#34;delta
             force&#34;.<br />
@@ -22,7 +22,7 @@ class Hero extends PureComponent {
           </p >
         </div >
         {!isPortrait && <div className={styles.right} >
-          <img src="/images/logo.svg" />
+          <img src="/images/hero-art.svg" />
         </div >}
       </section >
     );

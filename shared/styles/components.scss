@@ -1,0 +1,47 @@
+@import './media-query-mixins';
+@import './layout';
+@import './colors';
+
+%button {
+  cursor: pointer;
+  padding: 9px 20px 10px;
+  line-height: 18px;
+  color: $white;
+  font-size: 18px;
+  border: 1px solid $white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  outline: none;
+
+  @include media('>tablet') {
+    @include orientation('landscape') {
+      line-height: 20px;
+    }
+  }
+}
+
+%sectionHeader {
+  margin: 0 0 $mobile-vertical-spacer-1;
+  padding: 0 $mobile-gutter;
+  box-sizing: border-box;
+
+  @include media('>tablet') {
+    @include orientation('landscape') {
+
+    }
+  }
+
+  &:before {
+    content: '_';
+    color: $red;
+  }
+}
+
+%chapterWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  margin-top: $mobile-vertical-spacer-2;
+}

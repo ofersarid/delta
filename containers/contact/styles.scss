@@ -1,0 +1,86 @@
+@import '../../shared/styles/index';
+
+.contact {
+  @extend %chapterWrapper;
+
+  h1 {
+    @extend %sectionHeader;
+  }
+
+  input, textarea {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid $white;
+    color: $white;
+    height: 1.8em;
+    margin: 0 $mobile-gutter $mobile-gutter;
+    font-size: 20px;
+    line-height: 1.5em;
+
+    &:focus {
+      outline: none;
+    }
+
+    &.valid {
+      border-bottom: 1px solid $blue;
+      color: $blue;
+    }
+  }
+
+  textarea {
+    resize: none;
+    margin-bottom: 0;
+  }
+
+  .btns {
+    display: flex;
+    justify-content: space-between;
+    width: 100vw;
+    padding: 0 $mobile-gutter;
+    box-sizing: border-box;
+    margin-top: #{1.5 * $mobile-gutter};
+
+    svg {
+      height: 50px;
+      cursor: pointer;
+    }
+  }
+
+  button {
+    @extend %button;
+    transition: 1s $ease;
+    color: $blue;
+    border-color: $blue;
+    width: 144px;
+    padding: 0;
+
+    &.disable {
+      color: $red;
+      border-color: $red;
+      pointer-events: none;
+    }
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      width: 100%;
+      overflow: hidden;
+      height: 100%;
+
+      li {
+        flex-shrink: 0;
+        width: 100%;
+        padding: 9px 20px 10px;
+        box-sizing: border-box;
+        transition: 1s $ease;
+      }
+    }
+  }
+
+  p {
+    padding: 0 $mobile-gutter;
+    margin-top: #{2 * $mobile-gutter};
+  }
+}

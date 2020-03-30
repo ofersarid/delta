@@ -2,9 +2,7 @@
 
 
 .agile {
-  display: flex;
-  flex-direction: column;
-  margin-top: $mobile-vertical-spacer-2;
+  @extend %chapterWrapper;
 
   @include media('>tablet') {
     @include orientation('landscape') {
@@ -19,14 +17,8 @@
   }
 
   h1 {
-    margin: $mobile-vertical-spacer-1 0;
-    padding: 0 $mobile-gutter;
-
-    @include media('>tablet') {
-      @include orientation('landscape') {
-
-      }
-    }
+    @extend %sectionHeader;
+    margin-top: $mobile-vertical-spacer-1;
   }
 
   .blue {

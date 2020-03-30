@@ -30,7 +30,7 @@ class NavBar extends PureComponent {
       <Fragment >
         <div className={cx(styles.navBar)} >
           <div className={styles.logo} >_DELTA</div >
-          <div className={styles.contact} onClick={this.scrollToContact} >Contact</div >
+          <button className={styles.contact} onClick={this.scrollToContact} >Contact</button >
         </div >
       </Fragment >
     );

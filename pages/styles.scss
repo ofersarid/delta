@@ -13,6 +13,8 @@
     overflow-x: hidden;
     font-size: 18px;
     line-height: 37px;
+    width: 100vw;
+    overflow-x: hidden;
 
     @include media('>tablet') {
       @include orientation('landscape') {
@@ -44,6 +46,10 @@
       }
     }
   }
+
+  a {
+    color: $blue;
+  }
 }
 
 .app {
@@ -59,7 +65,7 @@
 }
 
 .divider180 {
-  margin: $mobile-vertical-spacer-2 0;
+  margin: $mobile-vertical-spacer-2 0 0;
   transform: translateX(-60px);
 
   &:first-of-type {

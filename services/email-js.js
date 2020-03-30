@@ -1,16 +1,16 @@
 import { send as sendEmail } from 'emailjs-com';
 
 const CONFIG = {
-  SERVICE_ID: 'change-me',
-  USER_ID: 'change-me',
-  TEMPLATE: 'change-me',
+  SERVICE_ID: 'greg_delta',
+  USER_ID: 'user_G5XidPOIQwVxbe1dVDS1Q',
+  TEMPLATE: 'delta_lead_from_website',
 };
 
-const send = (name, email, phone) => {
+const send = (name, email, company) => {
   return sendEmail(CONFIG.SERVICE_ID, CONFIG.TEMPLATE, {
     'email': email,
     'name': name,
-    'phone': phone.toString()
+    'company': company,
   }, CONFIG.USER_ID);
 };
 
