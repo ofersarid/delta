@@ -59,7 +59,7 @@ class Contact extends PureComponent {
     const { name, email, company, working, sent } = this.state;
     const btnPosition = { transform: `translateX(${working ? -100 : sent ? -200 : 0}%)` };
     return (
-      <div className={cx(styles.contact)} >
+      <div className={cx(styles.contact)} id="contactSection" >
         <div className={styles.left} >
           <h1 >Get In Touch</h1 >
           <input
