@@ -81,6 +81,12 @@
       border-radius: 3px;
       position: relative;
 
+      @include media('>phone') {
+        margin: 0 6px 6px 0;
+        width: 80px;
+        height: 80px;
+      }
+
       @include media('>tablet') {
         @include orientation('landscape') {
           margin: 0 12px 12px 0;
