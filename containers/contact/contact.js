@@ -95,9 +95,9 @@ class Contact extends PureComponent {
           </section >
         </div >
         <p className={styles.right} >
+          Weizman 70 Kfar-Sava, Israel<br />
           <a href="tel:+972-52-689-1380" >+972 52 689 1380</a ><br />
           <a href="mailto:desk@delta.band" target="_blank" rel="noopener noreferrer" >desk@delta.band</a ><br />
-          Weizman 70 Kfar-Sava, Israel
         </p >
       </div >
     );
