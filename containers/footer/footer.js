@@ -8,7 +8,7 @@ import styles from './styles.scss';
 const Footer = () => (
   <div className={cx(styles.footer)} >
     <p>Ready when you are.</p>
-    <img className={styles.logo} src="/images/logo.svg" />
+    <img className={styles.logo} src="/images/logo.svg" alt="logo" />
   </div >
 );
 

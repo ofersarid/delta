@@ -62,7 +62,7 @@ class Products extends PureComponent {
                 style={{
                   transform: `translateX(calc(${index * -100}% - ${index * 2}vw))`
                 }}
-              ><img src={isMobile ? itm.imgMobile : itm.imgDesktop} /></li >
+              ><img src={isMobile ? itm.imgMobile : itm.imgDesktop} alt="project" /></li >
             ))}
           </ul >
         </Swipeable >

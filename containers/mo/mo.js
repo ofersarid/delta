@@ -10,7 +10,7 @@ class Mo extends PureComponent {
     return (
       <section className={styles.agile} >
         <div className={styles.left} >
-          <img src="/images/agile.svg" />
+          <img src="/images/agile.svg" alt="agile" />
         </div >
         <div className={styles.right} >
           <h1 >Our M.O</h1 >

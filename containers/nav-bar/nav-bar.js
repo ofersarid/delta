@@ -29,7 +29,7 @@ class NavBar extends PureComponent {
     return (
       <Fragment >
         <div className={cx(styles.navBar)} >
-          <img className={styles.logo} src="/images/logo.svg"/>
+          <img className={styles.logo} src="/images/logo.svg" alt="logo"/>
           <button className={styles.contact} onClick={this.scrollToContact} >Contact</button >
         </div >
       </Fragment >

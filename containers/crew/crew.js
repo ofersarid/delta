@@ -62,11 +62,11 @@ class Crew extends PureComponent {
                 style={{
                   transform: `translateX(calc(${index * -100}% - ${index * 10}px))`
                 }}
-              ><img src={isMobile ? itm.imageMobile : itm.image} /></li >
+              ><img src={isMobile ? itm.imageMobile : itm.image} alt="profile image" /></li >
             ))}
           </ul >
           <p className={cx(styles.title, styles.blue)} >
-            <img src={data[index].icon} />
+            <img src={data[index].icon} alt="icon" />
             {data[index].name}<br />
             {data[index].title}
           </p >

@@ -15,7 +15,7 @@ const Tools = () => (
         <ul >
           {data.tech.map(itm => (
             <li key={itm.title} >
-              <img src={itm.thumb} />
+              <img src={itm.thumb} alt="tool icon" />
               <div className={styles.title} >{itm.title}</div >
             </li >
           ))}
@@ -26,7 +26,7 @@ const Tools = () => (
         <ul >
           {data.uxUi.map(itm => (
             <li key={itm.title} >
-              <img src={itm.thumb} />
+              <img src={itm.thumb} alt="tool icon" />
               <div className={styles.title} >{itm.title}</div >
             </li >
           ))}
@@ -37,7 +37,7 @@ const Tools = () => (
         <ul >
           {data.visual.map(itm => (
             <li key={itm.title} >
-              <img src={itm.thumb} />
+              <img src={itm.thumb} alt="tool icon" />
               <div className={styles.title} >{itm.title}</div >
             </li >
           ))}
@@ -48,7 +48,7 @@ const Tools = () => (
         <ul >
           {data.code.map(itm => (
             <li key={itm.title} >
-              <img src={itm.thumb} />
+              <img src={itm.thumb} alt="tool icon" />
               <div className={styles.title} >{itm.title}</div >
             </li >
           ))}
@@ -59,7 +59,7 @@ const Tools = () => (
         <ul className={styles.last} >
           {data.workflow.map(itm => (
             <li key={itm.title} >
-              <img src={itm.thumb} />
+              <img src={itm.thumb} alt="tool icon" />
               <div className={styles.title} >{itm.title}</div >
             </li >
           ))}

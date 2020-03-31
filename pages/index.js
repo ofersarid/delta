@@ -8,16 +8,16 @@ const Index = () => {
   // const data = useSelector(state => reactor.selectors.collection(state, 'my collection'));
   return (
     <Fragment >
-      <img className={styles.divider180} src="/images/180-divider.svg" />
+      <img className={styles.divider180} src="/images/180-divider.svg" alt="divider" />
       <Hero />
       <Mo />
-      <img className={styles.divider180} src="/images/180-divider.svg" />
+      <img className={styles.divider180} src="/images/180-divider.svg" alt="divider" />
       <Crew />
       <Tools />
-      <img className={styles.divider180} src="/images/180-divider.svg" />
+      <img className={styles.divider180} src="/images/180-divider.svg" alt="divider" />
       <Products />
       <Contact />
-      <img className={styles.divider180} src="/images/180-divider.svg" />
+      <img className={styles.divider180} src="/images/180-divider.svg" alt="divider" />
       <Footer />
     </Fragment >
   );
