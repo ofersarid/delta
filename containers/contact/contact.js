@@ -99,7 +99,7 @@ class Contact extends PureComponent {
           Weizman 70 Kfar-Sava, Israel<br />
           <a href="tel:+972-52-689-1380" >+972 52 689 1380</a ><br />
           <a href="mailto:desk@delta.band" target="_blank" rel="noopener noreferrer" >desk@delta.band</a ><br />
-          <a href="https://www.linkedin.com/in/ofersarid/" target="_blank" rel="noopener noreferrer" >
+          <a href="https://www.linkedin.com/company/deltafront/" target="_blank" rel="noopener noreferrer" >
             <ScLinkedin />
             LinkedIn
           </a >
