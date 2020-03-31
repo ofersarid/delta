@@ -42,7 +42,7 @@ class Crew extends PureComponent {
   }
 
   render() {
-    // const { deviceOrientation } = this.props;
+    const { isMobile } = this.props;
     // const isPortrait = deviceOrientation === 'portrait';
     const { index } = this.state;
     return (
@@ -62,7 +62,7 @@ class Crew extends PureComponent {
                 style={{
                   transform: `translateX(calc(${index * -100}% - ${index * 10}px))`
                 }}
-              ><img src={itm.image} /></li >
+              ><img src={isMobile ? itm.imageMobile : itm.image} /></li >
             ))}
           </ul >
           <p className={cx(styles.title, styles.blue)} >
@@ -85,11 +85,11 @@ class Crew extends PureComponent {
 }
 
 Crew.propTypes = {
-  deviceOrientation: PropTypes.string.isRequired
+  isMobile: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = state => ({
-  deviceOrientation: device.selectors.orientation(state)
+  isMobile: device.selectors.type(state) === 'mobile',
 });
 
 const mapDispatchToProps = dispatch => ({}); // eslint-disable-line

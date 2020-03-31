@@ -4,7 +4,7 @@
   } @else if $size == ">tablet" {
     @media (min-width: 1025px) { @content; }
   }  @else if $size == ">desktop" {
-    @media (min-width: 1921px) { @content; }
+    @media (min-width: 1751px) { @content; }
   }
 }
 

@@ -39,6 +39,8 @@
         width: 44vw;
         flex-shrink: 0;
         box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: start;
       }

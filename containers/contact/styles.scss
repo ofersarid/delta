@@ -38,6 +38,12 @@
         flex-grow: 0;
       }
     }
+
+    @include media('>desktop') {
+      @include orientation('landscape') {
+        padding: 143px 0 0 0;
+      }
+    }
   }
 
   h1 {

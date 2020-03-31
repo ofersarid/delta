@@ -23,6 +23,12 @@
 
     @include media('>tablet') {
       @include orientation('landscape') {
+        font-size: 70px;
+      }
+    }
+
+    @include media('>desktop') {
+      @include orientation('landscape') {
         margin: $desktop-vertical-spacer-1 0;
         padding: 0;
       }
@@ -38,6 +44,7 @@
         padding-right: 8vw;
         display: flex;
         flex-direction: column;
+        justify-content: center;
         flex-shrink: 0;
         box-sizing: border-box;
         margin-left: $desktop-gutter;
