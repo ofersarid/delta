@@ -35,9 +35,9 @@
 
       @include media('>tablet') {
         @include orientation('landscape') {
-          width: 70vw;
+          width: 60vw;
           height: auto;
-          margin: 0 3vw 0 0;
+          margin: 0 2vw 0 0;
         }
       }
 

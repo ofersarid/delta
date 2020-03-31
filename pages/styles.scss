@@ -60,6 +60,10 @@
   p {
     margin: 0;
   }
+
+  ::placeholder {
+    font-style: italic;
+  }
 }
 
 .app {

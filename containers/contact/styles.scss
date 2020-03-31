@@ -44,6 +44,12 @@
         padding: 143px 0 0 0;
       }
     }
+
+    svg {
+      height: 40px;
+      transform: translate(-8px, 0);
+      margin-right: -7px;
+    }
   }
 
   h1 {
@@ -121,13 +127,14 @@
     transition: 1s $ease;
     color: $blue;
     border-color: $blue;
-    width: 144px;
+    width: 150px;
     padding: 0;
 
     &.disable {
-      color: $red;
-      border-color: $red;
+      opacity: 0.25;
       pointer-events: none;
+      color: $white;
+      border-color: $white;
     }
 
     &.gotIt {

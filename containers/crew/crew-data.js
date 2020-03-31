@@ -5,7 +5,7 @@ export default [
     image: '/images/crew/ofer.png',
     imageMobile: '/images/crew/mobile/ofer.png',
     title: 'Senior FED',
-    description: 'With More than 10 years in SaaS applications, 4 Years with React and tech leadership, Ofer has gained unique sensitivity for aesthetics both on the UI level and under the hood when it comes to code quality. We have a saying in _Delta that goes: "If we can design it Ofer can build it".',
+    description: 'With more than 10 years in SaaS applications, 4 Years with React and tech leadership, Ofer has gained unique sensitivity for aesthetics both on the UI level and under the hood when it comes to code quality. We have a saying in _Delta that goes: "If we can design it Ofer can build it".',
     icon: '/images/crew/icons/code.svg',
     linkedIn: 'https://www.linkedin.com/in/ofersarid/'
   },

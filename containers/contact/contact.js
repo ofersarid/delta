@@ -4,6 +4,7 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import autoBind from 'auto-bind';
 import { Whatsapp } from '@styled-icons/remix-fill/Whatsapp';
+import { ScLinkedin } from '@styled-icons/evil/ScLinkedin';
 // import PropTypes from 'prop-types';
 import styles from './styles.scss';
 import { validateEmail } from '../../utils';
@@ -98,6 +99,10 @@ class Contact extends PureComponent {
           Weizman 70 Kfar-Sava, Israel<br />
           <a href="tel:+972-52-689-1380" >+972 52 689 1380</a ><br />
           <a href="mailto:desk@delta.band" target="_blank" rel="noopener noreferrer" >desk@delta.band</a ><br />
+          <a href="https://www.linkedin.com/in/ofersarid/" target="_blank" rel="noopener noreferrer" >
+            <ScLinkedin />
+            LinkedIn
+          </a >
         </p >
       </div >
     );

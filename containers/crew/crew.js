@@ -75,7 +75,7 @@ class Crew extends PureComponent {
             <br />
             <a href={data[index].linkedIn} target="_blank" rel="noopener noreferrer" >
               <ScLinkedin />
-              My LinkedIn
+              LinkedIn
             </a>
           </p >
         </Swipeable >
