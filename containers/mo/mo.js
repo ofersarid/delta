@@ -20,7 +20,7 @@ class Mo extends PureComponent {
             </li >
             <li >We are <span className={styles.blue} >&quot;agile&quot;</span > lovers and we work in 1-2-week sprints.
             </li >
-            <li >We combine working remotely with actual face-time <span className={styles.blue} >on prem</span >.</li >
+            <li >We combine working remotely with actual face-time <span className={styles.blue} >on-prem</span >.</li >
           </ul >
         </div >
       </section >

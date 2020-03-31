@@ -4,10 +4,11 @@ import { connect } from 'react-redux';
 import cx from 'classnames';
 import PropTypes from 'prop-types';
 import { Swipeable } from 'react-swipeable';
+import autoBind from 'auto-bind';
+import { ScLinkedin } from '@styled-icons/evil/ScLinkedin';
 import styles from './styles.scss';
 import { device } from '../../services';
 import data from './crew-data';
-import autoBind from 'auto-bind';
 
 class Crew extends PureComponent {
   constructor(props) {
@@ -69,7 +70,14 @@ class Crew extends PureComponent {
             {data[index].name}<br />
             {data[index].title}
           </p >
-          <p className={styles.description}>{data[index].description}</p >
+          <p className={styles.description}>
+            {data[index].description}
+            <br />
+            <a href={data[index].linkedIn} target="_blank" rel="noopener noreferrer" >
+              <ScLinkedin />
+              My LinkedIn
+            </a>
+          </p >
         </Swipeable >
       </div >
     );
