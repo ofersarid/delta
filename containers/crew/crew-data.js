@@ -37,18 +37,18 @@ export default [
       'Always accept new challenges'
     ],
     icon: '/images/crew/icons/pm.svg'
-  },
-  {
-    id: 4,
-    name: 'Brian Schulman',
-    image: '/images/crew/brian.png',
-    title: 'Senior FED',
-    description: 'provides a unique combination of project management, technical and administrative coordination',
-    persona: [
-      'Be Fast',
-      'Build beautiful and thoughtful UI',
-      'Always accept new challenges'
-    ],
-    icon: '/images/crew/icons/creative.svg'
   }
+  // {
+  //   id: 4,
+  //   name: 'Brian Schulman',
+  //   image: '/images/crew/brian.png',
+  //   title: 'Senior FED',
+  //   description: 'provides a unique combination of project management, technical and administrative coordination',
+  //   persona: [
+  //     'Be Fast',
+  //     'Build beautiful and thoughtful UI',
+  //     'Always accept new challenges'
+  //   ],
+  //   icon: '/images/crew/icons/creative.svg'
+  // }
 ];
