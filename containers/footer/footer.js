@@ -7,7 +7,7 @@ import styles from './styles.scss';
 
 const Footer = () => (
   <div className={cx(styles.footer)} >
-    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam</p>
+    <p>Ready when you are.</p>
     <img className={styles.logo} src="/images/logo.svg" />
   </div >
 );

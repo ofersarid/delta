@@ -1,19 +1,15 @@
 import React, { PureComponent } from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 import styles from './styles.scss';
-import { device } from '../../services';
 
 class Hero extends PureComponent {
   render() {
-    const { deviceOrientation } = this.props;
-    const isPortrait = deviceOrientation === 'portrait';
     return (
       <section className={styles.hero} >
         <div className={styles.left} >
           <h1 >Hire an elite front-end team at once?</h1 >
-          {isPortrait && <img src="/images/hero-art.svg" />}
+          <img src="/images/hero-art.svg" />
           <p >
             Hiring Senior FEDs/PMs/Designers is not an easy task, let alone forging them into an effective &#34;delta
             force&#34;.<br />
@@ -21,21 +17,17 @@ class Hero extends PureComponent {
             milestone fast and strong
           </p >
         </div >
-        {!isPortrait && <div className={styles.right} >
+        <div className={styles.right} >
           <img src="/images/hero-art.svg" />
-        </div >}
+        </div >
       </section >
     );
   }
 }
 
-Hero.propTypes = {
-  deviceOrientation: PropTypes.string.isRequired,
-};
+Hero.propTypes = {}; // eslint-disable-line
 
-const mapStateToProps = state => ({
-  deviceOrientation: device.selectors.orientation(state)
-});
+const mapStateToProps = state => ({}); // eslint-disable-line
 
 const mapDispatchToProps = dispatch => ({}); // eslint-disable-line
 

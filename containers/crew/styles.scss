@@ -110,12 +110,12 @@
   }
 
   .description {
-    height: 285px;
+    //height: 285px;
     margin-bottom: 0;
 
     @include media('>tablet') {
     @include orientation('landscape') {
-      height: 112px;
+      //height: 112px;
     }
   }
   }
