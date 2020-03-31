@@ -8,7 +8,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import thunkMiddleware from 'redux-thunk';
 import reactor from 'reactor-connect';
 import combined from '../combined-reducers';
-import { device } from '../services';
+import { device, GA } from '../services';
 import { Helmet } from '../shared';
 import reactorConfig from '../reactor.config';
 import { NavBar } from '../containers';
@@ -33,6 +33,11 @@ class MyApp extends App {
       return {};
     }
     return {};
+  }
+
+  componentDidMount() {
+    GA.init();
+    GA.logPageView();
   }
 
   render() {
