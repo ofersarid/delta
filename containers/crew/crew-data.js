@@ -34,7 +34,7 @@ export default [
     name: 'Brian Schulman',
     image: '/images/crew/brian.png',
     imageMobile: '/images/crew/mobile/brian.png',
-    title: 'Senior FED',
+    title: 'Senior Designer and Copy writer',
     description: 'Brian is an interdisciplinary designer working at the intersection of technology, interaction, and architecture. Drawing from his background in photography, Brian is deeply focused on creative solutions to complex challenges in the construction of impactful human experiences & spaces. In each endeavor, he closely collaborates with a range of clients and partners to successfully conceive and implement the team\'s collective vision into every project.',
     icon: '/images/crew/icons/creative.svg',
     linkedIn: 'https://www.linkedin.com/in/brian-schulman-13913251/',

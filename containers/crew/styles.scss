@@ -37,7 +37,7 @@
 
   ul {
     padding: 0 0 0 calc(#{$mobile-gutter} - 5px);
-    margin: 0 0 25px;
+    margin: 0 0 $mobile-vertical-spacer-1;
     list-style: none;
     display: flex;
     flex-wrap: nowrap;
@@ -45,6 +45,7 @@
     @include media('>tablet') {
       @include orientation('landscape') {
         padding: 0 0 0 calc(#{$desktop-gutter} - 5px);
+        margin: 0 0 $desktop-vertical-spacer-1;
       }
     }
 
