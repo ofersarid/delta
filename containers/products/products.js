@@ -60,7 +60,7 @@ class Products extends PureComponent {
                 className={cx({ [styles.focused]: index === i })}
                 onClick={() => this.selectMe(i)}
                 style={{
-                  transform: `translateX(calc(${index * -100}% - ${index * 2}vw))`
+                  transform: `translateX(calc(${index * -100}% - ${index * (isMobile ? 0 : 2)}vw))`
                 }}
               ><img src={isMobile ? itm.imgMobile : itm.imgDesktop} alt="project" /></li >
             ))}
