@@ -60,7 +60,7 @@
       background: $red;
       opacity: 0.75;
       transition: 1s $ease;
-      cursor: pointer;
+      cursor: url('/images/cursor-pointer.svg'), auto;
 
       @include media('>tablet') {
         @include orientation('landscape') {
@@ -123,7 +123,7 @@
     a {
       font-size: 18px;
       margin-top: 10px;
-      display: block;
+      display: inline-block;
     }
 
     svg {

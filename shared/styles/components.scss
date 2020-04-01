@@ -3,7 +3,6 @@
 @import './colors';
 
 %button {
-  cursor: pointer;
   padding: 9px 20px 10px;
   line-height: 18px;
   color: $white;
@@ -14,6 +13,7 @@
   justify-content: center;
   background: transparent;
   outline: none;
+  cursor: url('/images/cursor-pointer.svg'), auto;
 
   @include media('>tablet') {
     @include orientation('landscape') {
