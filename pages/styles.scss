@@ -15,11 +15,6 @@
     line-height: 37px;
     width: 100vw;
     overflow-x: hidden;
-    cursor: none !important;
-
-    * {
-      cursor: none !important;
-    }
 
     @include media('>tablet') {
       @include orientation('landscape') {
