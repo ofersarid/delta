@@ -15,8 +15,8 @@ class Cursor extends PureComponent {
     const { device } = this.props;
     if (device === 'desktop') {
       this.bindEvents();
-      this.ref.current.left = -10;
-      this.ref.current.top = -10;
+      this.ref.current.left = '-100px';
+      this.ref.current.top = '-100px';
     }
   }
 
