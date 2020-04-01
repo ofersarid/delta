@@ -1,0 +1,27 @@
+@import '../../shared/styles/colors';
+
+.cursor {
+  width: 10px;
+  height: 10px;
+  background: $red;
+  position: absolute;
+  pointer-events: none;
+  border-radius: 10px;
+
+  &:before {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-radius: 16px;
+    border: 2px solid $red;
+    left: -5px;
+    top: -5px;
+  }
+}
+
+:global {
+  * {
+    cursor: none !important;
+  }
+}
