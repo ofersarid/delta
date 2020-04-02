@@ -13,6 +13,7 @@ import { Helmet } from '../shared';
 import reactorConfig from '../reactor.config';
 import { NavBar } from '../containers';
 import styles from './styles.scss';
+import SectionIndicator from '../containers/section-indicator/section-indicator';
 
 const makeStore = (initialState, options) => {
   const store = createStore(combined, initialState, composeWithDevTools(applyMiddleware(thunkMiddleware)));
@@ -45,9 +46,10 @@ class MyApp extends App {
     return (
       <Provider store={store} >
         <Helmet title="Delta Front Team" description="Hire an elite front team on-demand" />
-        <div className={styles.app} id="top" >
+        <div className={styles.app} >
           <NavBar />
           <Component {...pageProps} isServer={isServer} />
+          <SectionIndicator />
         </div >
       </Provider >
     );
