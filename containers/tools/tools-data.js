@@ -9,6 +9,9 @@ export default {
     title: 'Next.js',
     thumb: '/images/tools/next.png',
   }, {
+    title: 'Firebase',
+    thumb: '/images/tools/firebase.png',
+  }, {
     title: 'Saas.js',
     thumb: '/images/tools/sass.png',
   }, {
