@@ -5,6 +5,7 @@
 
   @include media('>tablet') {
     @include orientation('landscape') {
+      pointer-events: none;
       display: block;
       position: fixed;
       list-style: none;

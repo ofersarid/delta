@@ -1,17 +1,17 @@
 export default [{
   title: 'Nucleai3',
-  imgMobile: '/images/products/nucleai.gif',
-  imgDesktop: '/images/products/nucleai-desktop.gif',
+  imgMobile: '/videos/products/nucleai.mp4',
+  imgDesktop: '/videos/products/nucleai-desktop.mp4',
 }, {
   title: 'Ludus',
-  imgMobile: '/images/products/ludus.gif',
-  imgDesktop: '/images/products/ludus-desktop.gif',
+  imgMobile: '/videos/products/ludus.mp4',
+  imgDesktop: '/videos/products/ludus-desktop.mp4',
 }, {
   title: 'Brif',
-  imgMobile: '/images/products/brif.gif',
-  imgDesktop: '/images/products/brif-desktop.gif',
+  imgMobile: '/videos/products/brif.mp4',
+  imgDesktop: '/videos/products/brif-desktop.mp4',
 }, {
   title: 'Reactor',
-  imgMobile: '/images/products/reactor.gif',
-  imgDesktop: '/images/products/reactor-desktop.gif',
+  imgMobile: '/videos/products/reactor.mp4',
+  imgDesktop: '/videos/products/reactor-desktop.mp4',
 }];

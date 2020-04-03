@@ -62,7 +62,16 @@ class Products extends PureComponent {
                 style={{
                   transform: `translateX(calc(${index * -100}% - ${index * (isMobile ? 0 : 2)}vw))`
                 }}
-              ><img src={isMobile ? itm.imgMobile : itm.imgDesktop} alt="project" /></li >
+              >
+                <video
+                  src={isMobile ? itm.imgMobile : itm.imgDesktop}
+                  preload="metadata"
+                  autoPlay
+                  loop
+                  playsinline
+                  muted />
+                <div className={styles.overlay} />
+              </li >
             ))}
           </ul >
         </Swipeable >
