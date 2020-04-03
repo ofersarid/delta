@@ -45,6 +45,7 @@ const SectionIndicator = () => {
     for (let i = 0; i < 6; i++) {
       items.push(
         <li
+          key={i}
           className={cx({
             [styles.highlight]: highlightIndex === i,
             [styles.reverse]: reverse,

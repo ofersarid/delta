@@ -3,6 +3,7 @@
 
 .agile {
   @extend %chapterWrapper;
+  margin-top: 0;
 
   @include media('>tablet') {
     @include orientation('landscape') {

@@ -9,8 +9,8 @@ const mobileCheck = (a) => {
 };
 
 const reducer = (state = fromJS({
-  type: 'mobile',
-  orientation: 'portrait'
+  type: 'desktop',
+  orientation: 'landscape'
 }), action) => {
   switch (action.type) {
     case 'DEVICE:CHANGE':
