@@ -8,7 +8,7 @@ import { ScLinkedin } from '@styled-icons/evil/ScLinkedin';
 // import PropTypes from 'prop-types';
 import styles from './styles.scss';
 import { validateEmail } from '../../utils';
-import { emailJS } from '../../services';
+import { emailJS, GA } from '../../services';
 
 class Contact extends PureComponent {
   constructor(props) {
@@ -44,6 +44,7 @@ class Contact extends PureComponent {
     const { name, email, company, sent } = this.state;
     if (sent) return;
     this.setState({ working: true });
+    GA.send();
     const resp = await emailJS.send(name, email, company);
     this.setState({ working: false });
     if (resp.status === 200) {

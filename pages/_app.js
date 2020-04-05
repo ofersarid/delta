@@ -38,6 +38,7 @@ class MyApp extends App {
   componentDidMount() {
     GA.init();
     GA.logPageView();
+    GA.viewedPage();
   }
 
   render() {

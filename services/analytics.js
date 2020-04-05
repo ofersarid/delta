@@ -33,31 +33,27 @@ const logPageView = () => {
 //   }
 // };
 
-const viewedPage = (viewer) => {
-  if (viewer) {
-    console.log(`Logging viewer: ${viewer}`);
-    ReactGA.event({
-      category: isDev() ? 'test' : 'investor',
-      action: 'viewed page',
-    });
-  }
+const viewedPage = () => {
+  console.log(`Logging viewed page`);
+  ReactGA.event({
+    category: isDev() ? 'test' : 'user',
+    action: 'viewed page',
+  });
 };
 
-const contactUs = (viewer) => {
-  if (viewer) {
-    console.log(`Logging contact us by: ${viewer}`);
-    ReactGA.event({
-      category: isDev() ? 'test' : 'investor',
-      action: 'clicked contact us',
-    });
-  }
+const contactUs = () => {
+  console.log('Logging clicked on Send');
+  ReactGA.event({
+    category: isDev() ? 'test' : 'user',
+    action: 'clicked contact us',
+  });
 };
 
 const send = (viewer) => {
   if (viewer) {
     console.log(`Logging send by: ${viewer}`);
     ReactGA.event({
-      category: isDev() ? 'test' : 'investor',
+      category: isDev() ? 'test' : 'user',
       action: 'clicked on send',
     });
   }
