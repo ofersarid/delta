@@ -1,5 +1,4 @@
 import ReactGA from 'react-ga';
-import camelCase from 'lodash/camelCase';
 
 const isDev = () => {
   return Boolean(window.location.host.match(/^localhost/));
@@ -33,13 +32,6 @@ const logPageView = () => {
 //     });
 //   }
 // };
-
-const setViewer = (viewer) => {
-  if (viewer) {
-    console.log(`Setting ${isDev() ? 'test' : 'investor'} viewer: ${viewer}`);
-    ReactGA.set({ userId: camelCase(viewer) });
-  }
-};
 
 const viewedPage = (viewer) => {
   if (viewer) {
@@ -82,7 +74,6 @@ const send = (viewer) => {
 
 export default {
   init,
-  setViewer,
   viewedPage,
   contactUs,
   send,

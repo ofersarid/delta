@@ -68,7 +68,7 @@ class Products extends PureComponent {
                   preload="metadata"
                   autoPlay
                   loop
-                  playsinline
+                  playsInline
                   muted />
                 <div className={styles.overlay} />
               </li >

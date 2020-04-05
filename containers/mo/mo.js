@@ -11,7 +11,7 @@ const Mo = ({ isMobile }) => (
       <img src={`/images/agile${isMobile ? '' : '-desktop'}.png`} alt="team" />
     </div >
     <div className={styles.right} >
-      <h1 >Our M.O</h1 >
+      <h1 >Our M.O.</h1 >
       <ul >
         <li >We are <span className={styles.blue} >&quot;agile&quot;</span > lovers and we work in 1-2-week sprints
         </li >
