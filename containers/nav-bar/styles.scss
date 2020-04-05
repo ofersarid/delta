@@ -10,10 +10,8 @@
   justify-content: space-between;
 
   @include media('>tablet') {
-    @include orientation('landscape') {
-      margin: $desktop-vertical-spacer-1 0;
-      padding: 0 $desktop-gutter;
-    }
+    margin: $desktop-vertical-spacer-1 0;
+    padding: 0 $desktop-gutter;
   }
 }
 

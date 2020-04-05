@@ -4,11 +4,9 @@
   @extend %chapterWrapper;
 
   @include media('>tablet') {
-    @include orientation('landscape') {
-      margin-top: $desktop-vertical-spacer-2;
-      padding: 0 $desktop-gutter;
-      flex-direction: row;
-    }
+    margin-top: $desktop-vertical-spacer-2;
+    padding: 0 $desktop-gutter;
+    flex-direction: row;
   }
 
   .left {
@@ -19,10 +17,8 @@
     flex-grow: 0;
 
     @include media('>tablet') {
-      @include orientation('landscape') {
-        width: 35vw;
-        margin-right: 7vw;
-      }
+      width: 35vw;
+      margin-right: 7vw;
     }
   }
 
@@ -30,19 +26,15 @@
     width: 100vw;
 
     @include media('>tablet') {
-      @include orientation('landscape') {
-        padding:  136px 0 0 0;
-        margin: 0;
-        width: 34vw;
-        flex-shrink: 0;
-        flex-grow: 0;
-      }
+      padding: 136px 0 0 0;
+      margin: 0;
+      width: 34vw;
+      flex-shrink: 0;
+      flex-grow: 0;
     }
 
     @include media('>desktop') {
-      @include orientation('landscape') {
-        padding: 143px 0 0 0;
-      }
+      padding: 143px 0 0 0;
     }
 
     svg {
@@ -56,9 +48,7 @@
     @extend %sectionHeader;
 
     @include media('>tablet') {
-      @include orientation('landscape') {
-        padding: 0;
-      }
+      padding: 0;
     }
   }
 
@@ -74,11 +64,9 @@
     cursor: url('/images/cursor-text.svg'), auto;
 
     @include media('>tablet') {
-      @include orientation('landscape') {
-        padding: 0;
-        margin: 0 0 #{$desktop-gutter / 5};
-        flex-wrap: nowrap;
-      }
+      padding: 0;
+      margin: 0 0 #{$desktop-gutter / 5};
+      flex-wrap: nowrap;
     }
 
     &:last-of-type {
@@ -104,11 +92,9 @@
     margin-top: #{1.5 * $mobile-gutter};
 
     @include media('>tablet') {
-      @include orientation('landscape') {
-        padding: 0;
-        margin-top: #{$desktop-gutter / 3};
-        width: 100%;
-      }
+      padding: 0;
+      margin-top: #{$desktop-gutter / 3};
+      width: 100%;
     }
 
     svg {
@@ -116,9 +102,7 @@
       cursor: url('/images/cursor-pointer.svg'), auto;
 
       @include media('>tablet') {
-        @include orientation('landscape') {
-          transform: translateX(calc(7vw + 100%));
-        }
+        transform: translateX(calc(7vw + 100%));
       }
     }
   }

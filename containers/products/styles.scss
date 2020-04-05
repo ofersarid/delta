@@ -18,9 +18,7 @@
     display: flex;
 
     @include media('>tablet') {
-      @include orientation('landscape') {
-        padding-left: $desktop-gutter;
-      }
+      padding-left: $desktop-gutter;
     }
 
     li {
@@ -33,11 +31,9 @@
       cursor: url('/images/cursor-pointer.svg'), auto;
 
       @include media('>tablet') {
-        @include orientation('landscape') {
-          width: 60vw;
-          height: auto;
-          margin: 0 2vw 0 0;
-        }
+        width: 60vw;
+        height: auto;
+        margin: 0 2vw 0 0;
       }
 
       video {
@@ -88,9 +84,7 @@
     color: $red;
 
     @include media('>tablet') {
-      @include orientation('landscape') {
-        display: none;
-      }
+      display: none;
     }
 
     svg {

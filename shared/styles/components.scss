@@ -16,9 +16,7 @@
   cursor: url('/images/cursor-pointer.svg'), auto;
 
   @include media('>tablet') {
-    @include orientation('landscape') {
-      line-height: 20px;
-    }
+    line-height: 20px;
   }
 }
 
@@ -29,10 +27,8 @@
   text-transform: uppercase;
 
   @include media('>tablet') {
-    @include orientation('landscape') {
-      margin: 0 0 $desktop-vertical-spacer-1;
-      padding: 0 $desktop-gutter;
-    }
+    margin: 0 0 $desktop-vertical-spacer-1;
+    padding: 0 $desktop-gutter;
   }
 
   &:before {
@@ -47,10 +43,4 @@
   width: 100vw;
   margin-top: $mobile-vertical-spacer-2;
   box-sizing: border-box;
-
-  @include media('>tablet') {
-    @include orientation('landscape') {
-      //margin-top: $desktop-vertical-spacer-2;
-    }
-  }
 }

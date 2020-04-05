@@ -10,19 +10,15 @@
   margin: $mobile-vertical-spacer-2 0;
 
   @include media('>tablet') {
-    @include orientation('landscape') {
-      margin: 0 0 $desktop-vertical-spacer-2;
-      padding: 0 $desktop-gutter;
-    }
+    margin: 0 0 $desktop-vertical-spacer-2;
+    padding: 0 $desktop-gutter;
   }
 
   p {
     padding-right: $mobile-gutter;
 
     @include media('>tablet') {
-      @include orientation('landscape') {
-        padding-right: $desktop-gutter;
-      }
+      padding-right: $desktop-gutter;
     }
   }
 

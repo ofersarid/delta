@@ -18,10 +18,8 @@
     cursor: url('/images/cursor.svg'), auto;
 
     @include media('>tablet') {
-      @include orientation('landscape') {
-        font-size: 20px;
-        line-height: 2em;
-      }
+      font-size: 20px;
+      line-height: 2em;
     }
   }
 
@@ -41,16 +39,12 @@
     font-weight: 500;
 
     @include media('>tablet') {
-      @include orientation('landscape') {
-        font-size: 50px;
-        line-height: 1.3em;
-      }
+      font-size: 50px;
+      line-height: 1.3em;
     }
 
     @include media('>desktop') {
-      @include orientation('landscape') {
-        font-size: 55px;
-      }
+      font-size: 55px;
     }
   }
 
@@ -86,27 +80,21 @@
   //transform: translateX(-60px);
 
   @include media('>phone') {
-    @include orientation('landscape') {
-      margin: $desktop-vertical-spacer-1 0 0 $desktop-gutter;
-    }
+    margin: $desktop-vertical-spacer-1 0 0 $desktop-gutter;
   }
 
   &:first-of-type {
     margin: 0 0 $mobile-vertical-spacer-1 $mobile-gutter;
 
     @include media('>tablet') {
-      @include orientation('landscape') {
-        margin: 0 0 $desktop-vertical-spacer-1 $desktop-gutter;
-      }
+      margin: 0 0 $desktop-vertical-spacer-1 $desktop-gutter;
     }
   }
 
   &:last-of-type {
 
     @include media('>tablet') {
-      @include orientation('landscape') {
-        margin: #{2 * $desktop-vertical-spacer-1} 0 $desktop-vertical-spacer-1 $desktop-gutter;
-      }
+      margin: #{2 * $desktop-vertical-spacer-1} 0 $desktop-vertical-spacer-1 $desktop-gutter;
     }
   }
 }

@@ -8,10 +8,8 @@
   width: 100vw;
 
   @include media('>tablet') {
-    @include orientation('landscape') {
-      flex-direction: row;
-      justify-content: space-between;
-    }
+    flex-direction: row;
+    justify-content: space-between;
   }
 
   h1 {
@@ -22,18 +20,14 @@
     padding: 0 $mobile-gutter;
 
     @include media('>tablet') {
-      @include orientation('landscape') {
-        font-size: 50px;
-        padding: 0;
-        margin: 0 0 $desktop-vertical-spacer-1;
-      }
+      font-size: 50px;
+      padding: 0;
+      margin: 0 0 $desktop-vertical-spacer-1;
     }
 
     @include media('>desktop') {
-      @include orientation('landscape') {
-        margin: $desktop-vertical-spacer-1 0;
-        font-size: 70px;
-      }
+      margin: $desktop-vertical-spacer-1 0;
+      font-size: 70px;
     }
   }
 
@@ -41,16 +35,14 @@
     width: 100%;
 
     @include media('>tablet') {
-      @include orientation('landscape') {
-        width: 44vw;
-        padding-right: 8vw;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        flex-shrink: 0;
-        box-sizing: border-box;
-        margin-left: $desktop-gutter;
-      }
+      width: 44vw;
+      padding-right: 8vw;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      flex-shrink: 0;
+      box-sizing: border-box;
+      margin-left: $desktop-gutter;
 
       img {
         display: none !important;
@@ -66,9 +58,7 @@
       padding: 0 $mobile-gutter;
 
       @include media('>tablet') {
-        @include orientation('landscape') {
-          padding: 0;
-        }
+        padding: 0;
       }
     }
   }
@@ -81,18 +71,16 @@
     position: relative;
 
     @include media('>tablet') {
-      @include orientation('landscape') {
-        width: 44vw;
-        flex-shrink: 0;
-        box-sizing: border-box;
-        justify-content: center;
-        align-items: start;
+      width: 44vw;
+      flex-shrink: 0;
+      box-sizing: border-box;
+      justify-content: center;
+      align-items: start;
 
-        img {
-          width: 100%;
-          flex-shrink: 0;
-          display: block !important;
-        }
+      img {
+        width: 100%;
+        flex-shrink: 0;
+        display: block !important;
       }
     }
 

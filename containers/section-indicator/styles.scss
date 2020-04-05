@@ -4,31 +4,29 @@
   display: none;
 
   @include media('>tablet') {
-    @include orientation('landscape') {
-      pointer-events: none;
-      display: block;
-      position: fixed;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      left: $desktop-gutter / 2;
-      top: 50vh;
-      transform: translate(-50%, -50%);
+    pointer-events: none;
+    display: block;
+    position: fixed;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    left: $desktop-gutter / 2;
+    top: 50vh;
+    transform: translate(-50%, -50%);
 
-      li {
-        transition: 1s $ease;
-        margin-bottom: 20px;
-        width: 50px;
-        height: 25px;
-        opacity: 0.15;
+    li {
+      transition: 1s $ease;
+      margin-bottom: 20px;
+      width: 50px;
+      height: 25px;
+      opacity: 0.15;
 
-        &.highlight {
-          opacity: 1;
-        }
+      &.highlight {
+        opacity: 1;
+      }
 
-        &.reverse {
-          transform: scaleY(-1) translateY(-25px);
-        }
+      &.reverse {
+        transform: scaleY(-1) translateY(-25px);
       }
     }
   }

@@ -8,18 +8,14 @@
   margin-top: $mobile-vertical-spacer-2;
 
   @include media('>tablet') {
-    @include orientation('landscape') {
-      margin-top: $desktop-vertical-spacer-2;
-    }
+    margin-top: $desktop-vertical-spacer-2;
   }
 
   .lists {
     @include media('>tablet') {
-      @include orientation('landscape') {
-        display: flex;
-        flex-wrap: wrap;
-        padding: 0 $desktop-gutter;
-      }
+      display: flex;
+      flex-wrap: wrap;
+      padding: 0 $desktop-gutter;
     }
 
     section {
@@ -39,9 +35,7 @@
     margin: 0 0 15px 0;
 
     @include media('>tablet') {
-      @include orientation('landscape') {
-        padding: 0;
-      }
+      padding: 0;
     }
   }
 
@@ -57,11 +51,9 @@
     flex-wrap: wrap;
 
     @include media('>tablet') {
-      @include orientation('landscape') {
-        padding: 0;
-        margin: 0 0 $desktop-vertical-spacer-1;
-        flex-wrap: nowrap;
-      }
+      padding: 0;
+      margin: 0 0 $desktop-vertical-spacer-1;
+      flex-wrap: nowrap;
     }
 
     &.last {
@@ -88,11 +80,9 @@
       }
 
       @include media('>tablet') {
-        @include orientation('landscape') {
-          margin: 0 12px 12px 0;
-          width: 130px;
-          height: 130px;
-        }
+        margin: 0 12px 12px 0;
+        width: 130px;
+        height: 130px;
       }
 
       img {
@@ -107,11 +97,9 @@
         bottom: 5px;
 
         @include media('>tablet') {
-          @include orientation('landscape') {
-            font-size: 13px;
-            line-height: 13px;
-            bottom: 10px;
-          }
+          font-size: 13px;
+          line-height: 13px;
+          bottom: 10px;
         }
       }
     }

@@ -6,10 +6,8 @@
   margin-top: 0;
 
   @include media('>tablet') {
-    @include orientation('landscape') {
-      flex-direction: row;
-      padding-right: $desktop-gutter;
-    }
+    flex-direction: row;
+    padding-right: $desktop-gutter;
   }
 
   //img {
@@ -21,10 +19,8 @@
     width: 100vw;
 
     @include media('>tablet') {
-      @include orientation('landscape') {
-        width: 44vw;
-        flex-shrink: 0;
-      }
+      width: 44vw;
+      flex-shrink: 0;
     }
 
     img {
@@ -36,25 +32,21 @@
 
   .right {
     @include media('>tablet') {
-      @include orientation('landscape') {
-        width: 44vw;
-        flex-shrink: 0;
-        box-sizing: border-box;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: start;
-      }
+      width: 44vw;
+      flex-shrink: 0;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: start;
     }
 
     h1 {
       @extend %sectionHeader;
 
       @include media('>tablet') {
-        @include orientation('landscape') {
-          margin-top: $desktop-vertical-spacer-1;
-          padding-left: 8vw;
-        }
+        margin-top: $desktop-vertical-spacer-1;
+        padding-left: 8vw;
       }
     }
 

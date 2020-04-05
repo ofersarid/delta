@@ -16,11 +16,9 @@
     padding: 0 $mobile-gutter;
 
     @include media('>tablet') {
-      @include orientation('landscape') {
-        width: 60vw;
-        padding: 0 0 0 $desktop-gutter;
-        box-sizing: border-box;
-      }
+      width: 60vw;
+      padding: 0 0 0 $desktop-gutter;
+      box-sizing: border-box;
     }
 
     &:first-of-type {
@@ -43,10 +41,8 @@
     flex-wrap: nowrap;
 
     @include media('>tablet') {
-      @include orientation('landscape') {
-        padding: 0 0 0 calc(#{$desktop-gutter} - 5px);
-        margin: 0 0 $desktop-vertical-spacer-1;
-      }
+      padding: 0 0 0 calc(#{$desktop-gutter} - 5px);
+      margin: 0 0 $desktop-vertical-spacer-1;
     }
 
     li {
@@ -63,12 +59,10 @@
       cursor: url('/images/cursor-pointer.svg'), auto;
 
       @include media('>tablet') {
-        @include orientation('landscape') {
-          $diameter: 26vw;
-          width: $diameter;
-          height: $diameter;
-          border-radius: $diameter / 2;
-        }
+        $diameter: 26vw;
+        width: $diameter;
+        height: $diameter;
+        border-radius: $diameter / 2;
       }
 
       &.focused {
@@ -97,28 +91,18 @@
     }
 
     @include media('>tablet') {
-      @include orientation('landscape') {
-
-        img {
-          float: left;
-          width: 65px;
-          height: 65px;
-          display: block;
-          margin-right: 30px;
-        }
+      img {
+        float: left;
+        width: 65px;
+        height: 65px;
+        display: block;
+        margin-right: 30px;
       }
     }
   }
 
   .description {
-    //height: 285px;
     margin-bottom: 0;
-
-    @include media('>tablet') {
-      @include orientation('landscape') {
-        //height: 112px;
-      }
-    }
 
     a {
       font-size: 18px;
