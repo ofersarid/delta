@@ -11,10 +11,10 @@ const Hero = ({ isMobile }) => (
       <h1 >Hire an elite front team on-demand</h1 >
       <img src={`/images/hero${isMobile ? '' : '-desktop'}.png`} alt="team" />
       <p >
-        Hiring Senior FEDs/PMs/Designers is not an easy task, let alone forging them into an effective &#34;delta
-        force&#34;.<br />
-        _Delta is A team of senior-level individuals who love working together and are ready to get you to your next
-        milestone fast and strong.
+        When you need to get to your next business milestone quickly, hiring Senior Developers, PMs & Designers is not
+        an simple operation.<br />
+        Delta is an experienced team of advanced technologists who love working together - and we are ready to drive
+        your projects forward.
       </p >
     </div >
     <div className={styles.right} >
