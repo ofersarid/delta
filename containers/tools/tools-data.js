@@ -30,8 +30,14 @@ export default {
   }, {
     title: 'Figma',
     thumb: '/images/tools/figma.png',
+  }, {
+    title: 'Zeplin',
+    thumb: '/images/tools/zeplin.png',
   }],
   visual: [{
+    title: 'Illustrator',
+    thumb: '/images/tools/illustrator.png',
+  }, {
     title: 'Photoshop',
     thumb: '/images/tools/photoshop.png',
   }, {
