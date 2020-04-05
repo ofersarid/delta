@@ -4,20 +4,20 @@ import { connect } from 'react-redux';
 import Head from 'next/head';
 import PropTypes from 'prop-types';
 
-const Helmet = ({ title, description }) => (
+const Helmet = ({ title, description, imageForSocial }) => (
   <Head >
     <meta charSet="utf-8" />
     <link rel="icon" href={`/images/favicon.ico?v=${new Date().getTime()}`} />
     <title >{title}</title >
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    {/*<meta property="og:image" content="http://euro-travel-example.com/thumbnail.jpg" />*/}
+    <meta property="og:image" content={imageForSocial} />
     <meta property="og:url" content="https://delta.band" />
     <meta name="description" content={description} />
-    {/*<meta*/}
-    {/*  name='viewport'*/}
-    {/*  content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'*/}
-    {/*/>*/}
+    <meta
+      name='viewport'
+      content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'
+    />
     <meta httpEquiv="ScreenOrientation" content="autoRotate:disabled" />
   </Head >
 );

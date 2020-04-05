@@ -44,7 +44,7 @@ class MyApp extends App {
     const { Component, pageProps, store, isServer } = this.props;
     return (
       <Provider store={store} >
-        <Helmet title="Delta Front Team" description="Hire an elite front team on-demand" />
+        <Helmet title="Delta Front Team" description="Hire an elite front team on-demand" imageForSocial="/images/delta-logo-social-square.png" />
         <div className={styles.app} >
           <NavBar />
           <Component {...pageProps} isServer={isServer} />
