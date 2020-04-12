@@ -2,7 +2,7 @@ import React from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { device } from '../../services';
+import { device, section } from '../../services';
 import styles from './styles.scss';
 
 const Hero = ({ isMobile }) => (
@@ -33,6 +33,6 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({}); // eslint-disable-line
 
-export default compose(
+export default section.HOC(compose(
   connect(mapStateToProps, mapDispatchToProps)
-)(Hero);
+)(Hero), 'hero');

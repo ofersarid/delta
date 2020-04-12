@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 // import PropTypes from 'prop-types';
 import styles from './styles.scss';
 import data from './tools-data';
+import { section } from '../../services';
 
 const Tools = () => (
   <div className={cx(styles.tools)} >
@@ -75,6 +76,6 @@ const mapStateToProps = state => ({}); // eslint-disable-line
 
 const mapDispatchToProps = dispatch => ({}); // eslint-disable-line
 
-export default compose(
+export default section.HOC(compose(
   connect(mapStateToProps, mapDispatchToProps)
-)(Tools);
+)(Tools), 'tools');

@@ -9,7 +9,7 @@ import { CheveronOutlineLeft } from '@styled-icons/zondicons/CheveronOutlineLeft
 import { CheveronOutlineRight } from '@styled-icons/zondicons/CheveronOutlineRight';
 import styles from './styles.scss';
 import data from './products-data';
-import { device } from '../../services';
+import { device, section } from '../../services';
 
 class Products extends PureComponent {
   constructor(props) {
@@ -98,6 +98,6 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({}); // eslint-disable-line
 
-export default compose(
+export default section.HOC(compose(
   connect(mapStateToProps, mapDispatchToProps)
-)(Products);
+)(Products), 'products');

@@ -7,7 +7,7 @@ import { Swipeable } from 'react-swipeable';
 import autoBind from 'auto-bind';
 import { ScLinkedin } from '@styled-icons/evil/ScLinkedin';
 import styles from './styles.scss';
-import { device } from '../../services';
+import { device, section } from '../../services';
 import data from './crew-data';
 
 class Crew extends PureComponent {
@@ -94,6 +94,6 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({}); // eslint-disable-line
 
-export default compose(
+export default section.HOC(compose(
   connect(mapStateToProps, mapDispatchToProps)
-)(Crew);
+)(Crew), 'crew');

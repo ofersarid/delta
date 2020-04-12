@@ -8,7 +8,7 @@ import { ScLinkedin } from '@styled-icons/evil/ScLinkedin';
 // import PropTypes from 'prop-types';
 import styles from './styles.scss';
 import { validateEmail } from '../../utils';
-import { emailJS, GA } from '../../services';
+import { emailJS, GA, section } from '../../services';
 
 class Contact extends PureComponent {
   constructor(props) {
@@ -116,6 +116,6 @@ const mapStateToProps = state => ({}); // eslint-disable-line
 
 const mapDispatchToProps = dispatch => ({}); // eslint-disable-line
 
-export default compose(
+export default section.HOC(compose(
   connect(mapStateToProps, mapDispatchToProps)
-)(Contact);
+)(Contact), 'contact');

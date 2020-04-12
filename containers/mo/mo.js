@@ -3,7 +3,7 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import styles from './styles.scss';
-import { device } from '../../services';
+import { device, section } from '../../services';
 
 const Mo = ({ isMobile }) => (
   <section className={styles.agile} >
@@ -35,6 +35,6 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({}); // eslint-disable-line
 
-export default compose(
+export default section.HOC(compose(
   connect(mapStateToProps, mapDispatchToProps)
-)(Mo);
+)(Mo), 'M.O.');
