@@ -1,5 +1,6 @@
 import React from 'react';
 import { applyMiddleware, createStore, compose } from 'redux';
+import LinkedInTag from 'react-linkedin-insight';
 import { Provider } from 'react-redux';
 import App from 'next/app';
 import withRedux from 'next-redux-wrapper';
@@ -39,6 +40,14 @@ class MyApp extends App {
     GA.init();
     GA.logPageView();
     GA.viewedPage();
+    this.linkedInTracker();
+  }
+
+  linkedInTracker() {
+    const partnerId = '2075473';
+    const conversionId = '2075473';
+    LinkedInTag.init(partnerId);
+    LinkedInTag.track(conversionId);
   }
 
   render() {
