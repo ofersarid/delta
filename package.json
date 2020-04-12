@@ -12,8 +12,7 @@
     "generate-sitemap": "node sitemap-generator.js"
   },
   "pre-commit": [
-    "lint",
-    "generate-sitemap"
+    "lint"
   ],
   "dependencies": {
     "@n8tb1t/use-scroll-position": "^1.0.43",
