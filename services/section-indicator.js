@@ -37,7 +37,7 @@ const selectors = {
 
 const HOC = (WrappedComponent, id) => {
   const SectionIndicator = (props) => {
-    const { setName, removeName } = props;
+    const { setName, removeName, seen } = props;
     const [elementPosition, setElementPosition] = useState({
       x: 0,
       y: 0
@@ -60,9 +60,9 @@ const HOC = (WrappedComponent, id) => {
 
     useEffect(((_vh) => {
       if (_vh === 0) return;
-      if (elementPosition.y < _vh - 250) {
+      if (elementPosition.y < _vh - 250 && !seen.includes(id)) {
         setName(id);
-      } else {
+      } else if (elementPosition.y >= _vh - 250 && seen.includes(id)) {
         removeName(id);
       }
     }).bind(null, vh));
@@ -70,7 +70,9 @@ const HOC = (WrappedComponent, id) => {
     return <section ref={elementRef} ><WrappedComponent {...props} /></section >;
   };
 
-  const mapStateToProps = state => ({}); // eslint-disable-line
+  const mapStateToProps = state => ({
+    seen: selectors.seen(state)
+  });
 
   const mapDispatchToProps = dispatch => ({
     setReverse: bool => dispatch(actions.setReverse(bool)),
