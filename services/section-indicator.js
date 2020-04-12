@@ -8,7 +8,7 @@ let vh = 0;
 const dedup = list => fromJS(list.reduce((uniques, item) => uniques.concat(uniques.includes(item) ? [] : [item]), []));
 
 const reducer = (state = fromJS({
-  seen: ['hero'],
+  seen: ['hero']
 }), action) => {
   switch (action.type) {
     case 'SECTION:ADD':
@@ -60,9 +60,9 @@ const HOC = (WrappedComponent, id) => {
 
     useEffect(((_vh) => {
       if (_vh === 0) return;
-      if (elementPosition.y < _vh - 250 && !seen.includes(id)) {
+      if (elementPosition.y < _vh * (1 / 2) && !seen.includes(id)) {
         setName(id);
-      } else if (elementPosition.y >= _vh - 250 && seen.includes(id)) {
+      } else if (elementPosition.y >= _vh * (1 / 2) && seen.includes(id)) {
         removeName(id);
       }
     }).bind(null, vh));
