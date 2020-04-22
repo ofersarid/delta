@@ -42,10 +42,16 @@ class Contact extends PureComponent {
 
   async send() {
     const { name, email, company, sent } = this.state;
+    const { coupon } = this.props;
     if (sent) return;
     this.setState({ working: true });
     GA.send();
-    const resp = await emailJS.send(name, email, company);
+    let resp;
+    if (coupon.get('active') && coupon.get('claimed')) {
+      resp = await emailJS.sendWithCoupon(name, email, company, coupon);
+    } else {
+      resp = await emailJS.send(name, email, company);
+    }
     this.setState({ working: false });
     if (resp.status === 200) {
       this.setState({ sent: true });
@@ -65,7 +71,7 @@ class Contact extends PureComponent {
       <div className={cx(styles.contact)} id="contactSection" >
         <div className={styles.left} >
           <h1 >Get In Touch
-            {coupon.get('claimed') ? (<div className={styles.coupon} >
+            {(coupon.get('claimed') && coupon.get('active')) ? (<div className={styles.coupon} >
               {`Coupon Claimed "${coupon.get('name')}": ${coupon.get('message')}`}
             </div >) : null}
           </h1 >

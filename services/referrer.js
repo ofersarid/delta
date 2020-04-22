@@ -25,6 +25,7 @@ const reducer = (state = fromJS({
       return state.set('domain', action.domain);
     case 'REFERRER:SET_COUPON':
       const coupon = COUPONS[action.id];
+      coupon.id = action.id;
       const _fromJS = fromJS;
       if (coupon) {
         return state.mergeIn(['coupon'], _fromJS(coupon));
