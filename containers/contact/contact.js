@@ -8,7 +8,7 @@ import { ScLinkedin } from '@styled-icons/evil/ScLinkedin';
 // import PropTypes from 'prop-types';
 import styles from './styles.scss';
 import { validateEmail } from '../../utils';
-import { emailJS, GA, section } from '../../services';
+import { emailJS, GA, referrer, section } from '../../services';
 
 class Contact extends PureComponent {
   constructor(props) {
@@ -59,11 +59,16 @@ class Contact extends PureComponent {
 
   render() {
     const { name, email, company, working, sent } = this.state;
+    const { coupon } = this.props;
     const btnPosition = { transform: `translateX(${working ? -100 : sent ? -200 : 0}%)` };
     return (
       <div className={cx(styles.contact)} id="contactSection" >
         <div className={styles.left} >
-          <h1 >Get In Touch</h1 >
+          <h1 >Get In Touch
+            {coupon.get('claimed') ? (<div className={styles.coupon} >
+              {`Coupon Claimed "${coupon.get('name')}": ${coupon.get('message')}`}
+            </div >) : null}
+          </h1 >
           <input
             value={name}
             onChange={e => this.setState({ name: e.target.value })}
@@ -112,7 +117,9 @@ class Contact extends PureComponent {
 
 Contact.propTypes = {};
 
-const mapStateToProps = state => ({}); // eslint-disable-line
+const mapStateToProps = state => ({
+  coupon: referrer.selectors.coupon(state)
+});
 
 const mapDispatchToProps = dispatch => ({}); // eslint-disable-line
 

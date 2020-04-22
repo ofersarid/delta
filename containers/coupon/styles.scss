@@ -1,0 +1,45 @@
+@import '../../shared/styles/index';
+
+.coupon {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(white, 0.9);
+  color: black;
+  padding: 20px;
+  box-sizing: border-box;
+  animation-delay: 1s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+  transform: translateY(100%);
+  transition: 1s $ease;
+  transition-delay: 0s;
+}
+
+.show {
+  transition: 1.5s $ease;
+  transform: translateY(0%);
+  transition-delay: 1.5s;
+}
+
+.claimBtn,
+.passBtn {
+  @extend %button;
+  margin-left: 20px;
+  width: 150px;
+}
+
+.claimBtn {
+  color: $black;
+  background: $blue;
+  border: 1px solid $black2;
+}
+
+.passBtn {
+  color: $black;
+  background: lighten($red, 10%);
+  border: 1px solid $black2;
+}

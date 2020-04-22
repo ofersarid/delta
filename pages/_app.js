@@ -1,7 +1,7 @@
 import React from 'react';
 import { applyMiddleware, createStore, compose } from 'redux';
 import LinkedInTag from 'react-linkedin-insight';
-import { Provider } from 'react-redux';
+import { connect, Provider } from 'react-redux';
 import App from 'next/app';
 import withRedux from 'next-redux-wrapper';
 import { fromJS } from 'immutable';
@@ -9,12 +9,11 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import thunkMiddleware from 'redux-thunk';
 import reactor from 'reactor-connect';
 import combined from '../combined-reducers';
-import { device, GA } from '../services';
+import { device, GA, referrer } from '../services';
 import { Helmet } from '../shared';
 import reactorConfig from '../reactor.config';
-import { NavBar } from '../containers';
+import { NavBar, SectionIndicator, Coupon } from '../containers';
 import styles from './styles.scss';
-import SectionIndicator from '../containers/section-indicator/section-indicator';
 
 const makeStore = (initialState, options) => {
   const store = createStore(combined, initialState, composeWithDevTools(applyMiddleware(thunkMiddleware)));
@@ -37,10 +36,13 @@ class MyApp extends App {
   }
 
   componentDidMount() {
+    const { setDomain, setCoupon } = this.props;
     GA.init();
     GA.logPageView();
     GA.viewedPage();
     this.linkedInTracker();
+    setDomain();
+    setCoupon();
   }
 
   linkedInTracker() {
@@ -51,7 +53,7 @@ class MyApp extends App {
   }
 
   render() {
-    const { Component, pageProps, store, isServer } = this.props;
+    const { Component, pageProps, store, isServer, coupon } = this.props;
     return (
       <Provider store={store} >
         <Helmet title="Delta | Hire an elite front team on-demand" description="When you need to get to your next business milestone quickly, hiring Senior Developers, PMs & Designers is not an simple operation.
@@ -61,16 +63,27 @@ class MyApp extends App {
           <NavBar />
           <Component {...pageProps} isServer={isServer} />
           <SectionIndicator />
+          {coupon.get('active') ? <Coupon /> : null}
         </div >
       </Provider >
     );
   }
 }
 
+const mapStateToProps = state => ({
+  coupon: referrer.selectors.coupon(state),
+});
+
+const mapDispatchToProps = dispatch => ({
+  setDomain: () => dispatch(referrer.actions.setDomain()),
+  setCoupon: () => dispatch(referrer.actions.setCoupon()),
+});
+
 export default compose(
   withRedux(makeStore, {
     serializeState: state => state.toJS(),
     deserializeState: state => fromJS(state)
   }),
+  connect(mapStateToProps, mapDispatchToProps),
   device.HOC
 )(MyApp);
