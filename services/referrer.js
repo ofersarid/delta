@@ -5,7 +5,10 @@ const COUPONS = {
     active: true,
     discount: 15,
     name: 'LinkedIn Post',
-    message: '100 Hours at 15% Discount'
+    header: '25% Discount at May',
+    paragraph: 'When you need to get to your next business milestone quickly, hiring Senior Developers',
+    referrer: 'www.linkedin.com',
+    expiration: new Date('May 31, 2020'),
   }
 };
 

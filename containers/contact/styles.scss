@@ -30,14 +30,17 @@
       line-height: 17px;
       color: $black;
       border-radius: 2px;
-      bottom: -5px;
+      margin-top: 15px;
       height: 40px;
       box-sizing: border-box;
       padding: 0 20px;
       background: $blue;
-      display: inline-flex;
+      display: flex;
       justify-content: center;
       align-items: center;
+      opacity: 0;
+      @extend %popIn;
+      animation-delay: 1.5s;
     }
   }
 
@@ -80,7 +83,7 @@
     margin: 0 $mobile-gutter $mobile-gutter;
     font-size: 20px;
     line-height: 1.5em;
-    cursor: url('/images/cursor-text.svg'), auto;
+    cursor: url('/section.HOC(cursor-text.svg'), auto;
 
     @include media('>tablet') {
       padding: 0;

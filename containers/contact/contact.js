@@ -71,9 +71,11 @@ class Contact extends PureComponent {
       <div className={cx(styles.contact)} id="contactSection" >
         <div className={styles.left} >
           <h1 >Get In Touch
-            {(coupon.get('claimed') && coupon.get('active')) ? (<div className={styles.coupon} >
-              {`Coupon Claimed "${coupon.get('name')}": ${coupon.get('message')}`}
-            </div >) : null}
+            {(coupon.get('claimed') && coupon.get('active')) ? (
+              <div className={styles.coupon} >
+                {coupon.get('header')}
+              </div >) : null
+            }
           </h1 >
           <input
             value={name}

@@ -1,45 +1,214 @@
 @import '../../shared/styles/index';
 
 .coupon {
+  $width: 375px;
+  $height: 385px;
+  $widthMobile: #{$width * 0.95};
+  $heightMobile: #{$height * 0.95};
+  outline: none;
+  cursor: url('/images/cursor-pointer.svg'), auto;
   position: fixed;
   bottom: 0;
-  left: 0;
-  width: 100%;
-  background: rgba(white, 0.9);
+  width: $widthMobile;
+  height: $heightMobile;
+  left: calc(50vw - #{$widthMobile / 2});
   color: black;
-  padding: 20px;
+  padding: 20px 25px;
   box-sizing: border-box;
   animation-delay: 1s;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   backdrop-filter: blur(4px);
-  transform: translateY(100%);
   transition: 1s $ease;
-  transition-delay: 0s;
-}
+  text-align: center;
+  transform: translateY(100%);
+  opacity: 0;
 
-.show {
-  transition: 1.5s $ease;
-  transform: translateY(0%);
-  transition-delay: 1.5s;
+  @include media('>phone') {
+    padding: 21px 33px;
+    width: $width;
+    height: $height;
+    left: calc(97vw - #{$width});
+  }
+
+  $exposedPartHeightMobile: 72px;
+  $exposedPartSpringMobile: 120px;
+  $exposedPartHeight: 77px;
+  $exposedPartSpring: 120px;
+
+  @keyframes reveal {
+    0% {
+      transform: translateY(calc(100% - #{$exposedPartHeightMobile}));
+    }
+
+    100% {
+      transform: translateY(0%);
+    }
+  }
+
+  @keyframes putBack {
+    0% {
+      transform: translateY(0%);
+    }
+
+    100% {
+      transform: translateY(calc(100% - #{$exposedPartHeightMobile}));
+    }
+  }
+
+  @keyframes peep {
+    0% {
+      transform: translateY(100%);
+    }
+
+    40% {
+      transform: translateY(calc(100% - #{$exposedPartSpringMobile}));
+    }
+
+    100% {
+      transform: translateY(calc(100% - #{$exposedPartHeightMobile}));
+    }
+  }
+
+  @keyframes hide {
+    0% {
+      transform: translateY(0%);
+    }
+
+    100% {
+      transform: translateY(100%);
+    }
+  }
+
+  @include media('>phone') {
+    @keyframes reveal {
+      0% {
+        transform: translateY(calc(100% - #{$exposedPartHeight}));
+      }
+
+      100% {
+        transform: translateY(0%);
+      }
+    }
+
+    @keyframes putBack {
+      0% {
+        transform: translateY(0%);
+      }
+
+      100% {
+        transform: translateY(calc(100% - #{$exposedPartHeight}));
+      }
+    }
+
+    @keyframes peep {
+      0% {
+        transform: translateY(100%);
+      }
+
+      40% {
+        transform: translateY(calc(100% - #{$exposedPartSpring}));
+      }
+
+      100% {
+        transform: translateY(calc(100% - #{$exposedPartHeight}));
+      }
+    }
+  }
+
+  &.peep {
+    will-change: transform;
+    animation: peep 1.2s forwards $ease;
+    opacity: 1;
+  }
+
+  &.reveal {
+    will-change: transform;
+    animation: reveal 1s forwards $ease;
+    opacity: 1;
+  }
+
+  &.putBack {
+    will-change: transform;
+    animation: putBack 1s forwards $ease;
+    opacity: 1;
+  }
+
+  &.hide {
+    will-change: transform;
+    animation: hide 1s forwards $ease;
+    opacity: 0;
+  }
+
+  h4 {
+    font-size: 25px;
+    margin: 0 0 10px 0;
+
+    @include media('>phone') {
+      font-size: 25px;
+      margin: 0 0 10px 0;
+    }
+  }
+
+  p {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.7em;
+    text-align: left;
+  }
+
+  @include media('>tablet') {
+    right: 30px;
+    transform: translateX(0);
+  }
+
+  & > section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1;
+    position: relative;
+    width: 100%;
+
+    &.top {
+      //transform: translateY(-10px);
+    }
+
+    &.bottom {
+
+    }
+  }
+
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
 }
 
 .claimBtn,
 .passBtn {
   @extend %button;
-  margin-left: 20px;
-  width: 150px;
 }
 
 .claimBtn {
-  color: $black;
-  background: $blue;
+  background: $red;
+  color: white;
   border: 1px solid $black2;
+  padding: 13px 36px 15px;
+  margin-bottom: 60px;
+  width: 100%;
+  font-family: 'Exo 2', sans-serif;
+  font-size: 22px;
+  line-height: 22px;
 }
 
 .passBtn {
   color: $black;
-  background: lighten($red, 10%);
-  border: 1px solid $black2;
+  text-decoration: underline;
+  border: none;
 }

@@ -53,7 +53,7 @@ class MyApp extends App {
   }
 
   render() {
-    const { Component, pageProps, store, isServer, coupon } = this.props;
+    const { Component, pageProps, store, isServer } = this.props;
     return (
       <Provider store={store} >
         <Helmet title="Delta | Hire an elite front team on-demand" description="When you need to get to your next business milestone quickly, hiring Senior Developers, PMs & Designers is not an simple operation.
@@ -63,16 +63,14 @@ class MyApp extends App {
           <NavBar />
           <Component {...pageProps} isServer={isServer} />
           <SectionIndicator />
-          {coupon.get('active') ? <Coupon /> : null}
+          <Coupon />
         </div >
       </Provider >
     );
   }
 }
 
-const mapStateToProps = state => ({
-  coupon: referrer.selectors.coupon(state),
-});
+const mapStateToProps = state => ({}); // eslint-disable-line
 
 const mapDispatchToProps = dispatch => ({
   setDomain: () => dispatch(referrer.actions.setDomain()),

@@ -7,7 +7,7 @@
   justify-content: space-between;
   padding: 0 $mobile-gutter;
   box-sizing: border-box;
-  margin: $mobile-vertical-spacer-2 0;
+  margin: $mobile-vertical-spacer-2 0 #{$mobile-vertical-spacer-2 * 2};
 
   @include media('>tablet') {
     margin: 0 0 $desktop-vertical-spacer-2;

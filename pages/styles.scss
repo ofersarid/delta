@@ -48,6 +48,12 @@
     }
   }
 
+  h4 {
+    font-family: 'Exo 2', sans-serif;
+    //font-weight: 500;
+    color: $red;
+  }
+
   a {
     color: $blue;
     cursor: url('/images/cursor-pointer.svg'), auto;
