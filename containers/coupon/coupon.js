@@ -10,7 +10,7 @@ const Coupon = ({ coupon, claim, renounce, expiration, referrer }) => {
   const [peep, setPeep] = useState(false);
   const [reveal, setReveal] = useState(false);
   const [hide, setHide] = useState(false);
-  const [putBack, setputBack] = useState(false);
+  const [putBack, setPutBack] = useState(false);
   const [ref, hasClickedOutside] = useClickOutside();
 
   const shouldRender = coupon.get('active') &&
@@ -28,17 +28,17 @@ const Coupon = ({ coupon, claim, renounce, expiration, referrer }) => {
 
   useEffect(() => {
     if (hasClickedOutside && reveal) {
-      setputBack(true);
+      setPutBack(true);
       setReveal(false);
     }
   });
 
   const toggleReveal = () => {
     if (reveal) {
-      setputBack(true);
+      setPutBack(true);
       setReveal(false);
     } else {
-      setputBack(false);
+      setPutBack(false);
       setReveal(true);
     }
   };

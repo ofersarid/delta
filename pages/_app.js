@@ -41,8 +41,8 @@ class MyApp extends App {
     GA.logPageView();
     GA.viewedPage();
     this.linkedInTracker();
-    setDomain();
     setCoupon();
+    setDomain();
   }
 
   linkedInTracker() {

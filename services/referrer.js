@@ -27,11 +27,10 @@ const reducer = (state = fromJS({
     case 'REFERRER:SET_DOMAIN':
       return state.set('domain', action.domain);
     case 'REFERRER:SET_COUPON':
-      const coupon = COUPONS[action.id];
-      coupon.id = action.id;
-      const _fromJS = fromJS;
+      const coupon = action.id ? COUPONS[action.id] : null;
       if (coupon) {
-        return state.mergeIn(['coupon'], _fromJS(coupon));
+        coupon.id = action.id;
+        return state.mergeIn(['coupon'], fromJS(coupon));
       } else {
         return state;
       }
@@ -47,7 +46,7 @@ const actions = {
   renounceCoupon: () => dispatch => dispatch({
     type: 'REFERRER:RENOUNCE_COUPON'
   }),
-  setDomain: domain => dispatch => {
+  setDomain: () => dispatch => {
     const domain = document.referrer.split('/')[2];
     dispatch({
       type: 'REFERRER:SET_DOMAIN',

@@ -73,7 +73,7 @@ class Contact extends PureComponent {
           <h1 >Get In Touch
             {(coupon.get('claimed') && coupon.get('active')) ? (
               <div className={styles.coupon} >
-                {coupon.get('header')}
+                `CLAIMED - {coupon.get('header')}`
               </div >) : null
             }
           </h1 >
