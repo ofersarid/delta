@@ -6,7 +6,7 @@ import { useClickOutside } from 'react-click-outside-hook';
 import { referrer } from '../../services';
 import styles from './styles.scss';
 
-const Coupon = ({ coupon, claim, renounce, expiration, domain }) => {
+const Coupon = ({ coupon, claim, renounce, expiration, referrer }) => {
   const [peep, setPeep] = useState(false);
   const [reveal, setReveal] = useState(false);
   const [hide, setHide] = useState(false);
@@ -16,7 +16,7 @@ const Coupon = ({ coupon, claim, renounce, expiration, domain }) => {
   const shouldRender = coupon.get('active') &&
     expiration > new Date() &&
     (
-      domain === coupon.get('referrer') ||
+      referrer === coupon.get('referrer') ||
       window.location.host.match(/^delta-git|^localhost/)
     );
 
@@ -84,7 +84,7 @@ const Coupon = ({ coupon, claim, renounce, expiration, domain }) => {
 const mapStateToProps = state => ({
   coupon: referrer.selectors.coupon(state),
   expiration: referrer.selectors.coupon(state).get('expiration'),
-  domain: referrer.selectors.domain(state)
+  referrer: referrer.selectors.domain(state)
 });
 
 const mapDispatchToProps = dispatch => ({
