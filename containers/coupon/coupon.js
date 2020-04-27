@@ -17,8 +17,10 @@ const Coupon = ({ coupon, claim, renounce, expiration, referrer }) => {
     expiration > new Date() &&
     (
       referrer === coupon.get('referrer') ||
-      window.location.host.match(/^delta-git|^localhost/)
+      Boolean(window.location.host.match(/^delta-git|^localhost/))
     );
+
+  console.log('should render coupon: ', shouldRender);
 
   useEffect(() => {
     setTimeout(() => {
