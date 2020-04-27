@@ -20,8 +20,6 @@ const Coupon = ({ coupon, claim, renounce, expiration, referrer }) => {
       Boolean(window.location.host.match(/^delta-git|^localhost/))
     );
 
-  console.log('should render coupon: ', shouldRender);
-
   useEffect(() => {
     setTimeout(() => {
       setPeep(!coupon.get('claimed') && !coupon.get('renounced'));
