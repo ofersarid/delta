@@ -20,6 +20,7 @@
     "auto-bind": "^3.0.0",
     "classnames": "^2.2.6",
     "emailjs-com": "^2.4.1",
+    "firebase": "^7.14.2",
     "immutable": "^4.0.0-rc.12",
     "lodash": "^4.17.15",
     "next": "^9.2.2",

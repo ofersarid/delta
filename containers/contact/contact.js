@@ -8,7 +8,7 @@ import { ScLinkedin } from '@styled-icons/evil/ScLinkedin';
 // import PropTypes from 'prop-types';
 import styles from './styles.scss';
 import { validateEmail } from '../../utils';
-import { emailJS, GA, referrer, section } from '../../services';
+import { emailJS, GA, coupon, section } from '../../services';
 
 class Contact extends PureComponent {
   constructor(props) {
@@ -19,8 +19,14 @@ class Contact extends PureComponent {
       email: '',
       company: '',
       sent: false,
+      couponId: null,
       working: false
     };
+  }
+
+  componentDidMount() {
+    const searchParams = new URLSearchParams(window.location.search);
+    this.setState({ couponId: searchParams.get('coupon') });
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
@@ -42,12 +48,12 @@ class Contact extends PureComponent {
 
   async send() {
     const { name, email, company, sent } = this.state;
-    const { coupon } = this.props;
+    const { claimed } = this.props;
     if (sent) return;
     this.setState({ working: true });
     GA.send();
     let resp;
-    if (coupon.get('active') && coupon.get('claimed')) {
+    if (claimed) {
       resp = await emailJS.sendWithCoupon(name, email, company, coupon);
     } else {
       resp = await emailJS.send(name, email, company);
@@ -64,14 +70,15 @@ class Contact extends PureComponent {
   }
 
   render() {
-    const { name, email, company, working, sent } = this.state;
-    const { coupon } = this.props;
+    const { name, email, company, working, sent, couponId } = this.state;
+    const { coupons, claimed } = this.props;
+    const coupon = coupons.find(c => c.get('id') === couponId);
     const btnPosition = { transform: `translateX(${working ? -100 : sent ? -200 : 0}%)` };
     return (
       <div className={cx(styles.contact)} id="contactSection" >
         <div className={styles.left} >
           <h1 >Get In Touch
-            {(coupon.get('claimed') && coupon.get('active')) ? (
+            {coupon && claimed ? (
               <div className={styles.coupon} >
                 CLAIMED - {coupon.get('header')}
               </div >) : null
@@ -126,7 +133,8 @@ class Contact extends PureComponent {
 Contact.propTypes = {};
 
 const mapStateToProps = state => ({
-  coupon: referrer.selectors.coupon(state)
+  claimed: coupon.selectors.claimed(state),
+  coupons: coupon.selectors.coupons(state)
 });
 
 const mapDispatchToProps = dispatch => ({}); // eslint-disable-line

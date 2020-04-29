@@ -3,9 +3,9 @@ import cx from 'classnames';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import styles from './styles.scss';
-import { referrer } from '../../services';
+import { coupon } from '../../services';
 
-const NavBar = ({ coupon }) => {
+const NavBar = ({ claimed }) => {
   function scrollToContact() {
     document.getElementById('contactSection').scrollIntoView({
       behavior: 'smooth',
@@ -14,10 +14,10 @@ const NavBar = ({ coupon }) => {
   }
 
   useEffect(() => {
-    if (coupon.get('claimed')) {
+    if (claimed) {
       scrollToContact();
     }
-  }, [coupon.get('claimed')]);
+  }, [claimed]);
 
   return (
     <Fragment >
@@ -32,7 +32,7 @@ const NavBar = ({ coupon }) => {
 NavBar.propTypes = {};
 
 const mapStateToProps = state => ({
-  coupon: referrer.selectors.coupon(state)
+  claimed: coupon.selectors.claimed(state)
 });
 
 const mapDispatchToProps = dispatch => ({}); // eslint-disable-line

@@ -3,28 +3,40 @@ import cx from 'classnames';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { useClickOutside } from 'react-click-outside-hook';
-import { referrer } from '../../services';
+import { coupon } from '../../services';
 import styles from './styles.scss';
 
-const Coupon = ({ coupon, claim, renounce, expiration, referrer }) => {
+let timeout = null;
+
+const Coupon = ({ coupons, claim, renounce, referrer, setReferrer }) => {
   const [peep, setPeep] = useState(false);
   const [reveal, setReveal] = useState(false);
   const [hide, setHide] = useState(false);
   const [putBack, setPutBack] = useState(false);
+  const [couponId, setCouponId] = useState(null);
   const [ref, hasClickedOutside] = useClickOutside();
 
-  const shouldRender = coupon.get('active') &&
-    expiration > new Date() &&
+  const coupon = coupons.find(c => c.get('id') === couponId);
+
+  const shouldRender = coupon ? (
+    new Date(coupon.get('expiration').toJS().seconds * 1000) > new Date() &&
     (
       referrer === coupon.get('referrer') ||
       Boolean(window.location.host.match(/^delta-git|^localhost/))
-    );
+    )) : false;
 
   useEffect(() => {
-    setTimeout(() => {
+    const searchParams = new URLSearchParams(window.location.search);
+    setCouponId(searchParams.get('coupon'));
+    setReferrer();
+  }, []);
+
+  useEffect(() => {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => {
       setPeep(!coupon.get('claimed') && !coupon.get('renounced'));
     }, 2000);
-  }, []);
+  }, [couponId]);
 
   useEffect(() => {
     if (hasClickedOutside && reveal) {
@@ -57,7 +69,11 @@ const Coupon = ({ coupon, claim, renounce, expiration, referrer }) => {
     renounce();
   };
 
-  return shouldRender ? (
+  if (!coupon || !shouldRender) {
+    return null;
+  }
+
+  return (
     <div
       className={cx(styles.coupon, {
         [styles.peep]: peep,
@@ -78,18 +94,18 @@ const Coupon = ({ coupon, claim, renounce, expiration, referrer }) => {
         <button className={styles.passBtn} onClick={renounceClickHandler} >No Thanks</button >
       </section >
     </div >
-  ) : null;
+  );
 };
 
 const mapStateToProps = state => ({
-  coupon: referrer.selectors.coupon(state),
-  expiration: referrer.selectors.coupon(state).get('expiration'),
-  referrer: referrer.selectors.domain(state)
+  coupons: coupon.selectors.coupons(state),
+  referrer: coupon.selectors.referrer(state)
 });
 
 const mapDispatchToProps = dispatch => ({
-  claim: () => dispatch(referrer.actions.claimCoupon()),
-  renounce: () => dispatch(referrer.actions.renounceCoupon())
+  claim: () => dispatch(coupon.actions.claimCoupon()),
+  renounce: () => dispatch(coupon.actions.renounceCoupon()),
+  setReferrer: () => dispatch(coupon.actions.setReferrer()),
 });
 
 export default compose(

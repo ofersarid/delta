@@ -7,13 +7,24 @@ import withRedux from 'next-redux-wrapper';
 import { fromJS } from 'immutable';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunkMiddleware from 'redux-thunk';
-import reactor from 'reactor-connect';
+// import reactor from 'reactor-connect';
+import * as firebase from 'firebase';
 import combined from '../combined-reducers';
-import { device, GA, referrer } from '../services';
+import { device, GA, coupon } from '../services';
 import { Helmet } from '../shared';
-import reactorConfig from '../reactor.config';
 import { NavBar, SectionIndicator, Coupon } from '../containers';
 import styles from './styles.scss';
+
+if (!firebase.apps.length) {
+  firebase.initializeApp({
+    apiKey: 'AIzaSyCVoJ1fNik-brXSirPwXfzEzpK4HDJyIdE',
+    authDomain: 'reactor-dam.firebaseapp.com',
+    databaseURL: 'https://reactor-dam.firebaseio.com',
+    projectId: 'reactor-dam',
+    storageBucket: 'reactor-dam.appspot.com',
+    messagingSenderId: '198256799515'
+  });
+}
 
 const makeStore = (initialState, options) => {
   const store = createStore(combined, initialState, composeWithDevTools(applyMiddleware(thunkMiddleware)));
@@ -22,12 +33,7 @@ const makeStore = (initialState, options) => {
 
 class MyApp extends App {
   static async getInitialProps({ ctx }) {
-    if (reactorConfig.userId) {
-      const reactorReady = ctx.store.getState().getIn(['reactor', 'ready']);
-      if (!reactorReady) {
-        await ctx.store.dispatch(reactor.actions.fetch(reactorConfig.userId));
-      }
-    }
+    await ctx.store.dispatch(coupon.actions.getCoupons());
     if (ctx.req) {
       // mimic device on server
       ctx.store.dispatch(device.actions.ssr(ctx.req.headers['user-agent']));
@@ -36,13 +42,10 @@ class MyApp extends App {
   }
 
   componentDidMount() {
-    const { setDomain, setCoupon } = this.props;
     GA.init();
     GA.logPageView();
     GA.viewedPage();
     this.linkedInTracker();
-    setCoupon();
-    setDomain();
   }
 
   linkedInTracker() {
@@ -72,10 +75,7 @@ class MyApp extends App {
 
 const mapStateToProps = state => ({}); // eslint-disable-line
 
-const mapDispatchToProps = dispatch => ({
-  setDomain: () => dispatch(referrer.actions.setDomain()),
-  setCoupon: () => dispatch(referrer.actions.setCoupon()),
-});
+const mapDispatchToProps = dispatch => ({}); // eslint-disable-line
 
 export default compose(
   withRedux(makeStore, {
