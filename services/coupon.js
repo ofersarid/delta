@@ -1,5 +1,4 @@
 import { fromJS } from 'immutable';
-import { getCollection } from '../reator-utils';
 
 const reducer = (state = fromJS({
   referrer: '',
@@ -33,13 +32,6 @@ const actions = {
     dispatch({
       type: 'REFERRER:SET_REFERRER',
       domain
-    });
-  },
-  getCoupons: () => async dispatch => {
-    const data = await getCollection('oDTLBA1YbbmT6kchgGEc');
-    dispatch({
-      type: 'REFERRER:SET_COUPONS',
-      data
     });
   },
   setCoupons: data => dispatch => {

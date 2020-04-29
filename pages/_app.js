@@ -8,24 +8,14 @@ import { fromJS } from 'immutable';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunkMiddleware from 'redux-thunk';
 // import reactor from 'reactor-connect';
-import * as firebase from 'firebase';
 import combined from '../combined-reducers';
 import { device, GA, coupon } from '../services';
 import { Helmet } from '../shared';
 import { NavBar, SectionIndicator, Coupon } from '../containers';
-import { getCollection, subscribeToCollection } from '../reator-utils';
+import reactor from '../reator-utils';
 import styles from './styles.scss';
 
-if (!firebase.apps.length) {
-  firebase.initializeApp({
-    apiKey: 'AIzaSyCVoJ1fNik-brXSirPwXfzEzpK4HDJyIdE',
-    authDomain: 'reactor-dam.firebaseapp.com',
-    databaseURL: 'https://reactor-dam.firebaseio.com',
-    projectId: 'reactor-dam',
-    storageBucket: 'reactor-dam.appspot.com',
-    messagingSenderId: '198256799515'
-  });
-}
+reactor.init();
 
 const makeStore = (initialState, options) => {
   const store = createStore(combined, initialState, composeWithDevTools(applyMiddleware(thunkMiddleware)));
@@ -34,7 +24,7 @@ const makeStore = (initialState, options) => {
 
 class MyApp extends App {
   static async getInitialProps({ ctx }) {
-    const couponsData = await getCollection('oDTLBA1YbbmT6kchgGEc');
+    const couponsData = await reactor.getCollection('oDTLBA1YbbmT6kchgGEc');
     ctx.store.dispatch(coupon.actions.setCoupons(couponsData));
     if (ctx.req) {
       // mimic device on server
@@ -48,7 +38,7 @@ class MyApp extends App {
     GA.logPageView();
     GA.viewedPage();
     this.linkedInTracker();
-    subscribeToCollection('oDTLBA1YbbmT6kchgGEc', this.props.setCoupons);
+    reactor.subscribeToCollection('oDTLBA1YbbmT6kchgGEc', this.props.setCoupons);
   }
 
   linkedInTracker() {
