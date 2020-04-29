@@ -42,6 +42,12 @@ const actions = {
       data
     });
   },
+  setCoupons: data => dispatch => {
+    dispatch({
+      type: 'REFERRER:SET_COUPONS',
+      data
+    });
+  },
 };
 
 const selectors = {

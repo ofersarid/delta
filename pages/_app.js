@@ -13,6 +13,7 @@ import combined from '../combined-reducers';
 import { device, GA, coupon } from '../services';
 import { Helmet } from '../shared';
 import { NavBar, SectionIndicator, Coupon } from '../containers';
+import { getCollection, subscribeToCollection } from '../reator-utils';
 import styles from './styles.scss';
 
 if (!firebase.apps.length) {
@@ -33,7 +34,8 @@ const makeStore = (initialState, options) => {
 
 class MyApp extends App {
   static async getInitialProps({ ctx }) {
-    await ctx.store.dispatch(coupon.actions.getCoupons());
+    const couponsData = await getCollection('oDTLBA1YbbmT6kchgGEc');
+    ctx.store.dispatch(coupon.actions.setCoupons(couponsData));
     if (ctx.req) {
       // mimic device on server
       ctx.store.dispatch(device.actions.ssr(ctx.req.headers['user-agent']));
@@ -46,6 +48,7 @@ class MyApp extends App {
     GA.logPageView();
     GA.viewedPage();
     this.linkedInTracker();
+    subscribeToCollection('oDTLBA1YbbmT6kchgGEc', this.props.setCoupons);
   }
 
   linkedInTracker() {
@@ -75,7 +78,9 @@ class MyApp extends App {
 
 const mapStateToProps = state => ({}); // eslint-disable-line
 
-const mapDispatchToProps = dispatch => ({}); // eslint-disable-line
+const mapDispatchToProps = dispatch => ({
+  setCoupons: data => dispatch(coupon.actions.setCoupons(data))
+});
 
 export default compose(
   withRedux(makeStore, {

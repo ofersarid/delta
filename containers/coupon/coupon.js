@@ -19,7 +19,7 @@ const Coupon = ({ coupons, claim, renounce, referrer, setReferrer }) => {
   const coupon = coupons.find(c => c.get('id') === couponId);
 
   const shouldRender = coupon ? (
-    new Date(coupon.get('expiration').toJS().seconds * 1000) > new Date() &&
+    new Date(coupon.get('expiration').seconds * 1000) > new Date() &&
     (
       referrer === coupon.get('referrer') ||
       Boolean(window.location.host.match(/^delta-git|^localhost/))
@@ -105,7 +105,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   claim: () => dispatch(coupon.actions.claimCoupon()),
   renounce: () => dispatch(coupon.actions.renounceCoupon()),
-  setReferrer: () => dispatch(coupon.actions.setReferrer()),
+  setReferrer: () => dispatch(coupon.actions.setReferrer())
 });
 
 export default compose(
