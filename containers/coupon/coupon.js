@@ -3,6 +3,7 @@ import cx from 'classnames';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { useClickOutside } from 'react-click-outside-hook';
+import { DynamicFontBox } from '../../shared';
 import { coupon } from '../../services';
 import styles from './styles.scss';
 
@@ -32,10 +33,12 @@ const Coupon = ({ coupons, claim, renounce, referrer, setReferrer }) => {
   }, []);
 
   useEffect(() => {
-    clearTimeout(timeout);
-    timeout = setTimeout(() => {
-      setPeep(!coupon.get('claimed') && !coupon.get('renounced'));
-    }, 2000);
+    if (coupon) {
+      clearTimeout(timeout);
+      timeout = setTimeout(() => {
+        setPeep(!coupon.get('claimed') && !coupon.get('renounced'));
+      }, 2000);
+    }
   }, [couponId]);
 
   useEffect(() => {
@@ -86,7 +89,9 @@ const Coupon = ({ coupons, claim, renounce, referrer, setReferrer }) => {
     >
       <img src="/images/coupon.svg" />
       <section className={styles.top} >
-        <h4 >{coupon.get('header')}</h4 >
+        <DynamicFontBox className={styles.dynamicFontBox} >
+          <h4 >{coupon.get('header')}</h4 >
+        </DynamicFontBox>
         <p >{coupon.get('paragraph')}</p >
       </section >
       <section className={styles.bottom} >

@@ -144,7 +144,6 @@
 
   h4 {
     font-size: 25px;
-    margin: 0 0 10px 0;
 
     @include media('>phone') {
       font-size: 25px;
@@ -174,6 +173,20 @@
 
     &.top {
       //transform: translateY(-10px);
+
+      .dynamicFontBox {
+        height: 50px;
+        margin: 0 0 10px 0;
+
+        @include media('>phone') {
+          margin: 0 0 10px 0;
+        }
+
+        h4 {
+          font-size: 25px;
+          margin: 0;
+        }
+      }
     }
 
     &.bottom {
