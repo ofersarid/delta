@@ -19,8 +19,6 @@ const Coupon = ({ coupons, claim, renounce, referrer, setReferrer }) => {
 
   const coupon = coupons.find(c => c.get('id') === couponId);
 
-  // todo - remove this before pull request
-  debugger; // eslint-disable-line
   const shouldRender = coupon ? new Date(coupon.get('expiration').seconds * 1000) > new Date() : false;
 
   useEffect(() => {
