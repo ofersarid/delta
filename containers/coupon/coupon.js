@@ -95,7 +95,7 @@ const Coupon = ({ coupons, claim, renounce, referrer, setReferrer }) => {
         <p >{coupon.get('paragraph')}</p >
       </section >
       <section className={styles.bottom} >
-        <button className={styles.claimBtn} onClick={claimClickHandler} >Claim Now</button >
+        <button className={styles.claimBtn} onClick={claimClickHandler} >{coupon.get('actionTxt')}</button >
         <button className={styles.passBtn} onClick={renounceClickHandler} >No Thanks</button >
       </section >
     </div >
