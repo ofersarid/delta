@@ -22,11 +22,7 @@ const Coupon = ({ coupons, claim, renounce, referrer, setReferrer }) => {
   // todo - remove this before pull request
   debugger; // eslint-disable-line
   const shouldRender = coupon ? (
-    new Date(coupon.get('expiration').seconds * 1000) > new Date() &&
-    (
-      referrer === coupon.get('referrer') ||
-      Boolean(window.location.host.match(/^delta-git|^localhost/))
-    )) : false;
+    new Date(coupon.get('expiration').seconds * 1000) > new Date() && Boolean(window.location.host.match(/^delta-git|^localhost/))) : false;
 
   useEffect(() => {
     const searchParams = new URLSearchParams(window.location.search);
