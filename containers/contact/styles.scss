@@ -136,6 +136,7 @@
     border-color: $blue;
     width: 150px;
     padding: 0;
+    position: relative;
 
     &.disable {
       opacity: 0.25;
@@ -146,6 +147,20 @@
 
     &.gotIt {
       border-color: rgba($blue, 0.3);
+    }
+
+    .error {
+      color: $red;
+      @extend %popIn;
+      position: absolute;
+      left: 0;
+      top: calc(100% + 20px);
+      white-space: nowrap;
+
+      @include media('>tablet') {
+        left: calc(100% + 20px);
+        top: unset;
+      }
     }
 
     ul {

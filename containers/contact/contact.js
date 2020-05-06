@@ -20,6 +20,7 @@ class Contact extends PureComponent {
       company: '',
       sent: false,
       couponId: null,
+      error: false,
       working: false
     };
   }
@@ -51,16 +52,18 @@ class Contact extends PureComponent {
     const { claimed } = this.props;
     if (sent) return;
     this.setState({ working: true });
-    GA.send();
-    let resp;
-    if (claimed) {
-      resp = await emailJS.sendWithCoupon(name, email, company, coupon);
-    } else {
-      resp = await emailJS.send(name, email, company);
-    }
-    this.setState({ working: false });
-    if (resp.status === 200) {
+    try {
+      GA.send();
+      if (claimed) {
+        await emailJS.sendWithCoupon(name, email, company, coupon);
+      } else {
+        await emailJS.send(name, email, company);
+      }
       this.setState({ sent: true });
+      this.setState({ working: false });
+    } catch (err) {
+      this.setState({ working: false });
+      this.setState({ error: true });
     }
   }
 
@@ -70,7 +73,7 @@ class Contact extends PureComponent {
   }
 
   render() {
-    const { name, email, company, working, sent, couponId } = this.state;
+    const { name, email, company, working, sent, couponId, error } = this.state;
     const { coupons, claimed } = this.props;
     const coupon = coupons.find(c => c.get('id') === couponId);
     const btnPosition = { transform: `translateX(${working ? -100 : sent ? -200 : 0}%)` };
@@ -105,13 +108,14 @@ class Contact extends PureComponent {
           <section className={styles.btns} >
             <button className={cx({
               [styles.disable]: !this.isValid(),
-              [styles.gotIt]: sent
+              [styles.gotIt]: sent,
             })} onClick={this.send} >
               <ul >
                 <li style={btnPosition} >Send Details</li >
                 <li style={btnPosition} >Sending...</li >
                 <li style={btnPosition} >Got It!</li >
               </ul >
+              {error && <div className={styles.error} >Oops - service unavailable</div >}
             </button >
             <Whatsapp onClick={this.chat} />
           </section >
