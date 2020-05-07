@@ -15,9 +15,9 @@ class Contact extends PureComponent {
     super(props);
     autoBind(this);
     this.state = {
-      name: 'ofer',
-      email: 'ofersarid@gmail.com',
-      company: 'delta',
+      name: '',
+      email: '',
+      company: '',
       sent: false,
       couponId: null,
       error: false,
