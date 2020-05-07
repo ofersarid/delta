@@ -15,9 +15,9 @@ class Contact extends PureComponent {
     super(props);
     autoBind(this);
     this.state = {
-      name: '',
-      email: '',
-      company: '',
+      name: 'ofer',
+      email: 'ofersarid@gmail.com',
+      company: 'delta',
       sent: false,
       couponId: null,
       error: false,
@@ -48,14 +48,16 @@ class Contact extends PureComponent {
   }
 
   async send() {
-    const { name, email, company, sent } = this.state;
+    const { coupons } = this.props;
+    const { name, email, company, sent, couponId } = this.state;
     const { claimed } = this.props;
     if (sent) return;
     this.setState({ working: true });
     try {
       GA.send();
       if (claimed) {
-        await emailJS.sendWithCoupon(name, email, company, coupon);
+        const _coupon = coupons.find(c => c.get('id') === couponId);
+        await emailJS.sendWithCoupon(name, email, company, _coupon);
       } else {
         await emailJS.send(name, email, company);
       }
@@ -75,15 +77,15 @@ class Contact extends PureComponent {
   render() {
     const { name, email, company, working, sent, couponId, error } = this.state;
     const { coupons, claimed } = this.props;
-    const coupon = coupons.find(c => c.get('id') === couponId);
+    const _coupon = coupons.find(c => c.get('id') === couponId);
     const btnPosition = { transform: `translateX(${working ? -100 : sent ? -200 : 0}%)` };
     return (
       <div className={cx(styles.contact)} id="contactSection" >
         <div className={styles.left} >
           <h1 >Get In Touch
-            {coupon && claimed ? (
+            {_coupon && claimed ? (
               <div className={styles.coupon} >
-                CLAIMED - {coupon.get('header')}
+                CLAIMED - {_coupon.get('header')}
               </div >) : null
             }
           </h1 >
