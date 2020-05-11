@@ -55,12 +55,10 @@ class MyApp extends App {
   }
 
   render() {
-    const { Component, pageProps, store, isServer } = this.props;
+    const { Component, pageProps, store, isServer, homeData } = this.props;
     return (
       <Provider store={store} >
-        <Helmet title="Delta | Hire an elite front team on-demand" description="When you need to get to your next business milestone quickly, hiring Senior Developers, PMs & Designers is not an simple operation.
-        Delta is an experienced team of advanced technologists who love working together - and we are ready to drive
-        your projects forward." imageForSocial="/images/delta-logo-social-square.png" />
+        <Helmet title={homeData.get('tabTitle')} description={homeData.get('metaDescription')} imageForSocial="/images/delta-logo-social-square.png" />
         <div className={styles.app} >
           <NavBar />
           <Component {...pageProps} isServer={isServer} />
@@ -72,7 +70,9 @@ class MyApp extends App {
   }
 }
 
-const mapStateToProps = state => ({}); // eslint-disable-line
+const mapStateToProps = state => ({
+  homeData: home.selectors.data(state)
+});
 
 const mapDispatchToProps = dispatch => ({
   setCoupons: data => dispatch(coupon.actions.setCoupons(data)),
