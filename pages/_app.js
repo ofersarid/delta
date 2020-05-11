@@ -9,7 +9,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import thunkMiddleware from 'redux-thunk';
 // import reactor from 'reactor-connect';
 import combined from '../combined-reducers';
-import { device, GA, coupon } from '../services';
+import { device, GA, coupon, home, crew } from '../services';
 import { Helmet } from '../shared';
 import { NavBar, SectionIndicator, Coupon } from '../containers';
 import reactor from '../reator-utils';
@@ -25,7 +25,11 @@ const makeStore = (initialState, options) => {
 class MyApp extends App {
   static async getInitialProps({ ctx }) {
     const couponsData = await reactor.getCollection('oDTLBA1YbbmT6kchgGEc');
+    const homePageData = await reactor.getPage('Wm27z1OYTccUlUlkSMBS');
+    const crewData = await reactor.getCollection('wwA1VyCIcWOIJnpZhaR4', { preLoad: ['pic', 'picMobile', 'icon'] });
     ctx.store.dispatch(coupon.actions.setCoupons(couponsData));
+    ctx.store.dispatch(home.actions.update(homePageData));
+    ctx.store.dispatch(crew.actions.update(crewData));
     if (ctx.req) {
       // mimic device on server
       ctx.store.dispatch(device.actions.ssr(ctx.req.headers['user-agent']));
@@ -38,7 +42,9 @@ class MyApp extends App {
     GA.logPageView();
     GA.viewedPage();
     this.linkedInTracker();
+    reactor.subscribeToCollection('wwA1VyCIcWOIJnpZhaR4', this.props.updateCrew, { preLoad: ['pic', 'picMobile', 'icon'] });
     reactor.subscribeToCollection('oDTLBA1YbbmT6kchgGEc', this.props.setCoupons);
+    reactor.subscribeToPage('Wm27z1OYTccUlUlkSMBS', this.props.updateHomePage);
   }
 
   linkedInTracker() {
@@ -69,7 +75,9 @@ class MyApp extends App {
 const mapStateToProps = state => ({}); // eslint-disable-line
 
 const mapDispatchToProps = dispatch => ({
-  setCoupons: data => dispatch(coupon.actions.setCoupons(data))
+  setCoupons: data => dispatch(coupon.actions.setCoupons(data)),
+  updateHomePage: data => dispatch(home.actions.update(data)),
+  updateCrew: data => dispatch(crew.actions.update(data))
 });
 
 export default compose(

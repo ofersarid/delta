@@ -1,10 +1,18 @@
 import * as firebase from 'firebase';
 
-const getStructuredData = (order, querySnapshot) => {
+function preloadImage(url) {
+  const img = new Image();
+  img.src = url;
+}
+
+const getStructuredData = (order, querySnapshot, preLoad = []) => {
   const structuredData = [];
   order.forEach(itemId => {
     const item = querySnapshot.docs.find(itm => (itm.id === itemId)).data();
     if (item.published === 'Publish') {
+      preLoad.forEach(key => {
+        preloadImage(item[key]);
+      });
       const structuredItem = Object.assign({}, { id: itemId }, item);
       structuredData.push(structuredItem);
     }
@@ -12,15 +20,25 @@ const getStructuredData = (order, querySnapshot) => {
   return structuredData;
 };
 
-const getCollection = async (collectionId, cb) => {
+const getCollection = async (collectionId, cb, options = {
+  preLoad: []
+}) => {
   const ref = firebase.firestore().collection('collections').doc(collectionId);
   const collection = await ref.get();
   const order = collection.data().order.split(' | ');
   const items = await ref.collection('data').get();
-  return getStructuredData(order, items);
+  return getStructuredData(order, items, options.preLoad);
 };
 
-const subscribeToCollection = async (collectionId, cb) => {
+const getPage = async (pageId, cb) => {
+  const ref = firebase.firestore().collection('pages').doc(pageId);
+  const page = await ref.get();
+  return page.data().data;
+};
+
+const subscribeToCollection = async (collectionId, cb, options = {
+  preLoad: []
+}) => {
   let order = [];
   let querySnapshot = [];
   const ref = firebase.firestore().collection('collections').doc(collectionId);
@@ -28,15 +46,23 @@ const subscribeToCollection = async (collectionId, cb) => {
   ref.onSnapshot(doc => {
     order = doc.data().order.split(' | ');
     if (querySnapshot.length) {
-      cb(getStructuredData(order, querySnapshot));
+      cb(getStructuredData(order, querySnapshot, options.preLoad));
     }
   });
 
   ref.collection('data').onSnapshot(_querySnapshot => {
     querySnapshot = _querySnapshot;
     if (order.length) {
-      cb(getStructuredData(order, querySnapshot));
+      cb(getStructuredData(order, querySnapshot, options.preLoad));
     }
+  });
+};
+
+const subscribeToPage = async (pageId, cb) => {
+  const ref = firebase.firestore().collection('pages').doc(pageId);
+
+  ref.onSnapshot(doc => {
+    cb(doc.data().data);
   });
 };
 
@@ -56,5 +82,7 @@ const init = () => {
 export default {
   init,
   getCollection,
-  subscribeToCollection
+  getPage,
+  subscribeToCollection,
+  subscribeToPage
 };
