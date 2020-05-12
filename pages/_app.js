@@ -55,7 +55,7 @@ class MyApp extends App {
   }
 
   render() {
-    const { Component, pageProps, store, isServer, homeData } = this.props;
+    const { Component, pageProps, store, isServer } = this.props;
     return (
       <Provider store={store} >
         <Helmet title="Delta | Hire an elite front team on-demand" description="When you need to get to your next business milestone quickly, hiring Senior Developers, PMs & Designers is not an simple operation. Delta is an experienced team of advanced technologists who love working together - and we are ready to drive your projects forward." imageForSocial="/images/delta-logo-social-square.png" />
