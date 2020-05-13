@@ -1,10 +1,12 @@
 import React, { PureComponent } from 'react';
 import cx from 'classnames';
 import { compose } from 'redux';
+import LinkedInTag from 'react-linkedin-insight';
 import { connect } from 'react-redux';
 import autoBind from 'auto-bind';
 import { Whatsapp } from '@styled-icons/remix-fill/Whatsapp';
 import { ScLinkedin } from '@styled-icons/evil/ScLinkedin';
+import conversion from '../../linkedin-marketing';
 // import PropTypes from 'prop-types';
 import styles from './styles.scss';
 import { validateEmail } from '../../utils';
@@ -56,6 +58,7 @@ class Contact extends PureComponent {
     try {
       GA.send();
       if (claimed) {
+        LinkedInTag.track(conversion.linkedIn.sendDetailsWithCoupon.id);
         const _coupon = coupons.find(c => c.get('id') === couponId);
         await emailJS.sendWithCoupon(name, email, company, _coupon);
       } else {
