@@ -45,7 +45,6 @@ class Crew extends PureComponent {
     const { isMobile, crew } = this.props;
     // const isPortrait = deviceOrientation === 'portrait';
     const { index } = this.state;
-    console.log('crew: ', crew.toJS());
     return (
       <div className={styles.crew} >
         <h1 >THE CREW</h1 >
