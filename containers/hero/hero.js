@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { device, section, home } from '../../services';
 import styles from './styles.scss';
 
-const Hero = ({ isMobile, data }) => data ? (
+const Hero = ({ isMobile, data }) => (
   <section className={styles.hero} >
     <div className={styles.left} >
       <h1 >{data.get('heroTitle')}</h1 >
@@ -20,7 +20,7 @@ const Hero = ({ isMobile, data }) => data ? (
       <img src={`/images/hero${isMobile ? '' : '-desktop'}.png`} alt="team" />
     </div >
   </section >
-) : null;
+);
 
 Hero.propTypes = {
   isMobile: PropTypes.bool.isRequired
