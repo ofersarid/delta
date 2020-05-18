@@ -1,6 +1,6 @@
 import { fromJS } from 'immutable';
 
-const reducer = (state = fromJS({}), action) => {
+const reducer = (state = null, action) => {
   switch (action.type) {
     case 'HOME:UPDATE':
       return fromJS(action.data);
