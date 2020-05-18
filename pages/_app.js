@@ -62,7 +62,7 @@ class MyApp extends App {
     const { Component, pageProps, store, homeData } = this.props;
     return (
       <Provider store={store} >
-        <Helmet title={homeData ? homeData.get('tabTitle') : undefined} description={homeData ? homeData.get('metaDescription') : undefined} imageForSocial="/images/delta-logo-social-square.png" />
+        <Helmet title={homeData.get('tabTitle')} description={homeData.get('metaDescription')} imageForSocial="/images/delta-logo-social-square.png" />
         <div className={styles.app} >
           <NavBar />
           <Component {...pageProps} />
@@ -75,7 +75,7 @@ class MyApp extends App {
 }
 
 const mapStateToProps = state => ({
-  homeData: home.selectors.data(state),
+  homeData: home.selectors.data(state)
 });
 
 const mapDispatchToProps = dispatch => ({
