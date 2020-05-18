@@ -7,10 +7,12 @@ import { coupon } from '../../services';
 
 const NavBar = ({ claimed }) => {
   function scrollToContact() {
-    document.getElementById('contactSection').scrollIntoView({
-      behavior: 'smooth',
-      block: 'start'
-    });
+    if (document.getElementById('contactSection')) {
+      document.getElementById('contactSection').scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
   }
 
   useEffect(() => {
