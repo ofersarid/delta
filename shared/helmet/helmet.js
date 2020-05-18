@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Head from 'next/head';
 import PropTypes from 'prop-types';
 
-const Helmet = ({ title = 'Delta | Hire an elite front team on-demand', description = 'When you need to get to your next business milestone quickly, hiring Senior Developers, PMs & Designers is not an simple operation. Delta is an experienced team of advanced technologists who love working together - and we are ready to drive your projects forward.', imageForSocial }) => (
+const Helmet = ({ title, description, imageForSocial }) => (
   <Head >
     <meta charSet="utf-8" />
     <link rel="icon" href={`/images/favicon.ico?v=${new Date().getTime()}`} />
