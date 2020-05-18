@@ -55,13 +55,13 @@ class MyApp extends App {
   }
 
   render() {
-    const { Component, pageProps, store, isServer, homeData } = this.props;
+    const { Component, pageProps, store, homeData } = this.props;
     return (
       <Provider store={store} >
         <Helmet title={homeData.get('tabTitle')} description={homeData.get('metaDescription')} imageForSocial="/images/delta-logo-social-square.png" />
         <div className={styles.app} >
           <NavBar />
-          <Component {...pageProps} isServer={isServer} />
+          <Component {...pageProps} />
           <SectionIndicator />
           <Coupon />
         </div >
