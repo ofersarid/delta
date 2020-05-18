@@ -24,15 +24,19 @@ const makeStore = (initialState, options) => {
 
 class MyApp extends App {
   static async getInitialProps({ ctx }) {
-    const couponsData = await reactor.getCollection('oDTLBA1YbbmT6kchgGEc');
-    const homePageData = await reactor.getPage('Wm27z1OYTccUlUlkSMBS');
-    const crewData = await reactor.getCollection('wwA1VyCIcWOIJnpZhaR4', { preLoad: ['pic', 'picMobile', 'icon'] });
-    ctx.store.dispatch(coupon.actions.setCoupons(couponsData));
-    ctx.store.dispatch(home.actions.update(homePageData));
-    ctx.store.dispatch(crew.actions.update(crewData));
-    if (ctx.req) {
-      // mimic device on server
-      ctx.store.dispatch(device.actions.ssr(ctx.req.headers['user-agent']));
+    try {
+      const couponsData = await reactor.getCollection('oDTLBA1YbbmT6kchgGEc');
+      const homePageData = await reactor.getPage('Wm27z1OYTccUlUlkSMBS');
+      const crewData = await reactor.getCollection('wwA1VyCIcWOIJnpZhaR4', { preLoad: ['pic', 'picMobile', 'icon'] });
+      ctx.store.dispatch(coupon.actions.setCoupons(couponsData));
+      ctx.store.dispatch(home.actions.update(homePageData));
+      ctx.store.dispatch(crew.actions.update(crewData));
+      if (ctx.req) {
+        // mimic device on server
+        ctx.store.dispatch(device.actions.ssr(ctx.req.headers['user-agent']));
+      }
+    } catch (err) {
+      console.error(err);
     }
     return {};
   }
