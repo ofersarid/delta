@@ -7,7 +7,6 @@ import withRedux from 'next-redux-wrapper';
 import { fromJS } from 'immutable';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunkMiddleware from 'redux-thunk';
-// import reactor from 'reactor-connect';
 import combined from '../combined-reducers';
 import { device, GA, coupon, home, crew } from '../services';
 import { Helmet } from '../shared';
