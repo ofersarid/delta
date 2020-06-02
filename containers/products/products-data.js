@@ -1,5 +1,9 @@
 export default [{
-  title: 'Nucleai3',
+  title: 'Proteantecs',
+  imgMobile: '/videos/products/proteantecs.mp4',
+  imgDesktop: '/videos/products/proteantecs-desktop.mp4',
+}, {
+  title: 'Nucleai',
   imgMobile: '/videos/products/nucleai.mp4',
   imgDesktop: '/videos/products/nucleai-desktop.mp4',
 }, {
