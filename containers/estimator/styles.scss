@@ -19,9 +19,9 @@
 .step {
   display: flex;
   flex-direction: column;
-  min-width: 50px;
+  width: 50px;
   opacity: 0.3;
-  transition: 1s $ease;
+  transition: 1.5s $ease;
 
   &.focused {
     width: 60%;
@@ -69,6 +69,10 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        opacity: 0;
+
+        @extend %fadeIn;
+        animation-delay: .1s;
       }
 
       .selected {
@@ -93,5 +97,28 @@
       height: 1px;
       background-color: rgba($color: white, $alpha: 0.3);
     }
+  }
+}
+
+.controllers {
+  display: inline-flex;
+
+  @include media('>tablet') {
+    margin-top: $desktop-vertical-spacer-1;
+    margin-left: $desktop-gutter;
+  }
+}
+
+.next,
+.prev {
+  @extend %button;
+  width: 200px;
+  color: $blue;
+  border-color: $blue;
+  margin-right: 20px;
+
+  &.disable {
+    opacity: 0.2;
+    pointer-events: none;
   }
 }
