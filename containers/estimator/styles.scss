@@ -9,6 +9,8 @@
 }
 
 .calculator {
+  display: flex;
+
   @include media('>tablet') {
     padding: 0 $desktop-gutter;
   }
@@ -17,6 +19,14 @@
 .step {
   display: flex;
   flex-direction: column;
+  min-width: 50px;
+  opacity: 0.3;
+  transition: 1s $ease;
+
+  &.focused {
+    width: 60%;
+    opacity: 1;
+  }
 
   .top {
     display: flex;
