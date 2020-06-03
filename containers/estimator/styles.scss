@@ -10,32 +10,50 @@
 
 .calculator {
   display: flex;
-  height: 311px;
+  height: 325px;
   transition: 1.5s $ease;
   // padding: 0 $mobile-gutter;
-  
+
   @include media('>phone') {
-    height: 286px;
-    padding: 0 $desktop-gutter;
-    height: auto;
-    transform: translateY(0) !important;
+    position: relative;
+    margin: 0 $desktop-gutter;
+    height: 270px;
+    width: calc(100% - #{2 * $desktop-gutter});
+    max-width: 1000px;
+    box-sizing: border-box;
+    overflow: hidden;
+    align-items: flex-end;
   }
 }
 
 .step {
+  $closedWidth: 50px;
   display: flex;
   flex-direction: column;
   width: 100%;
-  opacity: 0.3;
   transition: 1.5s $ease;
   flex-shrink: 0;
   padding: 0 $mobile-gutter;
   box-sizing: border-box;
+  background-color: $black;
 
   @include media('>phone') {
-    width: 50px;
-    flex-shrink: 1;
+    width: calc(100% - #{$closedWidth * 4});
+    flex-shrink: 0;
     padding: 0;
+    position: absolute;
+    left: calc(100% - 50px);
+
+    // @for $i from 0 through 4 {
+    //   &:nth-of-type(#{$i}) {
+    //     left: calc(100% - #{(6 - $i) * 50px});
+    //   }
+    // }
+  }
+
+  .innerWrapper {
+    opacity: 0.5;
+    transition: 1.5s $ease;
   }
 
   h2 {
@@ -48,18 +66,42 @@
     width: 100%;
     overflow: hidden;
     flex-shrink: 0;
-    
+
     @include media('>phone') {
       height: 35px;
       // white-space: nowrap;
     }
   }
 
+  &.left {
+    opacity: 0.25;
+
+    @for $i from 1 through 5 {
+      &:nth-of-type(#{$i}) {
+        left: #{($i - 1) * 50px};
+      }
+    }
+  }
+
+  &.right {
+    @for $i from 1 through 5 {
+      &:nth-of-type(#{$i}) {
+        left: calc(100% - #{(6 - $i) * 50px});
+      }
+    }
+  }
+
   &.focused {
     opacity: 1;
+    left: 0;
+
+    .innerWrapper {
+      opacity: 1;
+    }
 
     @include media('>phone') {
-      width: 60%;
+      // width: 100%;
+      // flex-shrink: 1;
     }
 
     h2 {
@@ -79,6 +121,7 @@
       background-color: #4b4b4b;
       border-radius: 20px;
       position: relative;
+      flex-shrink: 0;
     }
 
     .ball {
@@ -106,7 +149,7 @@
         cursor: url('/images/cursor-pointer.svg'), auto;
         height: calc(100% / 3);
         display: flex;
-        justify-content: center;
+        // justify-content: center;
         align-items: center;
         opacity: 0;
 
@@ -128,7 +171,7 @@
     .index {
       margin-right: 10px;
       flex-grow: 0;
-      
+
       @include media('>phone') {
         margin-left: 10px;
 
@@ -148,7 +191,7 @@
   padding: 0 $mobile-gutter;
 
   @include media('>phone') {
-    margin-top: $desktop-vertical-spacer-1;
+    margin-top: 45px;
     margin-left: $desktop-gutter;
     padding: 0;
   }
@@ -185,5 +228,23 @@
 
   @include media('>phone') {
     margin-right: 15px;
+  }
+}
+
+.generate {
+  @extend %button;
+  color: $gold;
+  border-color: $gold;
+  margin: $mobile-gutter $mobile-gutter 0;
+  transition: 1s $ease;
+
+  @include media('>phone') {
+    margin: 0 0 0 30px;
+    width: 200px;
+  }
+
+  &.disable {
+    opacity: 0.2;
+    pointer-events: none;
   }
 }
