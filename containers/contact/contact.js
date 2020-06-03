@@ -81,7 +81,7 @@ class Contact extends PureComponent {
     const { name, email, company, working, sent, couponId, error } = this.state;
     const { coupons, claimed } = this.props;
     const _coupon = coupons.find(c => c.get('id') === couponId);
-    const btnPosition = { transform: `translateX(${working ? -100 : sent ? -200 : 0}%)` };
+    const btnPosition = { left: `${working ? -100 : sent ? -200 : 0}%` };
     return (
       <div className={cx(styles.contact)} id="contactSection" >
         <div className={styles.left} >
@@ -115,10 +115,10 @@ class Contact extends PureComponent {
               [styles.disable]: !this.isValid(),
               [styles.gotIt]: sent,
             })} onClick={this.send} >
-              <ul >
-                <li style={btnPosition} >Send Details</li >
-                <li style={btnPosition} >Sending...</li >
-                <li style={btnPosition} >Got It!</li >
+              <ul style={btnPosition} >
+                <li>Send Details</li >
+                <li>Sending...</li >
+                <li>Got It!</li >
               </ul >
               {error && <div className={styles.error} >Oops - service unavailable</div >}
             </button >

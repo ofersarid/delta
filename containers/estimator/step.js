@@ -5,11 +5,12 @@ import cx from 'classnames';
 import styles from './styles.scss';
 import { device } from '../../services';
 
-const Step = ({ device, options, focus, index }) => {
-  const [selectedOption, setSelectedOption] = useState(0);
+const Step = ({ device, options, focus, index, defaultOption, title }) => {
+  const [selectedOption, setSelectedOption] = useState(defaultOption);
 
   return (
     <div className={cx(styles.step, { [styles.focused]: focus })}>
+      <h2 >{focus ? title : ''}</h2>
       <div className={styles.top}>
         <div className={styles.slider}>
           <div className={styles.ball} style={{

@@ -15,11 +15,41 @@ const Estimator = ({ device }) => {
       <div className={styles.calculator} style={{
         transform: `translateX(-${100 * (selectedStep - 1)}%)`,
       }}>
-        <Step index={1} options={['Lorem1', 'Ipsum1', 'Dollar1']} focus={selectedStep === 1} />
-        <Step index={2} options={['Lorem2', 'Ipsum2', 'Dollar2']} focus={selectedStep === 2} />
-        <Step index={3} options={['Lorem3', 'Ipsum3', 'Dollar3']} focus={selectedStep === 3} />
-        <Step index={4} options={['Lorem4', 'Ipsum4', 'Dollar4']} focus={selectedStep === 4} />
-        <Step index={5} options={['Lorem5', 'Ipsum5', 'Dollar5']} focus={selectedStep === 5} />
+        <Step
+          index={1}
+          options={['Lorem1', 'Ipsum1', 'Dollar1']}
+          defaultOption={0}
+          focus={selectedStep === 1}
+          title="Step 1"
+        />
+        <Step
+          index={2}
+          options={['Lorem2', 'Ipsum2', 'Dollar2']}
+          defaultOption={1}
+          focus={selectedStep === 2}
+          title="Step 2"
+        />
+        <Step
+          index={3}
+          options={['Lorem3', 'Ipsum3', 'Dollar3']}
+          defaultOption={2}
+          focus={selectedStep === 3}
+          title="Step 3"
+        />
+        <Step
+          index={4}
+          options={['Lorem4', 'Ipsum4', 'Dollar4']}
+          defaultOption={1}
+          focus={selectedStep === 4}
+          title="Step 4"
+        />
+        <Step
+          index={5}
+          options={['Lorem5', 'Ipsum5', 'Dollar5']}
+          defaultOption={0}
+          focus={selectedStep === 5}
+          title="Step 5"
+        />
       </div>
       <div className={styles.controllers}>
         <button

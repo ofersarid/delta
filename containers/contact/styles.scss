@@ -131,12 +131,14 @@
 
   button {
     @extend %button;
+    justify-content: flex-start;
     transition: 1s $ease;
     color: $blue;
     border-color: $blue;
     width: 150px;
     padding: 0;
     position: relative;
+    overflow: hidden;
 
     &.disable {
       opacity: 0.25;
@@ -168,16 +170,19 @@
       margin: 0;
       padding: 0;
       display: flex;
-      width: 100%;
-      overflow: hidden;
+      width: 300%;
       height: 100%;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      flex-shrink: 0;
+      position: relative;
+      transition: 1s $ease;
 
       li {
-        flex-shrink: 0;
         width: 100%;
         padding: 9px 20px 10px;
         box-sizing: border-box;
-        transition: 1s $ease;
       }
     }
   }

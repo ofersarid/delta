@@ -37,11 +37,24 @@
     padding: 0;
   }
 
+  h2 {
+    opacity: 0;
+    margin-top: 0;
+    display: inline-block;
+    transition: 1 $ease;
+    transition-delay: .1s;
+    height: 35px;
+  }
+
   &.focused {
     opacity: 1;
 
     @include media('>phone') {
       width: 60%;
+    }
+
+    h2 {
+      opacity: 1;
     }
   }
 
@@ -148,6 +161,7 @@
 
 .next {
   margin-left: $mobile-gutter / 2;
+
   @include media('>phone') {
     margin-left: 15px;
   }
@@ -155,6 +169,7 @@
 
 .prev {
   margin-right: $mobile-gutter / 2;
+
   @include media('>phone') {
     margin-right: 15px;
   }
