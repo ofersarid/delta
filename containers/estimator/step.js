@@ -8,7 +8,7 @@ import { device } from '../../services';
 const Step = ({ device, options, focus, index }) => {
   const [selectedOption, setSelectedOption] = useState(0);
 
-  return device === 'mobile' ? null : (
+  return (
     <div className={cx(styles.step, { [styles.focused]: focus })}>
       <div className={styles.top}>
         <div className={styles.slider}>

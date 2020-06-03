@@ -12,10 +12,12 @@ const Estimator = ({ device }) => {
   return (
     <div className={cx(styles.estimator)} >
       <h1 >Generate Estimate</h1 >
-      <div className={styles.calculator}>
+      <div className={styles.calculator} style={{
+        transform: `translateX(-${100 * (selectedStep - 1)}%)`,
+      }}>
         <Step index={1} options={['Lorem1', 'Ipsum1', 'Dollar1']} focus={selectedStep === 1} />
-        <Step index={3} options={['Lorem3', 'Ipsum3', 'Dollar3']} focus={selectedStep === 2} />
-        <Step index={2} options={['Lorem2', 'Ipsum2', 'Dollar2']} focus={selectedStep === 3} />
+        <Step index={2} options={['Lorem2', 'Ipsum2', 'Dollar2']} focus={selectedStep === 2} />
+        <Step index={3} options={['Lorem3', 'Ipsum3', 'Dollar3']} focus={selectedStep === 3} />
         <Step index={4} options={['Lorem4', 'Ipsum4', 'Dollar4']} focus={selectedStep === 4} />
         <Step index={5} options={['Lorem5', 'Ipsum5', 'Dollar5']} focus={selectedStep === 5} />
       </div>

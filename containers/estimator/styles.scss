@@ -10,22 +10,39 @@
 
 .calculator {
   display: flex;
+  height: 230px;
+  transition: 1.5s $ease;
+  // padding: 0 $mobile-gutter;
 
-  @include media('>tablet') {
+  @include media('>phone') {
     padding: 0 $desktop-gutter;
+    height: auto;
+    transform: translateY(0) !important;
   }
 }
 
 .step {
   display: flex;
   flex-direction: column;
-  width: 50px;
+  width: 100%;
   opacity: 0.3;
   transition: 1.5s $ease;
+  flex-shrink: 0;
+  padding: 0 $mobile-gutter;
+  box-sizing: border-box;
+
+  @include media('>phone') {
+    width: 50px;
+    flex-shrink: 1;
+    padding: 0;
+  }
 
   &.focused {
-    width: 60%;
     opacity: 1;
+
+    @include media('>phone') {
+      width: 60%;
+    }
   }
 
   .top {
@@ -102,23 +119,43 @@
 
 .controllers {
   display: inline-flex;
+  padding: 0 $mobile-gutter;
 
-  @include media('>tablet') {
+  @include media('>phone') {
     margin-top: $desktop-vertical-spacer-1;
     margin-left: $desktop-gutter;
+    padding: 0;
   }
 }
 
 .next,
 .prev {
   @extend %button;
-  width: 200px;
+  width: 50%;
   color: $blue;
   border-color: $blue;
-  margin-right: 20px;
+  transition: 1s $ease;
+
+  @include media('>phone') {
+    width: 200px;
+  }
 
   &.disable {
     opacity: 0.2;
     pointer-events: none;
+  }
+}
+
+.next {
+  margin-left: $mobile-gutter / 2;
+  @include media('>phone') {
+    margin-left: 15px;
+  }
+}
+
+.prev {
+  margin-right: $mobile-gutter / 2;
+  @include media('>phone') {
+    margin-right: 15px;
   }
 }
