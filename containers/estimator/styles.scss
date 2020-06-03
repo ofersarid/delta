@@ -10,11 +10,12 @@
 
 .calculator {
   display: flex;
-  height: 230px;
+  height: 311px;
   transition: 1.5s $ease;
   // padding: 0 $mobile-gutter;
-
+  
   @include media('>phone') {
+    height: 286px;
     padding: 0 $desktop-gutter;
     height: auto;
     transform: translateY(0) !important;
@@ -43,7 +44,15 @@
     display: inline-block;
     transition: 1 $ease;
     transition-delay: .1s;
-    height: 35px;
+    height: 60px;
+    width: 100%;
+    overflow: hidden;
+    flex-shrink: 0;
+    
+    @include media('>phone') {
+      height: 35px;
+      // white-space: nowrap;
+    }
   }
 
   &.focused {
@@ -118,8 +127,12 @@
 
     .index {
       margin-right: 10px;
-      margin-left: 10px;
       flex-grow: 0;
+      
+      @include media('>phone') {
+        margin-left: 10px;
+
+      }
     }
 
     .line {

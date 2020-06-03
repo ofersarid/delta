@@ -6,7 +6,7 @@ import Step from './step.js';
 import styles from './styles.scss';
 import { device } from '../../services';
 
-const Estimator = ({ device }) => {
+const Estimator = ({ isMobile }) => {
   const [selectedStep, setSelectedStep] = useState(1);
 
   return (
@@ -16,39 +16,40 @@ const Estimator = ({ device }) => {
         transform: `translateX(-${100 * (selectedStep - 1)}%)`,
       }}>
         <Step
-          index={1}
+          index={isMobile ? '1 / 5' : '1'}
           options={['Lorem1', 'Ipsum1', 'Dollar1']}
           defaultOption={0}
           focus={selectedStep === 1}
-          title="Step 1"
+          title="What is your industry? "
         />
         <Step
-          index={2}
+          index={isMobile ? '2 / 5' : '2'}
           options={['Lorem2', 'Ipsum2', 'Dollar2']}
           defaultOption={1}
           focus={selectedStep === 2}
-          title="Step 2"
+          title="What is your company’s current funding status?
+"
         />
         <Step
-          index={3}
+          index={isMobile ? '3 / 5' : '3'}
           options={['Lorem3', 'Ipsum3', 'Dollar3']}
           defaultOption={2}
           focus={selectedStep === 3}
-          title="Step 3"
+          title="Does your product incorporate hardware technology or device."
         />
         <Step
-          index={4}
+          index={isMobile ? '4 / 5' : '4'}
           options={['Lorem4', 'Ipsum4', 'Dollar4']}
           defaultOption={1}
           focus={selectedStep === 4}
-          title="Step 4"
+          title="Are you using an existing branding with your new interactive product?"
         />
         <Step
-          index={5}
+          index={isMobile ? '5 / 5' : '5'}
           options={['Lorem5', 'Ipsum5', 'Dollar5']}
           defaultOption={0}
           focus={selectedStep === 5}
-          title="Step 5"
+          title="When would you like to start the project?"
         />
       </div>
       <div className={styles.controllers}>
@@ -70,7 +71,7 @@ const Estimator = ({ device }) => {
 };
 
 const mapState = state => ({
-  device: device.selectors.type(state)
+  isMobile: device.selectors.type(state) === 'mobile',
 });
 
 export default compose(
