@@ -17,9 +17,23 @@
     overflow-x: hidden;
     cursor: url('/images/cursor.svg'), auto;
 
-    @include media('>tablet') {
-      font-size: 20px;
-      line-height: 2em;
+    @include orientation('landscape') {
+      &::before {
+        content: 'please rotate your device to portrait mode';
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      @include media('>tablet') {
+        font-size: 20px;
+        line-height: 2em;
+
+        &::before {
+          content: '';
+        }
+      }
     }
   }
 
@@ -79,10 +93,18 @@
 
 .app {
   width: 100vw;
-  display: flex;
   flex-direction: column;
   //align-items: center;
   overflow-x: hidden;
+  display: flex;
+
+  @include orientation('landscape') {
+    display: none;
+
+    @include media('>tablet') {
+      display: flex;
+    }
+  }
 }
 
 .contentWrapperInner {

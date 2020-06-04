@@ -3,7 +3,7 @@
 .contact {
   @extend %chapterWrapper;
 
-  @include media('>phone') {
+  @include media('>tablet') {
     flex-direction: row;
     padding: 0 $desktop-gutter;
   }
@@ -165,7 +165,7 @@
     width: 100vw;
     padding: 0 $mobile-gutter;
     box-sizing: border-box;
-    margin-top: #{1.5 * $mobile-gutter};
+    margin-top: #{1.2 * $mobile-gutter};
 
     @include media('>tablet') {
       padding: 0;

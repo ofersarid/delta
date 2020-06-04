@@ -109,7 +109,7 @@ const Estimator = ({ isMobile, storeEstimation, storeSelection }) => {
 };
 
 const mapState = state => ({
-  isMobile: device.selectors.type(state) === 'mobile',
+  isMobile: device.selectors.type(state) === 'mobile' || device.selectors.type(state) === 'tablet',
 });
 
 const mapDispatch = dispatch => ({

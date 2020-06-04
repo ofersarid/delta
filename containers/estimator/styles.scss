@@ -14,7 +14,7 @@
   transition: 1.5s $ease;
   // padding: 0 $mobile-gutter;
 
-  @include media('>phone') {
+  @include media('>tablet') {
     position: relative;
     margin: 0 $desktop-gutter;
     height: 270px;
@@ -37,7 +37,7 @@
   box-sizing: border-box;
   background-color: $black;
 
-  @include media('>phone') {
+  @include media('>tablet') {
     width: calc(100% - #{$closedWidth * 4});
     flex-shrink: 0;
     padding: 0;
@@ -67,7 +67,7 @@
     overflow: hidden;
     flex-shrink: 0;
 
-    @include media('>phone') {
+    @include media('>tablet') {
       height: 35px;
       // white-space: nowrap;
     }
@@ -97,11 +97,6 @@
 
     .innerWrapper {
       opacity: 1;
-    }
-
-    @include media('>phone') {
-      // width: 100%;
-      // flex-shrink: 1;
     }
 
     h2 {
@@ -172,9 +167,8 @@
       margin-right: 10px;
       flex-grow: 0;
 
-      @include media('>phone') {
+      @include media('>tablet') {
         margin-left: 10px;
-
       }
     }
 
@@ -190,7 +184,7 @@
   display: inline-flex;
   padding: 0 $mobile-gutter;
 
-  @include media('>phone') {
+  @include media('>tablet') {
     margin-top: 45px;
     margin-left: $desktop-gutter;
     padding: 0;
@@ -205,7 +199,7 @@
   border-color: $blue;
   transition: 1s $ease;
 
-  @include media('>phone') {
+  @include media('>tablet') {
     width: 200px;
   }
 
@@ -219,6 +213,10 @@
   margin-left: $mobile-gutter / 2;
 
   @include media('>phone') {
+    margin-left: 0.25 * $mobile-gutter;
+  }
+
+  @include media('>tablet') {
     margin-left: 15px;
   }
 }
@@ -227,6 +225,10 @@
   margin-right: $mobile-gutter / 2;
 
   @include media('>phone') {
+    margin-right: 0.25 * $mobile-gutter;
+  }
+
+  @include media('>tablet') {
     margin-right: 15px;
   }
 }
@@ -239,6 +241,10 @@
   transition: 1s $ease;
 
   @include media('>phone') {
+    margin-top: 0.5 * $mobile-gutter;
+  }
+
+  @include media('>tablet') {
     margin: 0 0 0 30px;
     width: 200px;
   }
