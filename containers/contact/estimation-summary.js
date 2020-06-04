@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'; // eslint-disable-line
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import cx from 'classnames';
 import styles from './styles.scss';
 import { estimator } from '../../services';
 
