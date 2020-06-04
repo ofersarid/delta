@@ -49,6 +49,14 @@ class Contact extends PureComponent {
     return validateEmail(email) && name.length > 1 && company.length > 1;
   }
 
+  attachTypingClass() {
+    document.getElementsByTagName('body')[0].classList.add('typing');
+  }
+
+  removeTypingClass() {
+    document.getElementsByTagName('body')[0].classList.remove('typing');
+  }
+
   async send() {
     const { coupons, estimation } = this.props;
     const { name, email, company, sent, couponId } = this.state;
@@ -98,16 +106,22 @@ class Contact extends PureComponent {
             value={name}
             onChange={e => this.setState({ name: e.target.value })}
             className={cx({ [styles.valid]: name.length > 1 })}
+            onFocus={this.attachTypingClass}
+            onBlur={this.removeTypingClass}
             placeholder="Name" />
           <input
             value={email}
             onChange={e => this.setState({ email: e.target.value })}
             className={cx({ [styles.valid]: validateEmail(email) })}
+            onFocus={this.attachTypingClass}
+            onBlur={this.removeTypingClass}
             placeholder="Email" />
           <input
             value={company}
             onChange={e => this.setState({ company: e.target.value })}
             className={cx({ [styles.valid]: company.length > 1 })}
+            onFocus={this.attachTypingClass}
+            onBlur={this.removeTypingClass}
             placeholder="Company" />
           <section className={styles.btns} >
             <button className={cx({
