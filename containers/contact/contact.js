@@ -108,6 +108,7 @@ class Contact extends PureComponent {
             className={cx({ [styles.valid]: name.length > 1 })}
             onFocus={this.attachTypingClass}
             onBlur={this.removeTypingClass}
+            autoComplete="new-password"
             placeholder="Name" />
           <input
             value={email}
@@ -115,6 +116,7 @@ class Contact extends PureComponent {
             className={cx({ [styles.valid]: validateEmail(email) })}
             onFocus={this.attachTypingClass}
             onBlur={this.removeTypingClass}
+            autoComplete="new-password"
             placeholder="Email" />
           <input
             value={company}
@@ -122,6 +124,7 @@ class Contact extends PureComponent {
             className={cx({ [styles.valid]: company.length > 1 })}
             onFocus={this.attachTypingClass}
             onBlur={this.removeTypingClass}
+            autoComplete="new-password"
             placeholder="Company" />
           <section className={styles.btns} >
             <button className={cx({
