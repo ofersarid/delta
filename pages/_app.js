@@ -8,7 +8,7 @@ import { fromJS } from 'immutable';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunkMiddleware from 'redux-thunk';
 import combined from '../combined-reducers';
-import { device, GA, coupon, home, crew } from '../services';
+import { device, GA, coupon, home, crew, estimator } from '../services';
 import { Helmet } from '../shared';
 import { NavBar, SectionIndicator, Coupon } from '../containers';
 import reactor from '../reator-utils';
@@ -27,9 +27,11 @@ class MyApp extends App {
       const couponsData = await reactor.getCollection('oDTLBA1YbbmT6kchgGEc');
       const homePageData = await reactor.getPage('Wm27z1OYTccUlUlkSMBS');
       const crewData = await reactor.getCollection('wwA1VyCIcWOIJnpZhaR4', { preLoad: ['pic', 'picMobile', 'icon'] });
+      const estimatorData = await reactor.getPage('VOsbUdnB8nka9tlzMAH1');
       ctx.store.dispatch(coupon.actions.setCoupons(couponsData));
       ctx.store.dispatch(home.actions.update(homePageData));
       ctx.store.dispatch(crew.actions.update(crewData));
+      ctx.store.dispatch(estimator.actions.init(estimatorData));
       if (ctx.req) {
         // mimic device on server
         ctx.store.dispatch(device.actions.ssr(ctx.req.headers['user-agent']));

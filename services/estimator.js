@@ -135,8 +135,11 @@ function composeEstimation() {
 const reducer = (state = fromJS({
   calculation: null,
   selection: null,
+  data: null,
 }), action) => {
   switch (action.type) {
+    case 'ESTIMATOR:INIT':
+      return state.set('data', fromJS(action.data));
     case 'ESTIMATOR:UPDATE':
       return state.set('calculation', action.calculation);
     case 'ESTIMATOR:STORE_SELECTION':
@@ -147,6 +150,10 @@ const reducer = (state = fromJS({
 };
 
 const actions = {
+  init: data => dispatch => dispatch({
+    type: 'ESTIMATOR:INIT',
+    data,
+  }),
   update: calculation => dispatch => dispatch({
     type: 'ESTIMATOR:UPDATE',
     calculation,
@@ -160,6 +167,7 @@ const actions = {
 const selectors = {
   calculation: state => state.getIn(['estimator', 'calculation']),
   selection: state => state.getIn(['estimator', 'selection']),
+  data: state => state.getIn(['estimator', 'data']),
   composeEstimation: state => {
     const selection = selectors.selection(state);
     const total = selectors.calculation(state);
