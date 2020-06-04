@@ -101,7 +101,7 @@
   &:first-of-type {
     margin: 0 0 $mobile-vertical-spacer-1 $mobile-gutter;
 
-    @include media('>tablet') {
+    @include media('>phone') {
       margin: 0 0 $desktop-vertical-spacer-1 $desktop-gutter;
     }
   }

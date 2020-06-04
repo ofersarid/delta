@@ -5,79 +5,18 @@ import { connect } from 'react-redux';
 import cx from 'classnames';
 import Step from './step.js';
 import styles from './styles.scss';
-import { device } from '../../services';
+import { device, estimator } from '../../services';
+import { scrollToContact } from '../../utils';
 
 const MONTHS = 7;
 const COST_PER_MONTH = 8500;
 
-const EFFORTS = [[{
-  study: 0.1,
-  design: 0.1,
-  dev: 0,
-}, {
-  study: 0.3,
-  design: 0.1,
-  dev: 0,
-}, {
-  study: -0.3,
-  design: 0.1,
-  dev: 0.3,
-}], [{
-  study: 0,
-  design: -0.3,
-  dev: 0.3,
-}, {
-  study: 0.1,
-  design: 0.1,
-  dev: 0.1,
-}, {
-  study: 0.3,
-  design: 0.3,
-  dev: 0.3,
-}], [{
-  study: 0.3,
-  design: 0.1,
-  dev: 0.3,
-}, {
-  study: 0,
-  design: 0,
-  dev: 0,
-}, {
-  study: 0,
-  design: 0,
-  dev: 0.1,
-}], [{
-  study: 0.1,
-  design: 0.3,
-  dev: 0,
-}, {
-  study: 0,
-  design: 0,
-  dev: 0,
-}, {
-  study: 0.1,
-  design: 0.1,
-  dev: 0,
-}], [{
-  study: -0.1,
-  design: 0,
-  dev: 0,
-}, {
-  study: 0.1,
-  design: 0,
-  dev: 0.1,
-}, {
-  study: 0.1,
-  design: 0.3,
-  dev: 0.1,
-}]];
-
-const Estimator = ({ isMobile }) => {
+const Estimator = ({ isMobile, storeEstimation, storeSelection }) => {
   const [selectedStep, setSelectedStep] = useState(1);
   const [options, setOptions] = useState(fromJS([0, 1, 2, 1, 0]));
 
   function getMultiplier(i) {
-    return 1 + Object.values(EFFORTS[i][options.get(i)]).reduce((acc, val) => acc + val, 0);
+    return 1 + Object.values(estimator.schema[`step${i + 1}`].options[options.get(i)].effort).reduce((acc, val) => acc + val, 0);
   }
 
   function generateEstimate() {
@@ -87,8 +26,9 @@ const Estimator = ({ isMobile }) => {
     estimate = estimate * getMultiplier(2);
     estimate = estimate * getMultiplier(3);
     estimate = estimate * getMultiplier(4);
-    console.log(options);
-    console.log(Math.ceil(estimate));
+    storeEstimation(Math.ceil(estimate));
+    storeSelection(options);
+    scrollToContact();
   }
 
   function setOption(i, n) {
@@ -102,41 +42,41 @@ const Estimator = ({ isMobile }) => {
         transform: isMobile ? `translateX(-${100 * (selectedStep - 1)}%)` : 'translateX(0)',
       }}>
         <Step
-          title="What is your industry?"
+          title={estimator.schema.step1.title}
           index={isMobile ? '1 / 5' : '1'}
-          options={['Program Development, Cyber, Fintech', 'Medtech, Robotics, Electronics', 'eCommerce']}
+          options={estimator.schema.step1.options.map(opt => opt.txt)}
           selectedOption={options.get(0)}
           onChange={option => setOption(0, option)}
           location={selectedStep === 1 ? 'focused' : selectedStep > 1 ? 'prev' : 'next'}
         />
         <Step
-          title="What is your company’s current funding stage?"
+          title={estimator.schema.step2.title}
           index={isMobile ? '2 / 5' : '2'}
-          options={['Before Series A', 'Series A Stage', 'After Series A']}
+          options={estimator.schema.step2.options.map(opt => opt.txt)}
           selectedOption={options.get(1)}
           onChange={option => setOption(1, option)}
           location={selectedStep === 2 ? 'focused' : selectedStep > 2 ? 'prev' : 'next'}
         />
         <Step
-          title="Does your product incorporate hardware or a device?"
+          title={estimator.schema.step3.title}
           index={isMobile ? '3 / 5' : '3'}
-          options={['Yes', 'No', 'Probably in a future']}
+          options={estimator.schema.step3.options.map(opt => opt.txt)}
           selectedOption={options.get(2)}
           onChange={option => setOption(2, option)}
           location={selectedStep === 3 ? 'focused' : selectedStep > 3 ? 'prev' : 'next'}
         />
         <Step
-          title="Do you have constant branding?"
+          title={estimator.schema.step4.title}
           index={isMobile ? '4 / 5' : '4'}
-          options={['No', 'Yes', 'We have a temporary branding']}
+          options={estimator.schema.step4.options.map(opt => opt.txt)}
           selectedOption={options.get(3)}
           onChange={option => setOption(3, option)}
           location={selectedStep === 4 ? 'focused' : selectedStep > 4 ? 'prev' : 'next'}
         />
         <Step
-          title="When would you like to start?"
+          title={estimator.schema.step5.title}
           index={isMobile ? '5 / 5' : '5'}
-          options={['NOW', 'Within a 3-4 month period', 'After the COVID-19 desepearse']}
+          options={estimator.schema.step5.options.map(opt => opt.txt)}
           selectedOption={options.get(4)}
           onChange={option => setOption(4, option)}
           location={selectedStep === 5 ? 'focused' : selectedStep > 5 ? 'prev' : 'next'}
@@ -172,6 +112,11 @@ const mapState = state => ({
   isMobile: device.selectors.type(state) === 'mobile',
 });
 
+const mapDispatch = dispatch => ({
+  storeEstimation: calculation => dispatch(estimator.actions.update(calculation)),
+  storeSelection: selection => dispatch(estimator.actions.storeSelection(selection)),
+});
+
 export default compose(
-  connect(mapState)
+  connect(mapState, mapDispatch)
 )(Estimator);

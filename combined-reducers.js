@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux-immutable';
 import reactor from 'reactor-connect';
-import { device, section, coupon, home, crew } from './services';
+import { device, section, coupon, home, crew, estimator } from './services';
 // import { device, section } from './services';
 
 const rootReducer = combineReducers({
@@ -10,6 +10,7 @@ const rootReducer = combineReducers({
   coupon: coupon.reducer,
   home: home.reducer,
   crew: crew.reducer,
+  estimator: estimator.reducer,
 });
 
 export default rootReducer;

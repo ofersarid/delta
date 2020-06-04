@@ -3,10 +3,9 @@
 .contact {
   @extend %chapterWrapper;
 
-  @include media('>tablet') {
-    margin-top: $desktop-vertical-spacer-2;
-    padding: 0 $desktop-gutter;
+  @include media('>phone') {
     flex-direction: row;
+    padding: 0 $desktop-gutter;
   }
 
   .left {
@@ -41,6 +40,51 @@
       opacity: 0;
       @extend %popIn;
       animation-delay: 1.5s;
+    }
+
+    .estimationSummary {
+      font-size: 17px;
+      line-height: 17px;
+      color: $black;
+      border-radius: 2px;
+      margin-top: 25px;
+      box-sizing: border-box;
+      padding: 20px;
+      background: $white;
+      display: flex;
+      flex-direction: column;
+      opacity: 0;
+      @extend %popIn;
+      animation-delay: .5s;
+      text-transform: none;
+
+      .title {
+        font-weight: 600;
+        font-size: 20px;
+        margin-bottom: 10px;
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        li.divider {
+          height: 1px;
+          width: 100%;
+          background: $black;
+        }
+
+        li {
+          margin: 10px 0;
+        }
+
+        .tip {
+          color: #008da3;
+          font-style: italic;
+          margin-top: 20px;
+        }
+      }
     }
   }
 

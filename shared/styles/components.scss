@@ -26,8 +26,8 @@
   box-sizing: border-box;
   text-transform: uppercase;
 
-  @include media('>tablet') {
-    margin: 0 0 $desktop-vertical-spacer-1;
+  @include media('>phone') {
+    margin: 0 0 #{$desktop-vertical-spacer-1};
     padding: 0 $desktop-gutter;
   }
 
@@ -43,4 +43,9 @@
   width: 100vw;
   margin-top: $mobile-vertical-spacer-2;
   box-sizing: border-box;
+
+  @include media('>phone') {
+    margin-top: #{$desktop-vertical-spacer-2 - 15px};
+    // padding: 0 $desktop-gutter;
+  }
 }

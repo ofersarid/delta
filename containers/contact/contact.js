@@ -7,10 +7,10 @@ import autoBind from 'auto-bind';
 import { Whatsapp } from '@styled-icons/remix-fill/Whatsapp';
 import { ScLinkedin } from '@styled-icons/evil/ScLinkedin';
 import conversion from '../../linkedin-marketing';
-// import PropTypes from 'prop-types';
+import EstimationSummary from './estimation-summary';
 import styles from './styles.scss';
 import { validateEmail } from '../../utils';
-import { emailJS, GA, coupon, section } from '../../services';
+import { emailJS, GA, coupon, section, estimator } from '../../services';
 
 class Contact extends PureComponent {
   constructor(props) {
@@ -50,7 +50,7 @@ class Contact extends PureComponent {
   }
 
   async send() {
-    const { coupons } = this.props;
+    const { coupons, estimation } = this.props;
     const { name, email, company, sent, couponId } = this.state;
     const { claimed } = this.props;
     if (sent) return;
@@ -60,9 +60,9 @@ class Contact extends PureComponent {
       if (claimed) {
         LinkedInTag.track(conversion.linkedIn.sendDetailsWithCoupon.id);
         const _coupon = coupons.find(c => c.get('id') === couponId);
-        await emailJS.sendWithCoupon(name, email, company, _coupon);
+        await emailJS.send(name, email, company, _coupon, estimation);
       } else {
-        await emailJS.send(name, email, company);
+        await emailJS.send(name, email, company, null, estimation);
       }
       this.setState({ sent: true });
       this.setState({ working: false });
@@ -91,24 +91,23 @@ class Contact extends PureComponent {
                 CLAIMED - {_coupon.get('header')}
               </div >) : null
             }
+            <EstimationSummary />
           </h1 >
           <input
+            id="contact-form-name"
             value={name}
             onChange={e => this.setState({ name: e.target.value })}
             className={cx({ [styles.valid]: name.length > 1 })}
-            autoComplete="new-password"
             placeholder="Name" />
           <input
             value={email}
             onChange={e => this.setState({ email: e.target.value })}
             className={cx({ [styles.valid]: validateEmail(email) })}
-            autoComplete="new-password"
             placeholder="Email" />
           <input
             value={company}
             onChange={e => this.setState({ company: e.target.value })}
             className={cx({ [styles.valid]: company.length > 1 })}
-            autoComplete="new-password"
             placeholder="Company" />
           <section className={styles.btns} >
             <button className={cx({
@@ -143,7 +142,8 @@ Contact.propTypes = {};
 
 const mapStateToProps = state => ({
   claimed: coupon.selectors.claimed(state),
-  coupons: coupon.selectors.coupons(state)
+  coupons: coupon.selectors.coupons(state),
+  estimation: estimator.selectors.composeEstimation(state),
 });
 
 const mapDispatchToProps = dispatch => ({}); // eslint-disable-line

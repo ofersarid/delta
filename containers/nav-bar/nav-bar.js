@@ -4,17 +4,9 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import styles from './styles.scss';
 import { coupon } from '../../services';
+import { scrollToContact } from '../../utils';
 
 const NavBar = ({ claimed }) => {
-  function scrollToContact() {
-    if (document.getElementById('contactSection')) {
-      document.getElementById('contactSection').scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
-    }
-  }
-
   useEffect(() => {
     if (claimed) {
       scrollToContact();

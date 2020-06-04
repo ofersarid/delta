@@ -2,14 +2,7 @@
 
 
 .tools {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  margin-top: $mobile-vertical-spacer-2;
-
-  @include media('>tablet') {
-    margin-top: $desktop-vertical-spacer-2;
-  }
+  @extend %chapterWrapper;
 
   .lists {
     @include media('>tablet') {
