@@ -16,6 +16,7 @@ const send = (name, email, company, coupon, estimation) => {
     couponMessage: coupon ? coupon.get('message') : '-',
     couponStatus: coupon ? coupon.get('active') ? 'active' : 'disabled' : '-',
     couponClaimed: coupon ? coupon.get('claimed') ? 'true' : 'false' : '-',
+    estimationVersion: estimation ? '1.0' : '-',
     estimationTotal: estimation ? estimation.total : '-',
     estimationIndustry: estimation ? estimation.industry : '-',
     estimationFunding: estimation ? estimation.funding : '-',
