@@ -11,21 +11,18 @@ import { scrollToContact } from '../../utils';
 const MONTHS = 7;
 const COST_PER_MONTH = 8500;
 
-const Estimator = ({ isMobile, storeEstimation, storeSelection, schema }) => {
+const Estimator = ({ isMobile, isTablet, storeEstimation, storeSelection, schema }) => {
   const [selectedStep, setSelectedStep] = useState(1);
   const [options, setOptions] = useState(fromJS([0, 1, 2, 1, 0]));
 
-  function getMultiplier(i) {
-    return 1 + parseFloat(schema.getIn([i, `option${options.get(i) + 1}EffortStudy`])) + parseFloat(schema.getIn([i, `option${options.get(i) + 1}EffortDesign`])) + parseFloat(schema.getIn([i, `option${options.get(i) + 1}EffortDev`]));
+  function getEfforts(i) {
+    return parseFloat(schema.getIn([i, `option${options.get(i) + 1}EffortStudy`])) + parseFloat(schema.getIn([i, `option${options.get(i) + 1}EffortDesign`])) + parseFloat(schema.getIn([i, `option${options.get(i) + 1}EffortDev`]));
   }
 
   function generateEstimate() {
     let estimate = MONTHS * COST_PER_MONTH;
-    estimate = estimate * getMultiplier(0);
-    estimate = estimate * getMultiplier(1);
-    estimate = estimate * getMultiplier(2);
-    estimate = estimate * getMultiplier(3);
-    estimate = estimate * getMultiplier(4);
+    const effortsSum = getEfforts(0) + getEfforts(1) + getEfforts(2) + getEfforts(3) + getEfforts(4);
+    estimate = estimate + effortsSum * estimate;
     storeEstimation(Math.ceil(estimate));
     storeSelection(options);
     scrollToContact();
@@ -39,59 +36,19 @@ const Estimator = ({ isMobile, storeEstimation, storeSelection, schema }) => {
     <div className={cx(styles.estimator)} >
       <h1 >Generate Estimate</h1 >
       <div className={styles.calculator} style={{
-        transform: isMobile ? `translateX(-${100 * (selectedStep - 1)}%)` : 'translateX(0)',
+        transform: (isMobile || isTablet) ? `translateX(-${100 * (selectedStep - 1)}%)` : 'translateX(0)',
       }}>
         {schema.map((step, i) => (
           <Step
             key={step.get('id')}
-            title={step.get('title')}
-            index={isMobile ? `${i + 1} / 5` : i + 1}
-            options={[step.get('option1Txt'), step.get('option2Txt'), step.get('option3Txt')]}
+            title={step.get(isMobile ? 'titleMobile' : 'title')}
+            index={(isMobile || isTablet) ? `${i + 1} / 5` : i + 1}
+            options={[step.get(isMobile ? 'option1TxtMobile' : 'option1Txt'), step.get(isMobile ? 'option2TxtMobile' : 'option2Txt'), step.get(isMobile ? 'option3TxtMobile' : 'option3Txt')]}
             selectedOption={options.get(i)}
             onChange={option => setOption(i, option)}
             location={selectedStep === i + 1 ? 'focused' : selectedStep > i + 1 ? 'prev' : 'next'}
           />
         ))}
-        {/* <Step
-          title={estimator.schema.step1.title}
-          index={isMobile ? '1 / 5' : '1'}
-          options={estimator.schema.step1.options.map(opt => opt.txt)}
-          selectedOption={options.get(0)}
-          onChange={option => setOption(0, option)}
-          location={selectedStep === 1 ? 'focused' : selectedStep > 1 ? 'prev' : 'next'}
-        />
-        <Step
-          title={estimator.schema.step2.title}
-          index={isMobile ? '2 / 5' : '2'}
-          options={estimator.schema.step2.options.map(opt => opt.txt)}
-          selectedOption={options.get(1)}
-          onChange={option => setOption(1, option)}
-          location={selectedStep === 2 ? 'focused' : selectedStep > 2 ? 'prev' : 'next'}
-        />
-        <Step
-          title={estimator.schema.step3.title}
-          index={isMobile ? '3 / 5' : '3'}
-          options={estimator.schema.step3.options.map(opt => opt.txt)}
-          selectedOption={options.get(2)}
-          onChange={option => setOption(2, option)}
-          location={selectedStep === 3 ? 'focused' : selectedStep > 3 ? 'prev' : 'next'}
-        />
-        <Step
-          title={estimator.schema.step4.title}
-          index={isMobile ? '4 / 5' : '4'}
-          options={estimator.schema.step4.options.map(opt => opt.txt)}
-          selectedOption={options.get(3)}
-          onChange={option => setOption(3, option)}
-          location={selectedStep === 4 ? 'focused' : selectedStep > 4 ? 'prev' : 'next'}
-        />
-        <Step
-          title={estimator.schema.step5.title}
-          index={isMobile ? '5 / 5' : '5'}
-          options={estimator.schema.step5.options.map(opt => opt.txt)}
-          selectedOption={options.get(4)}
-          onChange={option => setOption(4, option)}
-          location={selectedStep === 5 ? 'focused' : selectedStep > 5 ? 'prev' : 'next'}
-        /> */}
       </div>
       <div className={styles.controllers}>
         <button
@@ -106,12 +63,12 @@ const Estimator = ({ isMobile, storeEstimation, storeSelection, schema }) => {
             setSelectedStep(Math.min(selectedStep + 1, 5));
           }}
         >Next</button >
-        {!isMobile && <button
+        {!isMobile && !isTablet && <button
           className={cx(styles.generate, { [styles.disable]: selectedStep !== 5 })}
           onClick={generateEstimate}
         >Generate</button >}
       </div >
-      {isMobile && <button
+      {(isMobile || isTablet) && <button
         className={cx(styles.generate, { [styles.disable]: selectedStep !== 5 })}
         onClick={generateEstimate}
       >Generate</button >}
@@ -120,7 +77,8 @@ const Estimator = ({ isMobile, storeEstimation, storeSelection, schema }) => {
 };
 
 const mapState = state => ({
-  isMobile: device.selectors.type(state) === 'mobile' || device.selectors.type(state) === 'tablet',
+  isMobile: device.selectors.type(state) === 'mobile',
+  isTablet: device.selectors.type(state) === 'tablet',
   schema: estimator.selectors.schema(state),
 });
 
