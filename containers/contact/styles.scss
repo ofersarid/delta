@@ -100,6 +100,22 @@
 
   .right {
     width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+
+    svg {
+      height: 40px;
+      transform: translate(-8px, 0);
+      margin-right: -7px;
+    }
+
+    .whatsAppIcon {
+      transform: none;
+      margin-top: 15px;
+      margin-top: 18px;
+    }
 
     @include media('>tablet') {
       padding: 136px 0 0 0;
@@ -107,16 +123,14 @@
       width: 34vw;
       flex-shrink: 0;
       flex-grow: 0;
+
+      .whatsAppIcon {
+        margin-top: 78px;
+      }
     }
 
     @include media('>desktop') {
       padding: 143px 0 0 0;
-    }
-
-    svg {
-      height: 40px;
-      transform: translate(-8px, 0);
-      margin-right: -7px;
     }
   }
 

@@ -28,10 +28,11 @@ class MyApp extends App {
       const homePageData = await reactor.getPage('Wm27z1OYTccUlUlkSMBS');
       const crewData = await reactor.getCollection('wwA1VyCIcWOIJnpZhaR4', { preLoad: ['pic', 'picMobile', 'icon'] });
       const estimatorData = await reactor.getPage('VOsbUdnB8nka9tlzMAH1');
+      const estimatorSchema = await reactor.getCollection('2DhEX98S3yYESlb6Nd41');
       ctx.store.dispatch(coupon.actions.setCoupons(couponsData));
       ctx.store.dispatch(home.actions.update(homePageData));
       ctx.store.dispatch(crew.actions.update(crewData));
-      ctx.store.dispatch(estimator.actions.init(estimatorData));
+      ctx.store.dispatch(estimator.actions.init(estimatorData, estimatorSchema));
       if (ctx.req) {
         // mimic device on server
         ctx.store.dispatch(device.actions.ssr(ctx.req.headers['user-agent']));

@@ -138,17 +138,17 @@ class Contact extends PureComponent {
               </ul >
               {error && <div className={styles.error} >Oops - service unavailable</div >}
             </button >
-            <Whatsapp onClick={this.chat} />
           </section >
         </div >
         <p className={styles.right} >
-          Weizman 70 Kfar-Sava, Israel<br />
-          <a href="tel:+972-52-689-1380" >+972 52 689 1380</a ><br />
-          <a href="mailto:desk@delta.band" target="_blank" rel="noopener noreferrer" >desk@delta.band</a ><br />
+          <div>Weizman 70 Kfar-Sava, Israel</div>
+          <a href="tel:+972-52-689-1380" >+972 52 689 1380</a >
+          <a href="mailto:desk@delta.band" target="_blank" rel="noopener noreferrer" >desk@delta.band</a >
           <a href="https://www.linkedin.com/company/deltafront/" target="_blank" rel="noopener noreferrer" >
             <ScLinkedin />
             LinkedIn
           </a >
+          <Whatsapp className={styles.whatsAppIcon} onClick={this.chat} />
         </p >
       </div >
     );

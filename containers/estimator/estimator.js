@@ -11,12 +11,12 @@ import { scrollToContact } from '../../utils';
 const MONTHS = 7;
 const COST_PER_MONTH = 8500;
 
-const Estimator = ({ isMobile, storeEstimation, storeSelection }) => {
+const Estimator = ({ isMobile, storeEstimation, storeSelection, schema }) => {
   const [selectedStep, setSelectedStep] = useState(1);
   const [options, setOptions] = useState(fromJS([0, 1, 2, 1, 0]));
 
   function getMultiplier(i) {
-    return 1 + Object.values(estimator.schema[`step${i + 1}`].options[options.get(i)].effort).reduce((acc, val) => acc + val, 0);
+    return 1 + parseFloat(schema.getIn([i, `option${options.get(i) + 1}EffortStudy`])) + parseFloat(schema.getIn([i, `option${options.get(i) + 1}EffortDesign`])) + parseFloat(schema.getIn([i, `option${options.get(i) + 1}EffortDev`]));
   }
 
   function generateEstimate() {
@@ -41,7 +41,18 @@ const Estimator = ({ isMobile, storeEstimation, storeSelection }) => {
       <div className={styles.calculator} style={{
         transform: isMobile ? `translateX(-${100 * (selectedStep - 1)}%)` : 'translateX(0)',
       }}>
-        <Step
+        {schema.map((step, i) => (
+          <Step
+            key={step.get('id')}
+            title={step.get('title')}
+            index={isMobile ? `${i + 1} / 5` : i + 1}
+            options={[step.get('option1Txt'), step.get('option2Txt'), step.get('option3Txt')]}
+            selectedOption={options.get(i)}
+            onChange={option => setOption(i, option)}
+            location={selectedStep === i + 1 ? 'focused' : selectedStep > i + 1 ? 'prev' : 'next'}
+          />
+        ))}
+        {/* <Step
           title={estimator.schema.step1.title}
           index={isMobile ? '1 / 5' : '1'}
           options={estimator.schema.step1.options.map(opt => opt.txt)}
@@ -80,7 +91,7 @@ const Estimator = ({ isMobile, storeEstimation, storeSelection }) => {
           selectedOption={options.get(4)}
           onChange={option => setOption(4, option)}
           location={selectedStep === 5 ? 'focused' : selectedStep > 5 ? 'prev' : 'next'}
-        />
+        /> */}
       </div>
       <div className={styles.controllers}>
         <button
@@ -110,6 +121,7 @@ const Estimator = ({ isMobile, storeEstimation, storeSelection }) => {
 
 const mapState = state => ({
   isMobile: device.selectors.type(state) === 'mobile' || device.selectors.type(state) === 'tablet',
+  schema: estimator.selectors.schema(state),
 });
 
 const mapDispatch = dispatch => ({
