@@ -11,9 +11,9 @@ import { scrollToContact } from '../../utils';
 const MONTHS = 7;
 const COST_PER_MONTH = 8500;
 
-const Estimator = ({ isMobile, isTablet, storeEstimation, storeSelection, schema }) => {
+const Estimator = ({ isMobile, isTablet, storeEstimation, storeSelection, schema, interfaceSignificance }) => {
   const [selectedStep, setSelectedStep] = useState(1);
-  const [options, setOptions] = useState(fromJS([0, 1, 2, 1, 0]));
+  const [options, setOptions] = useState(fromJS([0, 1, 2, 1, 0, 0]));
 
   function getEfforts(i) {
     return parseFloat(schema.getIn([i, `option${options.get(i) + 1}EffortStudy`])) + parseFloat(schema.getIn([i, `option${options.get(i) + 1}EffortDesign`])) + parseFloat(schema.getIn([i, `option${options.get(i) + 1}EffortDev`]));
@@ -23,6 +23,7 @@ const Estimator = ({ isMobile, isTablet, storeEstimation, storeSelection, schema
     let estimate = MONTHS * COST_PER_MONTH;
     const effortsSum = getEfforts(0) + getEfforts(1) + getEfforts(2) + getEfforts(3) + getEfforts(4);
     estimate = estimate + effortsSum * estimate;
+    estimate = estimate * parseFloat(interfaceSignificance.get(`option${options.get(5) + 1}Factor`));
     storeEstimation(Math.ceil(estimate));
     storeSelection(options);
     scrollToContact();
@@ -42,13 +43,24 @@ const Estimator = ({ isMobile, isTablet, storeEstimation, storeSelection, schema
           <Step
             key={step.get('id')}
             title={step.get(isMobile ? 'titleMobile' : 'title')}
-            index={(isMobile || isTablet) ? `${i + 1} / 5` : i + 1}
+            index={(isMobile || isTablet) ? `${i + 1} / 6` : i + 1}
             options={[step.get(isMobile ? 'option1TxtMobile' : 'option1Txt'), step.get(isMobile ? 'option2TxtMobile' : 'option2Txt'), step.get(isMobile ? 'option3TxtMobile' : 'option3Txt')]}
             selectedOption={options.get(i)}
             onChange={option => setOption(i, option)}
             location={selectedStep === i + 1 ? 'focused' : selectedStep > i + 1 ? 'prev' : 'next'}
           />
         ))}
+        <Step
+          title={interfaceSignificance.get(isMobile ? 'titleMobile' : 'title')}
+          index={(isMobile || isTablet) ? '6 / 6' : 6}
+          options={[
+            interfaceSignificance.get(isMobile ? 'option1TextMobile' : 'option1Text'),
+            interfaceSignificance.get(isMobile ? 'option2TextMobile' : 'option2Text'),
+            interfaceSignificance.get(isMobile ? 'option3TextMobile' : 'option3Text')]}
+          selectedOption={options.get(5)}
+          onChange={option => setOption(5, option)}
+          location={selectedStep === 6 ? 'focused' : selectedStep > 6 ? 'prev' : 'next'}
+        />
       </div>
       <div className={styles.controllers}>
         <button
@@ -58,18 +70,19 @@ const Estimator = ({ isMobile, isTablet, storeEstimation, storeSelection, schema
           }}
         >Prev</button >
         <button
-          className={cx(styles.next, { [styles.disable]: selectedStep === 5 })}
+          className={cx(styles.next, { [styles.disable]: selectedStep === options.size })}
           onClick={() => {
-            setSelectedStep(Math.min(selectedStep + 1, 5));
+            // debugger;
+            setSelectedStep(Math.min(selectedStep + 1, options.size));
           }}
         >Next</button >
         {!isMobile && !isTablet && <button
-          className={cx(styles.generate, { [styles.disable]: selectedStep !== 5 })}
+          className={cx(styles.generate, { [styles.disable]: selectedStep !== options.size })}
           onClick={generateEstimate}
         >Generate</button >}
       </div >
       {(isMobile || isTablet) && <button
-        className={cx(styles.generate, { [styles.disable]: selectedStep !== 5 })}
+        className={cx(styles.generate, { [styles.disable]: selectedStep !== options.size })}
         onClick={generateEstimate}
       >Generate</button >}
     </div >
@@ -80,6 +93,7 @@ const mapState = state => ({
   isMobile: device.selectors.type(state) === 'mobile',
   isTablet: device.selectors.type(state) === 'tablet',
   schema: estimator.selectors.schema(state),
+  interfaceSignificance: estimator.selectors.interfaceSignificance(state),
 });
 
 const mapDispatch = dispatch => ({

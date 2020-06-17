@@ -27,12 +27,13 @@ class MyApp extends App {
       const couponsData = await reactor.getCollection('oDTLBA1YbbmT6kchgGEc');
       const homePageData = await reactor.getPage('Wm27z1OYTccUlUlkSMBS');
       const crewData = await reactor.getCollection('wwA1VyCIcWOIJnpZhaR4', { preLoad: ['pic', 'picMobile', 'icon'] });
-      const estimatorData = await reactor.getPage('VOsbUdnB8nka9tlzMAH1');
-      const estimatorSchema = await reactor.getCollection('2DhEX98S3yYESlb6Nd41');
+      const estimatorSummary = await reactor.getPage('VOsbUdnB8nka9tlzMAH1');
+      const estimatorInterfaceSignificance = await reactor.getPage('gcvjgDVLM6fLfpNxlIAB');
+      const estimatorSteps = await reactor.getCollection('2DhEX98S3yYESlb6Nd41');
       ctx.store.dispatch(coupon.actions.setCoupons(couponsData));
       ctx.store.dispatch(home.actions.update(homePageData));
       ctx.store.dispatch(crew.actions.update(crewData));
-      ctx.store.dispatch(estimator.actions.init(estimatorData, estimatorSchema));
+      ctx.store.dispatch(estimator.actions.init(estimatorSummary, estimatorSteps, estimatorInterfaceSignificance));
       if (ctx.req) {
         // mimic device on server
         ctx.store.dispatch(device.actions.ssr(ctx.req.headers['user-agent']));

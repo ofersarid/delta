@@ -9,10 +9,11 @@ const reducer = (state = fromJS({
   selection: null,
   summery: null,
   schema: null,
+  interfaceSignificance: null,
 }), action) => {
   switch (action.type) {
     case 'ESTIMATOR:INIT':
-      return state.set('summery', fromJS(action.data)).set('schema', fromJS(action.schema));
+      return state.set('summery', fromJS(action.data)).set('schema', fromJS(action.schema)).set('interfaceSignificance', fromJS(action.interfaceSignificance));
     case 'ESTIMATOR:UPDATE':
       return state.set('calculation', action.calculation);
     case 'ESTIMATOR:STORE_SELECTION':
@@ -23,10 +24,11 @@ const reducer = (state = fromJS({
 };
 
 const actions = {
-  init: (data, schema) => dispatch => dispatch({
+  init: (data, schema, interfaceSignificance) => dispatch => dispatch({
     type: 'ESTIMATOR:INIT',
     data,
     schema,
+    interfaceSignificance,
   }),
   update: calculation => dispatch => dispatch({
     type: 'ESTIMATOR:UPDATE',
@@ -43,6 +45,7 @@ const selectors = {
   selection: state => state.getIn(['estimator', 'selection']),
   summery: state => state.getIn(['estimator', 'summery']),
   schema: state => state.getIn(['estimator', 'schema']),
+  interfaceSignificance: state => state.getIn(['estimator', 'interfaceSignificance']),
   composeEstimation: state => {
     const selection = selectors.selection(state);
     const schema = selectors.schema(state);
