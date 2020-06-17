@@ -7,7 +7,7 @@ import { estimator, device } from '../../services';
 const EstimationSummary = ({ estimation, estimatorSummery, isMobile }) => {
   return estimation ? (
     <div className={styles.estimationSummary} >
-      <div className={styles.title}>ESTIMATION</div>
+      <div className={styles.title}>BUDGET ESTIMATION</div>
       <ul>
         <li>POC - ${Math.ceil(estimation * 0.1).toLocaleString()}</li>
         {isMobile ? null : <li className={styles.explane}>{estimatorSummery.get('summeryPOC')}</li>}
