@@ -55,11 +55,23 @@ export function scrollToContact() {
       behavior: 'smooth',
       block: 'start'
     });
-    setTimeout(() => {
-      document.getElementById('contact-form-name').focus();
-    }, 1000);
+    // setTimeout(() => {
+    //   document.getElementById('contact-form-name').focus();
+    // }, 1000);
   }
 }
+
+// export function scrollToSummary() {
+//   if (document.getElementById('contactSection')) {
+//     document.getElementById('contactSection').scrollIntoView({
+//       behavior: 'smooth',
+//       block: 'start'
+//     });
+//     setTimeout(() => {
+//       document.getElementById('contact-form-name').focus();
+//     }, 1000);
+//   }
+// }
 
 export default {
   toCapitalizedWords,
@@ -71,4 +83,5 @@ export default {
   validateLink,
   camelize,
   scrollToContact,
+  // scrollToSummary,
 };

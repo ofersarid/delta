@@ -76,7 +76,7 @@
   &.left {
     opacity: 0.25;
 
-    @for $i from 1 through 5 {
+    @for $i from 1 through 6 {
       &:nth-of-type(#{$i}) {
         left: #{($i - 1) * 50px};
       }
@@ -84,9 +84,9 @@
   }
 
   &.right {
-    @for $i from 1 through 5 {
+    @for $i from 1 through 6 {
       &:nth-of-type(#{$i}) {
-        left: calc(100% - #{(6 - $i) * 50px});
+        left: calc(100% - #{(7 - $i) * 50px});
       }
     }
   }

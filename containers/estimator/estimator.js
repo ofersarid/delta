@@ -24,7 +24,7 @@ const Estimator = ({ isMobile, isTablet, storeEstimation, storeSelection, schema
     const effortsSum = getEfforts(0) + getEfforts(1) + getEfforts(2) + getEfforts(3) + getEfforts(4);
     estimate = estimate + effortsSum * estimate;
     estimate = estimate * parseFloat(interfaceSignificance.get(`option${options.get(5) + 1}Factor`));
-    storeEstimation(Math.ceil(estimate));
+    storeEstimation(Math.round(estimate / 100) * 100);
     storeSelection(options);
     scrollToContact();
   }
