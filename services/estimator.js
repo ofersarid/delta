@@ -50,6 +50,7 @@ const selectors = {
     const selection = selectors.selection(state);
     const schema = selectors.schema(state);
     const total = selectors.calculation(state);
+    const significance = selectors.interfaceSignificance(state);
     if (!total || !selection) return null;
     return {
       total,
@@ -58,6 +59,7 @@ const selectors = {
       device: schema.getIn([2, `option${selection.get(2) + 1}Txt`]),
       branding: schema.getIn([3, `option${selection.get(3) + 1}Txt`]),
       start: schema.getIn([4, `option${selection.get(4) + 1}Txt`]),
+      significance: significance.get(`option${selection.get(5) + 1}Text`),
     };
   },
 };

@@ -72,7 +72,6 @@ const Estimator = ({ isMobile, isTablet, storeEstimation, storeSelection, schema
         <button
           className={cx(styles.next, { [styles.disable]: selectedStep === options.size })}
           onClick={() => {
-            // debugger;
             setSelectedStep(Math.min(selectedStep + 1, options.size));
           }}
         >Next</button >

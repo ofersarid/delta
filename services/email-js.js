@@ -23,6 +23,7 @@ const send = (name, email, company, coupon, estimation) => {
     estimationDevice: estimation ? estimation.device : '-',
     estimationBranding: estimation ? estimation.branding : '-',
     estimationStart: estimation ? estimation.start : '-',
+    estimationSignificance: estimation ? estimation.significance : '-',
   }, CONFIG.USER_ID);
 };
 
