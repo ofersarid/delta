@@ -21,6 +21,34 @@
       font-size: 20px;
       line-height: 2em;
     }
+
+    &:not(.typing) {
+      @include orientation('landscape') {
+        &::before {
+          content: 'please rotate your device to portrait mode';
+          position: fixed;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+
+        #__next {
+          @include orientation('landscape') {
+            display: none;
+
+            @include media('>tablet') {
+              display: flex;
+            }
+          }
+        }
+
+        @include media('>tablet') {
+          &::before {
+            content: '';
+          }
+        }
+      }
+    }
   }
 
   ::-webkit-scrollbar {
@@ -48,6 +76,15 @@
     }
   }
 
+  h2 {
+    line-height: 1.6em;
+    font-family: 'Exo 2';
+    font-size: 1.1em;
+    letter-spacing: 0.02em;
+    color: $blue;
+    font-weight: 400;
+  }
+
   h4 {
     font-family: 'Exo 2', sans-serif;
     //font-weight: 500;
@@ -70,10 +107,10 @@
 
 .app {
   width: 100vw;
-  display: flex;
   flex-direction: column;
   //align-items: center;
   overflow-x: hidden;
+  display: flex;
 }
 
 .contentWrapperInner {
@@ -92,7 +129,7 @@
   &:first-of-type {
     margin: 0 0 $mobile-vertical-spacer-1 $mobile-gutter;
 
-    @include media('>tablet') {
+    @include media('>phone') {
       margin: 0 0 $desktop-vertical-spacer-1 $desktop-gutter;
     }
   }

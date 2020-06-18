@@ -49,6 +49,30 @@ export const exportToCsv = (filename, rows) => {
   document.body.removeChild(link);
 };
 
+export function scrollToContact() {
+  if (document.getElementById('contactSection')) {
+    document.getElementById('contactSection').scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    });
+    // setTimeout(() => {
+    //   document.getElementById('contact-form-name').focus();
+    // }, 1000);
+  }
+}
+
+// export function scrollToSummary() {
+//   if (document.getElementById('contactSection')) {
+//     document.getElementById('contactSection').scrollIntoView({
+//       behavior: 'smooth',
+//       block: 'start'
+//     });
+//     setTimeout(() => {
+//       document.getElementById('contact-form-name').focus();
+//     }, 1000);
+//   }
+// }
+
 export default {
   toCapitalizedWords,
   validateEmail,
@@ -58,4 +82,6 @@ export default {
   exportToCsv,
   validateLink,
   camelize,
+  scrollToContact,
+  // scrollToSummary,
 };

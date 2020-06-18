@@ -7,10 +7,10 @@ import autoBind from 'auto-bind';
 import { Whatsapp } from '@styled-icons/remix-fill/Whatsapp';
 import { ScLinkedin } from '@styled-icons/evil/ScLinkedin';
 import conversion from '../../linkedin-marketing';
-// import PropTypes from 'prop-types';
+import EstimationSummary from './estimation-summary';
 import styles from './styles.scss';
 import { validateEmail } from '../../utils';
-import { emailJS, GA, coupon, section } from '../../services';
+import { emailJS, GA, coupon, section, estimator } from '../../services';
 
 class Contact extends PureComponent {
   constructor(props) {
@@ -49,8 +49,16 @@ class Contact extends PureComponent {
     return validateEmail(email) && name.length > 1 && company.length > 1;
   }
 
+  attachTypingClass() {
+    document.getElementsByTagName('body')[0].classList.add('typing');
+  }
+
+  removeTypingClass() {
+    document.getElementsByTagName('body')[0].classList.remove('typing');
+  }
+
   async send() {
-    const { coupons } = this.props;
+    const { coupons, estimation } = this.props;
     const { name, email, company, sent, couponId } = this.state;
     const { claimed } = this.props;
     if (sent) return;
@@ -60,9 +68,9 @@ class Contact extends PureComponent {
       if (claimed) {
         LinkedInTag.track(conversion.linkedIn.sendDetailsWithCoupon.id);
         const _coupon = coupons.find(c => c.get('id') === couponId);
-        await emailJS.sendWithCoupon(name, email, company, _coupon);
+        await emailJS.send(name, email, company, _coupon, estimation);
       } else {
-        await emailJS.send(name, email, company);
+        await emailJS.send(name, email, company, null, estimation);
       }
       this.setState({ sent: true });
       this.setState({ working: false });
@@ -81,7 +89,7 @@ class Contact extends PureComponent {
     const { name, email, company, working, sent, couponId, error } = this.state;
     const { coupons, claimed } = this.props;
     const _coupon = coupons.find(c => c.get('id') === couponId);
-    const btnPosition = { transform: `translateX(${working ? -100 : sent ? -200 : 0}%)` };
+    const btnPosition = { left: `${working ? -100 : sent ? -200 : 0}%` };
     return (
       <div className={cx(styles.contact)} id="contactSection" >
         <div className={styles.left} >
@@ -91,48 +99,56 @@ class Contact extends PureComponent {
                 CLAIMED - {_coupon.get('header')}
               </div >) : null
             }
+            <EstimationSummary />
           </h1 >
           <input
+            id="contact-form-name"
             value={name}
             onChange={e => this.setState({ name: e.target.value })}
             className={cx({ [styles.valid]: name.length > 1 })}
-            autoComplete="new-password"
+            onFocus={this.attachTypingClass}
+            onBlur={this.removeTypingClass}
+            autoComplete="new-password" // disable auto complete
             placeholder="Name" />
           <input
             value={email}
             onChange={e => this.setState({ email: e.target.value })}
             className={cx({ [styles.valid]: validateEmail(email) })}
-            autoComplete="new-password"
+            onFocus={this.attachTypingClass}
+            onBlur={this.removeTypingClass}
+            autoComplete="new-password" // disable auto complete
             placeholder="Email" />
           <input
             value={company}
             onChange={e => this.setState({ company: e.target.value })}
             className={cx({ [styles.valid]: company.length > 1 })}
-            autoComplete="new-password"
+            onFocus={this.attachTypingClass}
+            onBlur={this.removeTypingClass}
+            autoComplete="new-password" // disable auto complete
             placeholder="Company" />
           <section className={styles.btns} >
             <button className={cx({
               [styles.disable]: !this.isValid(),
               [styles.gotIt]: sent,
             })} onClick={this.send} >
-              <ul >
-                <li style={btnPosition} >Send Details</li >
-                <li style={btnPosition} >Sending...</li >
-                <li style={btnPosition} >Got It!</li >
+              <ul style={btnPosition} >
+                <li>Send Details</li >
+                <li>Sending...</li >
+                <li>Got It!</li >
               </ul >
               {error && <div className={styles.error} >Oops - service unavailable</div >}
             </button >
-            <Whatsapp onClick={this.chat} />
           </section >
         </div >
         <p className={styles.right} >
-          Weizman 70 Kfar-Sava, Israel<br />
-          <a href="tel:+972-52-689-1380" >+972 52 689 1380</a ><br />
-          <a href="mailto:desk@delta.band" target="_blank" rel="noopener noreferrer" >desk@delta.band</a ><br />
+          <span>Weizman 70 Kfar-Sava, Israel</span><br />
+          <a href="tel:+972-52-689-1380" >+972 52 689 1380</a >
+          <a href="mailto:desk@delta.band" target="_blank" rel="noopener noreferrer" >desk@delta.band</a >
           <a href="https://www.linkedin.com/company/deltafront/" target="_blank" rel="noopener noreferrer" >
             <ScLinkedin />
             LinkedIn
           </a >
+          <Whatsapp className={styles.whatsAppIcon} onClick={this.chat} />
         </p >
       </div >
     );
@@ -143,7 +159,8 @@ Contact.propTypes = {};
 
 const mapStateToProps = state => ({
   claimed: coupon.selectors.claimed(state),
-  coupons: coupon.selectors.coupons(state)
+  coupons: coupon.selectors.coupons(state),
+  estimation: estimator.selectors.composeEstimation(state),
 });
 
 const mapDispatchToProps = dispatch => ({}); // eslint-disable-line

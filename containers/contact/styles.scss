@@ -4,9 +4,8 @@
   @extend %chapterWrapper;
 
   @include media('>tablet') {
-    margin-top: $desktop-vertical-spacer-2;
-    padding: 0 $desktop-gutter;
     flex-direction: row;
+    padding: 0 $desktop-gutter;
   }
 
   .left {
@@ -42,10 +41,108 @@
       @extend %popIn;
       animation-delay: 1.5s;
     }
+
+    .estimationSummary {
+      font-size: 17px;
+      line-height: 17px;
+      color: $black;
+      border-radius: 2px;
+      margin-top: 25px;
+      box-sizing: border-box;
+      padding: 40px 30px;
+      background: $white;
+      display: flex;
+      flex-direction: column;
+      opacity: 0;
+      @extend %popIn;
+      animation-delay: .5s;
+      text-transform: none;
+
+      .basad {
+        position: absolute;
+        right: 20px;
+        top: 20px;
+        display: none;
+      }
+
+      .stepTitle {
+        display: flex;
+        justify-content: space-between;
+        background-color: rgba(black, 0.1);
+        padding: 10px 15px;
+        border-radius: 3px;
+
+        &.invert {
+          background-color: rgba(black, 0.9);
+          color: white;
+        }
+      }
+
+      .logo {
+        width: 50px;
+        margin-top: 15px;
+        display: none;
+      }
+
+      .title {
+        font-weight: 600;
+        font-size: 20px;
+        margin-bottom: 10px;
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+
+        // li.divider {
+        //   height: 1px;
+        //   width: 100%;
+        //   background: $black;
+        // }
+
+        li {
+          margin: 10px 0;
+        }
+
+        .tip {
+          color: #008da3;
+          font-style: italic;
+          margin-top: 20px;
+        }
+
+        .explain {
+          font-size: 15px;
+          line-height: 1.4em;
+          opacity: 0.5;
+          margin-top: 0;
+          transform: translateY(-4px);
+          text-align: justify;
+        }
+      }
+    }
   }
 
   .right {
     width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+
+    svg {
+      height: 40px;
+      transform: translate(-8px, 0);
+      margin-right: -7px;
+    }
+
+    .whatsAppIcon {
+      transform: none;
+      margin-top: 15px;
+      margin-top: 18px;
+    }
 
     @include media('>tablet') {
       padding: 136px 0 0 0;
@@ -53,16 +150,14 @@
       width: 34vw;
       flex-shrink: 0;
       flex-grow: 0;
+
+      .whatsAppIcon {
+        margin-top: 78px;
+      }
     }
 
     @include media('>desktop') {
       padding: 143px 0 0 0;
-    }
-
-    svg {
-      height: 40px;
-      transform: translate(-8px, 0);
-      margin-right: -7px;
     }
   }
 
@@ -111,7 +206,7 @@
     width: 100vw;
     padding: 0 $mobile-gutter;
     box-sizing: border-box;
-    margin-top: #{1.5 * $mobile-gutter};
+    margin-top: #{1.2 * $mobile-gutter};
 
     @include media('>tablet') {
       padding: 0;
@@ -131,12 +226,14 @@
 
   button {
     @extend %button;
+    justify-content: flex-start;
     transition: 1s $ease;
     color: $blue;
     border-color: $blue;
     width: 150px;
     padding: 0;
     position: relative;
+    overflow: hidden;
 
     &.disable {
       opacity: 0.25;
@@ -168,16 +265,19 @@
       margin: 0;
       padding: 0;
       display: flex;
-      width: 100%;
-      overflow: hidden;
+      width: 300%;
       height: 100%;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      flex-shrink: 0;
+      position: relative;
+      transition: 1s $ease;
 
       li {
-        flex-shrink: 0;
         width: 100%;
         padding: 9px 20px 10px;
         box-sizing: border-box;
-        transition: 1s $ease;
       }
     }
   }

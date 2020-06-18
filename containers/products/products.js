@@ -93,7 +93,7 @@ Products.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  isMobile: device.selectors.type(state) === 'mobile'
+  isMobile: device.selectors.type(state) === 'mobile' || device.selectors.type(state) === 'tablet',
 });
 
 const mapDispatchToProps = dispatch => ({}); // eslint-disable-line

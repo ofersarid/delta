@@ -8,3 +8,4 @@ export { default as Contact } from './contact/contact';
 export { default as Footer } from './footer/footer';
 export { default as SectionIndicator } from './section-indicator/section-indicator';
 export { default as Coupon } from './coupon/coupon';
+export { default as Estimator } from './estimator/estimator';

@@ -27,7 +27,7 @@ Hero.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  isMobile: device.selectors.type(state) === 'mobile',
+  isMobile: device.selectors.type(state) === 'mobile' || device.selectors.type(state) === 'tablet',
   data: home.selectors.data(state)
 });
 

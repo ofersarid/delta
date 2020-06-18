@@ -6,28 +6,26 @@ const CONFIG = {
   TEMPLATE: 'delta_lead_from_website',
 };
 
-const send = (name, email, company) => {
+const send = (name, email, company, coupon, estimation) => {
   return sendEmail(CONFIG.SERVICE_ID, CONFIG.TEMPLATE, {
     email,
     name,
     company,
-  }, CONFIG.USER_ID);
-};
-
-const sendWithCoupon = (name, email, company, coupon) => {
-  return sendEmail(CONFIG.SERVICE_ID, CONFIG.TEMPLATE, {
-    email,
-    name,
-    company,
-    couponId: coupon.get('id'),
-    couponName: coupon.get('name'),
-    couponMessage: coupon.get('message'),
-    couponStatus: coupon.get('active') ? 'active' : 'disabled',
-    couponClaimed: coupon.get('claimed') ? 'true' : 'false',
+    couponId: coupon ? coupon.get('id') : '-',
+    couponName: coupon ? coupon.get('name') : '-',
+    couponMessage: coupon ? coupon.get('message') : '-',
+    couponStatus: coupon ? coupon.get('active') ? 'active' : 'disabled' : '-',
+    couponClaimed: coupon ? coupon.get('claimed') ? 'true' : 'false' : '-',
+    estimationVersion: estimation ? '1.0' : '-',
+    estimationTotal: estimation ? estimation.total : '-',
+    estimationIndustry: estimation ? estimation.industry : '-',
+    estimationFunding: estimation ? estimation.funding : '-',
+    estimationDevice: estimation ? estimation.device : '-',
+    estimationBranding: estimation ? estimation.branding : '-',
+    estimationStart: estimation ? estimation.start : '-',
   }, CONFIG.USER_ID);
 };
 
 export default {
   send,
-  sendWithCoupon
 };
