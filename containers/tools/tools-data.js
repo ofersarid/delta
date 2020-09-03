@@ -29,6 +29,10 @@ export default {
       thumb: '/images/tools/firebase.png'
     },
     {
+      title: 'Cypress',
+      thumb: '/images/tools/cypress.png'
+    },
+    {
       title: 'Saas.js',
       thumb: '/images/tools/sass.png'
     },

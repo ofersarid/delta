@@ -3,6 +3,10 @@
 .tools {
   @extend %chapterWrapper;
 
+  section {
+    margin-right: 0 !important;
+  }
+
   .lists {
     @include media('>tablet') {
       display: flex;
