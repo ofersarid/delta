@@ -8,7 +8,7 @@ const init = () => {
   console.log('GA init');
   const urlParams = new URLSearchParams(window.location.search);
   const id = urlParams.get('id');
-  ReactGA.initialize('UA-150924142-2', {
+  ReactGA.initialize('G-96QZCYVE1V', {
     debug: true,
     titleCase: false,
     gaOptions: {
@@ -37,7 +37,7 @@ const viewedPage = () => {
   console.log(`Logging viewed page`);
   ReactGA.event({
     category: isDev() ? 'test' : 'user',
-    action: 'viewed page',
+    action: 'viewed page'
   });
 };
 
@@ -45,7 +45,7 @@ const contactUs = () => {
   console.log('Logging clicked on Send');
   ReactGA.event({
     category: isDev() ? 'test' : 'user',
-    action: 'clicked contact us',
+    action: 'clicked contact us'
   });
 };
 
@@ -54,7 +54,7 @@ const send = (viewer) => {
     console.log(`Logging send by: ${viewer}`);
     ReactGA.event({
       category: isDev() ? 'test' : 'user',
-      action: 'clicked on send',
+      action: 'clicked on send'
     });
   }
 };
@@ -73,5 +73,5 @@ export default {
   viewedPage,
   contactUs,
   send,
-  logPageView,
+  logPageView
 };
